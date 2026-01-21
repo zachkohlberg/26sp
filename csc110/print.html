@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-7f99483e.js";
+            window.path_to_searchindex_js = "searchindex-e3d26c6b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-fdd34ca1.js"></script>
+        <script src="toc-c46ad3ae.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1212,40 +1212,153 @@ grading/testing works again</li>
 <li>not helping during class if you didn’t do the homework</li>
 </ul>
 </li>
-<li>terminal intro
+<li>terminal</li>
+<li>file organization</li>
+<li>geany</li>
+<li>java</li>
+<li>homework
 <ul>
-<li>pwd, ls, cd</li>
+<li>make sure software is installed and everything works</li>
+<li>review what we did in class and let me know if you have questions or aren’t
+sure how to do something on your own</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="terminal-1"><a class="header" href="#terminal-1">Terminal</a></h1>
+<ul>
+<li>goals:
+<ul>
+<li>you can navigate and locate files on terminal</li>
+<li>you can find your home directory and any other directories you regularly use</li>
+</ul>
+</li>
+<li>intro
+<ul>
+<li>terminal</li>
+<li>shell</li>
+<li>unix (mac, linux) vs windows
+<ul>
+<li>posix, bash, zsh</li>
+<li>cmd, powershell</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>basic commands
+<ul>
+<li>spaces and capitalization matter!</li>
 <li>commands and args</li>
+<li>pwd, ls, cd</li>
 </ul>
 </li>
 <li>paths and directories
 <ul>
-<li>home directory</li>
+<li>home directory and <code>~</code></li>
+<li>relative paths, <code>.</code>, <code>..</code></li>
 <li>Windows/OneDrive nonsense</li>
 </ul>
 </li>
-<li>setting up a class folder
+<li>tab completion and command history</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="file-organization"><a class="header" href="#file-organization">File Organization</a></h1>
 <ul>
-<li>recommend putting it in home or Documents, <strong>not</strong> Downloads</li>
-<li>remember where it is</li>
-<li>don’t make multiples!</li>
+<li>goals:
+<ul>
+<li>you have one location for all csc110 material</li>
+<li>you can find this location in the terminal and your editor</li>
+<li>you have a copy of the class repo and know how to update it</li>
 </ul>
 </li>
-<li>geany
+<li>where to keep files?
 <ul>
-<li>new, save, open, and edit</li>
-<li>file extension</li>
-<li>write a hello world program</li>
+<li>home directory, documents, or desktop are good locations; downloads is not a
+good location</li>
+<li>make a folder for this class (<code>mkdir</code> command)</li>
+<li>close terminal and find your way back to that folder</li>
+<li>don’t make new folders for this class when you have trouble finding the
+original one!</li>
 </ul>
 </li>
-<li>java
+<li>clone git repo (see resources page)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="geany-1"><a class="header" href="#geany-1">Geany</a></h1>
 <ul>
-<li>run our hello world program</li>
+<li>goals:
+<ul>
+<li>you can create new files in geany</li>
+<li>you can open, edit, and save changes to existing files in geany</li>
+<li>you can save files with a .java extension</li>
+<li>you can keep all these files in your csc110 folder and find them in your
+terminal</li>
 </ul>
 </li>
+<li>configure plugins and settings</li>
+<li>set your csc110 folder as your home directory</li>
+<li>step through writing a hello world program in geany
+<ul>
+<li>save under the <strong>exact</strong> name <code>HelloWorld.java</code> (no spaces, same
+capitalization)</li>
+<li>remember: spaces, capitalization, and punctuation matter a lot!</li>
+</ul>
+</li>
+<li>find file in terminal and show contents with <code>cat</code> command</li>
+<li>make <code>HelloQU.java</code> file with <code>touch</code> and edit in Geany</li>
+<li>cat this file in terminal</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="java-1"><a class="header" href="#java-1">Java</a></h1>
+<ul>
+<li>goals:
+<ul>
+<li>you can run java programs from the terminal</li>
+</ul>
+</li>
+<li>run both version checks</li>
+<li>separate compile and run steps:
+<ul>
+<li>compile java file to class file with <code>javac</code></li>
+<li>run class file with <code>java</code></li>
+</ul>
+</li>
+<li>in-memory compilation:
+<ul>
+<li>run java file with <code>java</code></li>
+</ul>
+</li>
+<li>javac isn’t necessary, so we’ll just stick to the second option
+<ul>
+<li>if you want to distribute a program to users, then you’d compile with javac
+and package everything into a jar file</li>
+<li>you’d often use build systems like maven and gradle to do this instead of
+running javac directly</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="w2-tuesday-0127"><a class="header" href="#w2-tuesday-0127">W2 Tuesday (01/27)</a></h1>
+<h2 id="agenda-2"><a class="header" href="#agenda-2">Agenda</a></h2>
+<ul>
+<li>text files, markdown</li>
+<li>example programs</li>
+<li>java program structure</li>
+<li>output</li>
+<li>variables</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="w2-thursday-0129"><a class="header" href="#w2-thursday-0129">W2 Thursday (01/29)</a></h1>
+<h2 id="agenda-3"><a class="header" href="#agenda-3">Agenda</a></h2>
+<ul>
+<li>input</li>
+<li>functions</li>
+<li>example problem</li>
+<li>practice</li>
 <li>homework
 <ul>
-<li>make sure software is installed and everything works</li>
+<li>attempt practice exercises (these are ungraded and don’t need to be turned
+in)</li>
 </ul>
 </li>
 </ul>

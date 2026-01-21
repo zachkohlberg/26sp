@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-2f3c1b58.js";
+            window.path_to_searchindex_js = "searchindex-99e734e8.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-aa45f8ff.js"></script>
+        <script src="toc-edef2fe2.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1162,6 +1162,183 @@ grading/testing works again</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="w1-thursday-0122"><a class="header" href="#w1-thursday-0122">W1 Thursday (01/22)</a></h1>
+<h2 id="agenda-1"><a class="header" href="#agenda-1">Agenda</a></h2>
+<ul>
+<li>attendance</li>
+<li>software troubleshooting</li>
+<li>set up csc111 folder and clone/pull git repo</li>
+<li>java program structure: moving from compact source to “standard” java</li>
+<li>practice exercises</li>
+<li>review some exercises if time permits</li>
+<li>homework
+<ul>
+<li>finish practice exercises (these are ungraded and don’t need to be turned
+in)</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="example-programs"><a class="header" href="#example-programs">Example Programs</a></h1>
+<pre><code class="language-java">// program must go in a class
+public class Example1 {
+    // main is the entry point for the program
+    public static void main(String[] args) {
+        // printing to stdout and stderr
+        System.out.print("stdout message with no linebreak");
+        System.out.println("stdout message with a linebreak");
+        System.out.printf("formatted %s message\n", "stdout");
+        System.err.println("stderr message");
+
+        // command line arguments are a form of user input
+        System.out.printf("there were %d command line arguments:\n", args.length);
+        for (int i = 0; i &lt; args.length; i++) {
+            System.out.println(args[i]);
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-java">// imports the Scanner class so we don't have to keep typing the package
+import java.util.Scanner;
+
+public class Example2 {
+    public static void main(String[] args) {
+        // a scanner can read from stdin using System.in
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter your name: ");
+        String name = in.nextLine();
+        System.out.printf("Hello, %s. Nice to meet you!\n", name);
+
+        // make small talk
+        System.out.println("How was your first week of classes?");
+        in.nextLine();
+        System.out.println("Uh-huh, very interesting.");
+
+        name = "";
+
+        // in Java 25, we also have the IO class for stdin and stdout
+        IO.println("Oops, I forgot your name!");
+        name = IO.readln("What did you say it was? ");
+        IO.println("Okay, thanks! I'll defininitely remember this time.");
+        name = "";
+
+        // make sure user is done
+        String answer = IO.readln("Are you done using this program?\n");
+        while (!answer.equalsIgnoreCase("yes")) {
+            answer = IO.readln("How about now?\n");
+        }
+
+        // are they really done?
+        do {
+            answer = IO.readln("Are you sure you're done?\n");
+        } while (!answer.equals("yes"));
+
+        IO.println("Goodbye!");
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class Example3 {
+    public static void main(String[] args) {
+        // if there are no program args, then the program ends!
+        if (args.length == 0) {
+            System.out.println("Sorry, I need program args.");
+            // ends the program early
+            // exiting with a nonzero value indicates to other programs that
+            // something went wrong
+            System.exit(1);
+        }
+
+        // check whether there are an even or odd number of args
+        if (args.length % 2 == 0) {
+            System.out.println("Even arg count detected!");
+            // call another static method
+            even(args);
+        } else {
+            System.out.println("Odd arg count detected!");
+            // call another static method
+            odd(args);
+        }
+    }
+
+    public static void even(String[] args) {
+        // print only the even-numbered args
+        for (int i = 1; i &lt; args.length; i += 2) {
+            // our target audience is non-programmers, and their brains aren't
+            // zero-indexed
+            System.out.printf("%d. %s\n", i + 1, args[i]);
+        }
+    }
+
+    public static void odd(String[] args) {
+        // print only the characters encoded as odd numbers
+        // why are we doing that? hey, look! an enhanced for loop!
+        for (String arg : args) {
+            // wow, a nested loop!
+            for (int i = 0; i &lt; arg.length(); i++) {
+                // get character
+                char c = arg.charAt(i);
+                // checking if odd
+                if (c % 2 != 0) {
+                    System.out.print(c);
+                }
+            }
+            // line break after each arg
+            System.out.println();
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
+<ol>
+<li>Try making the following changes to the example programs:
+<ol>
+<li>Rewrite the printf statements in Example1 as println statements. Use
+string concatenation to include any variables in the output.</li>
+<li>Change the do-while loop in Example2 into a while loop. What problem
+occurs and how can you fix it?</li>
+<li>Add numeric labels to the args printed by the odd method in Example3.
+Don’t number each character, just each arg.</li>
+</ol>
+</li>
+<li>Let’s solve a classic coding interview problem: FizzBuzz!
+<ul>
+<li>Write a program that prints the numbers 1 to 15.</li>
+<li>Replace all multiples of 3 with the word “Fizz”.</li>
+<li>Replace all multiples of 5 with the word “Buzz”. Multiples of both 3 and 5
+should be replaced with “FizzBuzz”.</li>
+</ul>
+</li>
+<li>Write a program that converts a distance in centimeters to a distance in feet
+and inches. An inch is about 2.54 centimeters, and your output should be
+rounded to the nearest inch (<code>Math.round()</code> will help). You can take user
+input however you want: the args array, IO class, or a Scanner.</li>
+<li>Make the following changes to your FizzBuzz program:
+<ul>
+<li>Make your program count up to 200 instead of 15.</li>
+<li>Replace all multiples of 7 with the word “Beep”. Multiples of 7 and 3, 7
+and 5, or all three numbers should include each applicable word.</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="w2-tuesday-0127"><a class="header" href="#w2-tuesday-0127">W2 Tuesday (01/27)</a></h1>
+<h2 id="agenda-2"><a class="header" href="#agenda-2">Agenda</a></h2>
+<ul>
+<li>attendance</li>
+<li>classes: static variables/methods</li>
+<li>classes: defining a type, instance variables/methods</li>
+<li>working with instances of a class</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="w2-thursday-0129"><a class="header" href="#w2-thursday-0129">W2 Thursday (01/29)</a></h1>
+<h2 id="agenda-3"><a class="header" href="#agenda-3">Agenda</a></h2>
+<ul>
+<li>attendance</li>
+<li>packages</li>
+<li>access control and encapsulation</li>
+<li>invariants</li>
+<li>practice exercises</li>
+</ul>
 
                     </main>
 
