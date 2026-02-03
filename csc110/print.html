@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-cb080cc7.js";
+            window.path_to_searchindex_js = "searchindex-1e704c2a.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-282687ed.js"></script>
+        <script src="toc-967ea06e.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -240,8 +240,34 @@ time. I can usually fit in meetings on Monday, Wednesday, and Friday afternoons.
 <p>This website is updated often, and it’s possible that you may see a older
 version of some pages that were saved in your browser’s cache. Holding shift and
 refreshing (control + shift + r or command + shift + r on most browsers) should
-show the latest version of a page. You can also look into your browser’s
-settings and disable caching for this site.</p>
+show the latest version of a page.</p>
+<p>You can also look into your browser’s settings and block this site from being
+cached. These directions are for desktop, not mobile, and they may be outdated.
+Please let me know if you have trouble following them:</p>
+<ul>
+<li>Firefox (see also: <a href="https://support.mozilla.org/en-US/kb/storage">https://support.mozilla.org/en-US/kb/storage</a>)
+<ul>
+<li>Open Settings and click “Privacy &amp; Security”</li>
+<li>Scroll down to “Cookies and Site Data”</li>
+<li>Click “Manage Exceptions…”</li>
+<li>Add “https://zachkohlberg.github.io” and “http://zachkohlberg.github.io” to
+the list of websites and click “Save Changes”</li>
+</ul>
+</li>
+<li>Chrome
+<ul>
+<li>Click the icon to the left of the URL (tooltip should read “View site
+information”)</li>
+<li>Click “Cookies and site data”</li>
+<li>Click “Manage on-device site data”</li>
+<li>Click the three dots to the right of the URL</li>
+<li>Select “Don’t allow to save data”</li>
+<li>Click “Done”</li>
+</ul>
+</li>
+<li>If you use another browser or view this site on your phone, then you will need
+to look up instructions.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="policies"><a class="header" href="#policies">Policies</a></h1>
 <p>You can find QU’s policies at <a href="https://handbook.qu.edu/university-policies/">https://handbook.qu.edu/university-policies/</a>.
@@ -1358,16 +1384,100 @@ running javac directly</li>
 <h1 id="w3-tuesday-0203"><a class="header" href="#w3-tuesday-0203">W3 Tuesday (02/03)</a></h1>
 <h2 id="agenda-3"><a class="header" href="#agenda-3">Agenda</a></h2>
 <ul>
-<li>example programs</li>
+<li>java program structure</li>
 <li>output</li>
-<li>variables</li>
+<li>functions</li>
+<li>main function</li>
+<li>variables (if time permits)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="example-programs"><a class="header" href="#example-programs">Example Programs</a></h1>
+<p>After today’s class, you should understand and be able to explain the following
+programs:</p>
+<pre><code class="language-java">// Filename: HelloWorld.java
+
+void main() {
+    IO.println("Hello World");
+}
+</code></pre>
+<pre><code class="language-java">// Filename: HelloFunctions.java
+
+void main() {
+    sayHello();
+    sayGoodbye();
+}
+
+void sayHello() {
+    IO.println("Hello, user!");
+    IO.println("Nice to meet you.");
+}
+
+void sayGoodbye() {
+    IO.println("Guess we're out of time. Bye!");
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="java-program-structure"><a class="header" href="#java-program-structure">Java Program Structure</a></h1>
+<ul>
+<li>compact source files (compare to “normal” hello world)</li>
+<li>let’s explain each part of HelloWorld.java:
+<ul>
+<li><code>// ...</code></li>
+<li><code>void</code></li>
+<li><code>main()</code></li>
+<li><code>{ ... }</code></li>
+<li><code>IO.println(...)</code></li>
+<li><code>"Hello World"</code></li>
+<li><code>;</code></li>
+</ul>
+</li>
+<li>semicolons and statements</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="output"><a class="header" href="#output">Output</a></h1>
+<ul>
+<li>I/O acronym</li>
+<li>standard output (stdout)</li>
+<li><code>IO.print</code> and <code>IO.println</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<ul>
+<li><code>void</code> functions, subroutines</li>
+<li>calling a function
+<ul>
+<li>function identifier (name)</li>
+<li>namespace (package name, class name)</li>
+<li>parenthesis</li>
+</ul>
+</li>
+<li>writing a function
+<ul>
+<li><code>void</code></li>
+<li>identifier</li>
+<li>parameter list</li>
+<li>body</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="main-function"><a class="header" href="#main-function">Main Function</a></h1>
+<ul>
+<li>recap how we run java programs
+<ul>
+<li>compile to bytecode</li>
+<li>launch JVM</li>
+<li>give bytecode to JVM</li>
+</ul>
+</li>
+<li>where does the program start?</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="w3-thursday-0205"><a class="header" href="#w3-thursday-0205">W3 Thursday (02/05)</a></h1>
 <h2 id="agenda-4"><a class="header" href="#agenda-4">Agenda</a></h2>
 <ul>
+<li>variables</li>
 <li>input</li>
-<li>functions</li>
 <li>example problem</li>
 <li>practice</li>
 <li>homework
@@ -1376,6 +1486,63 @@ running javac directly</li>
 in)</li>
 </ul>
 </li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="example-programs-1"><a class="header" href="#example-programs-1">Example Programs</a></h1>
+<p>After today’s class, you should understand and be able to explain the following
+programs:</p>
+<pre><code class="language-java">// Filename: Home.java
+
+void main() {
+    String user = "zach";
+
+    IO.print("  Linux: /home/");
+    IO.println(user);
+
+    IO.print("    Mac: /Users/");
+    IO.println(user);
+
+    IO.print("Windows: /c/Users/");
+    IO.println(user);
+
+    IO.print("      or C:\\Users\\");
+    IO.println(user);
+}
+// We'll talk about why "\\" prints as "\" later
+</code></pre>
+<pre><code class="language-java">// Filename: Greeting.java
+
+void main() {
+    String name;
+    name = IO.readln("What is your name? ");
+    IO.print("Hello ");
+    IO.print(name);
+    IO.println(", nice to meet you!");
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="variables"><a class="header" href="#variables">Variables</a></h1>
+<ul>
+<li>declare a variable
+<ul>
+<li>we’ll talk more about types next week</li>
+</ul>
+</li>
+<li>initialize a variable
+<ul>
+<li>usually declare and initialize on one line (see Home.java)</li>
+</ul>
+</li>
+<li>reassign a variable</li>
+<li>can use variables in other code</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="input"><a class="header" href="#input">Input</a></h1>
+<ul>
+<li>standard input (stdin)</li>
+<li>other half of I/O, but we need variables</li>
+<li><code>IO.readln</code> <em>returns</em> user input, which can be assigned to a variable</li>
+<li>without a variable, we can’t save user input for later</li>
 </ul>
 
                     </main>

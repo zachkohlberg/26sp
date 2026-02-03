@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-4923379f.js";
+            window.path_to_searchindex_js = "searchindex-ca800fca.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-ceed7e95.js"></script>
+        <script src="toc-443c85a7.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -247,8 +247,34 @@ time. I can usually fit in meetings on Monday, Wednesday, and Friday afternoons.
 <p>This website is updated often, and it’s possible that you may see a older
 version of some pages that were saved in your browser’s cache. Holding shift and
 refreshing (control + shift + r or command + shift + r on most browsers) should
-show the latest version of a page. You can also look into your browser’s
-settings and disable caching for this site.</p>
+show the latest version of a page.</p>
+<p>You can also look into your browser’s settings and block this site from being
+cached. These directions are for desktop, not mobile, and they may be outdated.
+Please let me know if you have trouble following them:</p>
+<ul>
+<li>Firefox (see also: <a href="https://support.mozilla.org/en-US/kb/storage">https://support.mozilla.org/en-US/kb/storage</a>)
+<ul>
+<li>Open Settings and click “Privacy &amp; Security”</li>
+<li>Scroll down to “Cookies and Site Data”</li>
+<li>Click “Manage Exceptions…”</li>
+<li>Add “https://zachkohlberg.github.io” and “http://zachkohlberg.github.io” to
+the list of websites and click “Save Changes”</li>
+</ul>
+</li>
+<li>Chrome
+<ul>
+<li>Click the icon to the left of the URL (tooltip should read “View site
+information”)</li>
+<li>Click “Cookies and site data”</li>
+<li>Click “Manage on-device site data”</li>
+<li>Click the three dots to the right of the URL</li>
+<li>Select “Don’t allow to save data”</li>
+<li>Click “Done”</li>
+</ul>
+</li>
+<li>If you use another browser or view this site on your phone, then you will need
+to look up instructions.</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="policies"><a class="header" href="#policies">Policies</a></h1>
 <p>You can find QU’s policies at <a href="https://handbook.qu.edu/university-policies/">https://handbook.qu.edu/university-policies/</a>.
@@ -1338,6 +1364,88 @@ and 5, or all three numbers should include each applicable word.</li>
 <li>classes: static variables/methods</li>
 <li>classes: defining a type, instance variables/methods</li>
 <li>working with instances of a class</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="examples-1"><a class="header" href="#examples-1">Examples</a></h1>
+<p>After today’s class, you should understand and be able to explain the following
+code:</p>
+<pre><code class="language-java">class Circle {
+    double x, y;
+    double radius;
+
+    Circle(double initX, double initY, double initRadius) {
+        this.x = initX;
+        this.y = initY;
+        this.radius = initRadius;
+    }
+
+    double getArea() {
+        return Math.PI * this.radius * this.radius;
+    }
+
+    static double getCircumference(Circle c) {
+        return 2 * Math.PI * c.radius;
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class CircleProgram {
+    public static void main(String[] args) {
+        Circle a = new Circle(0, 0, 10);
+        Circle b = new Circle(5, 5, 5);
+
+        printCircle("A", a);
+        printCircle("B", b);
+    }
+
+    static void printCircle(String name, Circle c) {
+        System.out.printf(
+                """
+                Circle %s:
+                    x             = %.2f
+                    y             = %.2f
+                    radius        = %.2f
+                    area          = %.2f
+                    circumference = %.2f
+                """,
+                name, c.x, c.y, c.radius, c.getArea(), Circle.getCircumference(c));
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="defining-types"><a class="header" href="#defining-types">Defining Types</a></h1>
+<ul>
+<li>class</li>
+<li>variables</li>
+<li>constructors</li>
+<li>methods</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="using-your-class"><a class="header" href="#using-your-class">Using Your Class</a></h1>
+<ul>
+<li>declare/type</li>
+<li>instantiation</li>
+<li>calling instance methods</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="class-vs-instance"><a class="header" href="#class-vs-instance">Class vs Instance</a></h1>
+<ul>
+<li>class (static) variables and methods
+<ul>
+<li>methods invoked through class, not instances</li>
+<li>one copy of each variable per class, not per instance</li>
+</ul>
+</li>
+<li>instance (non-static) variables and methods
+<ul>
+<li>methods invoked through instance, not class</li>
+<li>methods have instance (<code>this</code>) as implicit parameter
+<ul>
+<li>see <code>Circle.getCircumference</code> for explicit static equivalent</li>
+</ul>
+</li>
+<li>one copy of each variable per instance</li>
+</ul>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="w3-thursday-0205"><a class="header" href="#w3-thursday-0205">W3 Thursday (02/05)</a></h1>
