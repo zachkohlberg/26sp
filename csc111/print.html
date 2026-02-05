@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-ca800fca.js";
+            window.path_to_searchindex_js = "searchindex-cc98fbf8.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-443c85a7.js"></script>
+        <script src="toc-0fe69aa6.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1452,11 +1452,157 @@ code:</p>
 <h2 id="agenda-4"><a class="header" href="#agenda-4">Agenda</a></h2>
 <ul>
 <li>attendance</li>
+<li>access control, encapsulation, and invariants</li>
+<li>example classes</li>
 <li>packages</li>
-<li>access control and encapsulation</li>
-<li>invariants</li>
 <li>practice exercises</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="examples-2"><a class="header" href="#examples-2">Examples</a></h1>
+<p>After today’s class, you should understand and be able to explain the following
+code:</p>
+<pre><code class="language-java">public class Circle2 {
+    private double x, y;
+    private double radius;
+
+    public Circle2(double initX, double initY, double initRadius) {
+        this.setX(initX);
+        this.setY(initY);
+        this.setRadius(initRadius);
+    }
+
+    public void setX(double newX) {
+        this.x = newX;
+    }
+
+    public void setY(double newY) {
+        this.y = newY;
+    }
+
+    public void setRadius(double newRadius) {
+        if (newRadius &lt; 0) {
+            this.radius = 0;
+        } else {
+            this.radius = newRadius;
+        }
+    }
+
+    public double getX() {
+        return this.x;
+    }
+
+    public double getY() {
+        return this.y;
+    }
+
+    public double getRadius() {
+        return this.radius;
+    }
+
+    public double getArea() {
+        return Math.PI * this.radius * this.radius;
+    }
+
+    public double getCircumference() {
+        return 2 * Math.PI * this.radius;
+    }
+}
+</code></pre>
+<pre><code class="language-java">public class CircleProgram2 {
+    public static void main(String[] args) {
+        Circle2 a = new Circle2(0, 0, 10);
+        Circle2 b = new Circle2(5, 5, 5);
+        b.setX(-2);
+        b.setRadius(-5);
+
+        printCircle("A", a);
+        printCircle("B", b);
+    }
+
+    public static void printCircle(String name, Circle2 c) {
+        System.out.printf(
+                """
+                Circle %s:
+                    x             = %.2f
+                    y             = %.2f
+                    radius        = %.2f
+                    area          = %.2f
+                    circumference = %.2f
+                """,
+                name, c.getX(), c.getY(), c.getRadius(), c.getArea(), c.getCircumference());
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="encapsulation"><a class="header" href="#encapsulation">Encapsulation</a></h1>
+<ul>
+<li>encapsulation
+<ul>
+<li>hiding data from parts of the program that should not access it</li>
+<li>allows classes to guarantee a valid internal state, maintain invariants</li>
+<li>only expose the public API necessary to use the class</li>
+</ul>
+</li>
+<li>access modifiers
+<ul>
+<li><code>public</code></li>
+<li><code>private</code></li>
+<li><code>protected</code></li>
+<li>none</li>
+</ul>
+</li>
+<li>invariant: something that must always be true</li>
+<li>example: immutable Strings
+<ul>
+<li>internal <code>char</code> array is private</li>
+<li>strings cannot change after creation</li>
+</ul>
+</li>
+<li>by default, instance variables are private</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="packages"><a class="header" href="#packages">Packages</a></h1>
+<ul>
+<li>namespacing: separating code into “namespaces” allows name reuse without
+conflict
+<ul>
+<li>C# has a <code>namespace</code> keyword</li>
+<li>Java has packages (declared with <code>package</code> keyword)</li>
+<li>classes in both languages can also act as namespaces</li>
+</ul>
+</li>
+<li>packages must match directory structure
+<ul>
+<li>a project has a root directory (typically wherever we are when running the
+<code>java</code> command)</li>
+<li>files in root declare no package and are in the “default package”</li>
+<li>a file <code>abc/def/Example.java</code> would declare the package <code>abc.def</code></li>
+</ul>
+</li>
+<li>when you import from standard library or another library, your import includes
+the package
+<ul>
+<li>for example: <code>Scanner</code> is in the package <code>java.util</code></li>
+</ul>
+</li>
+<li>won’t need to deal with packages on your end too much this semester</li>
+<li>unless told otherwise, your code should just use the default package (i.e.
+don’t declare a package at all)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="bank-example"><a class="header" href="#bank-example">Bank Example</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-1"><a class="header" href="#practice-1">Practice</a></h1>
+<ol>
+<li>Update the rectangle example from last class to use proper encapsulation:
+<ul>
+<li>all instance variables should be private</li>
+<li>make a getter and setter method for each instance variable</li>
+<li>make the class, constructors, and methods public</li>
+</ul>
+</li>
+<li></li>
+</ol>
 
                     </main>
 

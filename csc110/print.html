@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1e704c2a.js";
+            window.path_to_searchindex_js = "searchindex-d0693b7c.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-967ea06e.js"></script>
+        <script src="toc-6f8377e4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1478,6 +1478,7 @@ void sayGoodbye() {
 <ul>
 <li>variables</li>
 <li>input</li>
+<li>compile errors</li>
 <li>example problem</li>
 <li>practice</li>
 <li>homework
@@ -1544,6 +1545,53 @@ void main() {
 <li><code>IO.readln</code> <em>returns</em> user input, which can be assigned to a variable</li>
 <li>without a variable, we can’t save user input for later</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="errors"><a class="header" href="#errors">Errors</a></h1>
+<ul>
+<li>remember: compiler converts source code into bytecode</li>
+<li>what if the source code is incorrect?
+<ul>
+<li>missing semicolons</li>
+<li>unclosed curly braces, parenthesis, and quotes</li>
+<li>misspelled identifiers</li>
+<li>any other invalid <em>syntax</em></li>
+</ul>
+</li>
+<li>compiler errors
+<ul>
+<li>your code has mistakes and can’t be compiled or run</li>
+<li>compiler will print an error message identifying the error</li>
+<li>can be annoying, but they’re the best kind of error (why?)</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
+<p>Example: as a class, we’ll write a program that does the following:</p>
+<ul>
+<li>Prompt the user for their first and last name</li>
+<li>Print the user’s QU email address</li>
+</ul>
+<p>Then we will move this code into a separate function so we can see how to call
+one of our own functions from <code>main</code>.</p>
+<p>Practice: attempt each of these during class and ask for help if you get stuck.
+Feel free to discuss with classmates. If you don’t get to all of them during
+class, then attempt the rest before our next class.</p>
+<ol>
+<li>Try writing and running a “Hello World” program from scratch. Don’t look at
+any of the example programs, and try to avoid using your notes unless you’re
+stuck.</li>
+<li>Take the Home.java example and change all the <code>println</code> functions to <code>print</code>.
+Then change everything to <code>println</code>. What difference does this make?</li>
+<li>Update the Home.java example so that it will print the correct output for
+every student at this school. (hint: you need to ask for user input)</li>
+<li>Write a program that prompts the user for their name, then prints a greeting
+that includes the user’s name (such as “Hello ____, nice to meet you.”).</li>
+<li>Make the previous program repeat the entire process three times, but without
+adding more calls to <code>IO.readln</code>, <code>IO.println</code>, or <code>IO.print</code>. (hint: move
+the code into a function and call that function multiple times from your
+<code>main</code> function).</li>
+</ol>
 
                     </main>
 
