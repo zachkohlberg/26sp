@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-cc98fbf8.js";
+            window.path_to_searchindex_js = "searchindex-6b4529f1.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-0fe69aa6.js"></script>
@@ -1591,6 +1591,57 @@ don’t declare a package at all)</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="bank-example"><a class="header" href="#bank-example">Bank Example</a></h1>
+<p>As an example, we’ll create the following classes:</p>
+<ul>
+<li>Check
+<ul>
+<li>instance variables:
+<ul>
+<li><code>amount: int</code> is the check value in cents</li>
+</ul>
+</li>
+<li>constructors:
+<ul>
+<li><code>Check(int)</code> initializes the check amount, but sets amount to zero if the argument is negative</li>
+</ul>
+</li>
+<li>methods:
+<ul>
+<li><code>getAmount(): int</code> returns the value of <code>amount</code></li>
+<li><code>format(): String</code> returns a string representation of the check amount in
+the format <code>$100.05</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Account
+<ul>
+<li>instance variables:
+<ul>
+<li><code>balance: int</code> is the account balance in cents</li>
+<li><code>name: String</code> is the name of the account holder</li>
+</ul>
+</li>
+<li>constructors:
+<ul>
+<li><code>Account(String, int)</code> initializes the balance and name</li>
+</ul>
+</li>
+<li>methods:
+<ul>
+<li><code>getName(): String</code> returns <code>name</code></li>
+<li><code>getBalance(): int</code> returns <code>balance</code></li>
+<li><code>deposit(Check): void</code> adds the check’s amount to the account’s balance</li>
+<li><code>withdraw(Check): boolean</code> subtracts the check’s amount from the
+account’s balance unless the amount is greater than the balance, returns
+whether the withdraw succeeded</li>
+<li><code>format(): String</code> returns a string with the account name and balance
+formatted like this: “Alice: $100.05”</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="practice-1"><a class="header" href="#practice-1">Practice</a></h1>
 <ol>
@@ -1601,7 +1652,18 @@ don’t declare a package at all)</li>
 <li>make the class, constructors, and methods public</li>
 </ul>
 </li>
-<li></li>
+<li>Write a <code>Bank</code> program that uses the <code>Check</code> and <code>Account</code> classes to do the
+following:
+<ul>
+<li>create two new accounts with whatever names you want</li>
+<li>print the accounts and their balances</li>
+<li>ask the user for an amount to transfer from the first account to the second
+and create a check with that amount</li>
+<li>attempt to withdraw the money from the first account, and if the withdraw
+succeeds then deposit the check in the second account</li>
+<li>print the accounts and their balances again</li>
+</ul>
+</li>
 </ol>
 
                     </main>
