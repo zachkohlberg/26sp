@@ -2,7 +2,7 @@
 void main() {
     // Input
     // prompt and conversion in separate steps
-    String totalInchesString = IO.readln("How tall are you in inches?");
+    String totalInchesString = IO.readln("How tall are you in inches? ");
     int totalInches = Integer.parseInt(totalInchesString);
 
     // Calculations

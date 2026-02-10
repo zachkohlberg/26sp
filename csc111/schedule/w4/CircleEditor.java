@@ -12,7 +12,7 @@ public class CircleEditor {
         while (!done) {
             System.out.println(circle);
             System.out.print("Enter command: ");
-            String[] command = stdin.nextLine();
+            String[] command = stdin.nextLine().split(" ");
 
             switch (command[0]) {
                 case "quit", "q":
@@ -65,6 +65,7 @@ public class CircleEditor {
             return new Circle(x, y, radius);
         } catch (FileNotFoundException e) {
             System.out.printf("File \"%s\" not found.\n", filename);
+            return null;
         }
     }
 }

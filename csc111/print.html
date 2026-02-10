@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-98a4cde8.js";
+            window.path_to_searchindex_js = "searchindex-61fea0ab.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-04bd9dfc.js"></script>
@@ -1770,7 +1770,7 @@ public class CircleEditor {
         while (!done) {
             System.out.println(circle);
             System.out.print("Enter command: ");
-            String[] command = stdin.nextLine();
+            String[] command = stdin.nextLine().split(" ");
 
             switch (command[0]) {
                 case "quit", "q":
@@ -1823,6 +1823,7 @@ public class CircleEditor {
             return new Circle(x, y, radius);
         } catch (FileNotFoundException e) {
             System.out.printf("File \"%s\" not found.\n", filename);
+            return null;
         }
     }
 }
