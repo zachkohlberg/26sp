@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-d0693b7c.js";
+            window.path_to_searchindex_js = "searchindex-3576e050.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-6f8377e4.js"></script>
+        <script src="toc-e5a01357.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1592,6 +1592,202 @@ adding more calls to <code>IO.readln</code>, <code>IO.println</code>, or <code>I
 the code into a function and call that function multiple times from your
 <code>main</code> function).</li>
 </ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-4-0210-0212"><a class="header" href="#week-4-0210-0212">Week 4 (02/10, 02/12)</a></h1>
+<h3 id="tuesday-agenda"><a class="header" href="#tuesday-agenda">Tuesday Agenda</a></h3>
+<ul>
+<li>attendance</li>
+<li>review practice</li>
+<li>new topics
+<ul>
+<li>types</li>
+<li>operators</li>
+<li>conversions</li>
+</ul>
+</li>
+</ul>
+<h3 id="thursday-agenda"><a class="header" href="#thursday-agenda">Thursday Agenda</a></h3>
+<ul>
+<li>attendance</li>
+<li>new topics
+<ul>
+<li>methods</li>
+<li>function parameters</li>
+<li>function return types</li>
+<li>practice</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="example-programs-2"><a class="header" href="#example-programs-2">Example Programs</a></h1>
+<p>After this week’s classes, you should understand and be able to write programs
+like the examples below:</p>
+<pre><code class="language-java">// Arithmetic.java
+void main() {
+    // Input
+    int x = Integer.parseInt(IO.readln("Please enter a value for x: "));
+    int y = Integer.parseInt(IO.readln("Please enter a value for y: "));
+
+    // Calculations
+    // Declaring variables without initializing them
+    int sum, difference, product, quotient, remainder;
+    // Initializing declared variables
+    sum = x + y;
+    difference = x - y;
+    product = x * y;
+    quotient = x / y;
+    remainder = x % y;
+
+    // Output
+    IO.println("x + y = " + sum);
+    IO.println("x - y = " + difference);
+    IO.println("x * y = " + product);
+    IO.println("x / y = " + quotient);
+    IO.println("x % y = " + remainder);
+}
+
+// Questions:
+// - What happens if we try to print those variables without initializing them?
+// - What happens if we write "int sum = x + y" instead of "sum = x + y"? When
+//   is it correct to state a variable's type?
+// - What happens when the second number is zero?
+// - What happens if the user enters a word instead of a number?
+// - What happens if you enter a non-integer number, like 2.5?
+// - Try changing the program to use doubles instead of integers. How does that
+//   change the answers to the last three questions? Remember to use
+//   Double.parseDouble instead of Integer.parseInt.
+// - Try removing all variables except x and y and moving the calculations to
+//   the print statements. Which print statements still work correctly, and
+//   which do not? Why?
+
+</code></pre>
+<pre><code class="language-java">// Height.java
+void main() {
+    // Input
+    // prompt and conversion in separate steps
+    String totalInchesString = IO.readln("How tall are you in inches?");
+    int totalInches = Integer.parseInt(totalInchesString);
+
+    // Calculations
+    // calling our own functions to perform the calculations
+    int feet = inchesToFeet(totalInches);
+    int inches = remainingInches(totalInches);
+
+    // Output
+    IO.println("Your height is " + feet + "'" + inches + "\".");
+}
+
+int inchesToFeet(int inches) {
+    return inches / 12;
+}
+
+int remainingInches(int inches) {
+    return inches % 12;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="types-and-syntax"><a class="header" href="#types-and-syntax">Types and Syntax</a></h1>
+<h2 id="terms-1"><a class="header" href="#terms-1">Terms</a></h2>
+<ul>
+<li><strong>variable</strong>: name assigned to a value</li>
+<li><strong>declare</strong>: create a new variable and set its type</li>
+<li><strong>assign</strong>: store a value in a variable</li>
+<li><strong>initialize</strong>: assign the first value to a new variable; uninitialized
+variables cannot be used for anything</li>
+<li><strong>literal</strong>: a “hard-coded” value; the value is written directly in the
+program</li>
+<li><strong>type</strong>: the kind of information represented by an expression or value, such
+as a number, text, or a complex object</li>
+<li><strong>expression</strong>: something our program can compute/evaluate; has a resulting
+type and value</li>
+<li><strong>statement</strong>: an instruction our program can perform</li>
+<li><strong>operator</strong>: a symbol representing an operation that can be performed on one
+or more values, such as addition or subtraction</li>
+</ul>
+<p>also note:</p>
+<ul>
+<li>expressions can be as simple as a single variable name or literal value, or it
+can consist of many expressions joined by function calls and operators</li>
+<li>something can be both a statement and an expression</li>
+</ul>
+<h2 id="types"><a class="header" href="#types">Types</a></h2>
+<ul>
+<li><code>String</code>: a sequence of characters (text)</li>
+<li><code>int</code>: an integer</li>
+<li><code>double</code>: a real number</li>
+<li><code>boolean</code>: true/false</li>
+<li>static typing
+<ul>
+<li>all variables have types</li>
+<li>type is set when variable is declared</li>
+<li>variable’s type cannot change</li>
+</ul>
+</li>
+<li>literals
+<ul>
+<li>literals for each type</li>
+<li>underscores in integers</li>
+<li>scientific notation</li>
+</ul>
+</li>
+<li>other types we’ll discuss later: <code>byte</code>, <code>short</code>, <code>long</code>, <code>float</code>, <code>char</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="operators"><a class="header" href="#operators">Operators</a></h1>
+<h2 id="general"><a class="header" href="#general">General</a></h2>
+<ul>
+<li>assignment operator: <code>=</code> sets the value of a variable, not the same as
+equality in math</li>
+<li>common mistake: redeclaring a variable when trying to reassign it
+<ul>
+<li>only state type when declaring</li>
+<li>do not declare the same variable more than once (it already exists!)</li>
+</ul>
+</li>
+<li>order of operations</li>
+</ul>
+<h2 id="numbers"><a class="header" href="#numbers">Numbers</a></h2>
+<ul>
+<li>basic arithmetic: <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code></li>
+<li>modulo (remainder): <code>%</code></li>
+<li>no exponent operator</li>
+<li>unary operators: <code>+</code>, <code>-</code></li>
+<li>integer division vs real number division</li>
+<li>overflow</li>
+<li>limited precision with <code>double</code></li>
+</ul>
+<h2 id="strings"><a class="header" href="#strings">Strings</a></h2>
+<ul>
+<li>concatenation: <code>+</code>
+<ul>
+<li>same place in order of operations as addition and subtraction</li>
+<li>only happens if at least one operand is a <code>String</code></li>
+<li>converts other operand to <code>String</code> if it’s another type</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="conversions"><a class="header" href="#conversions">Conversions</a></h1>
+<ul>
+<li>implicit (widening)
+<ul>
+<li><code>int</code> to <code>double</code></li>
+<li><code>String</code> concatenation</li>
+</ul>
+</li>
+<li>explicit conversion (narrowing, type cast)
+<ul>
+<li><code>double</code> to <code>int</code></li>
+</ul>
+</li>
+<li>parse functions
+<ul>
+<li><code>String</code> to <code>int</code></li>
+<li><code>String</code> to <code>double</code></li>
+<li><code>String</code> to <code>boolean</code></li>
+</ul>
+</li>
+</ul>
 
                     </main>
 

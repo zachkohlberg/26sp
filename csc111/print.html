@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-6b4529f1.js";
+            window.path_to_searchindex_js = "searchindex-98a4cde8.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-0fe69aa6.js"></script>
+        <script src="toc-04bd9dfc.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1665,6 +1665,242 @@ succeeds then deposit the check in the second account</li>
 </ul>
 </li>
 </ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-4-0210-0212"><a class="header" href="#week-4-0210-0212">Week 4 (02/10, 02/12)</a></h1>
+<h3 id="tuesday-agenda"><a class="header" href="#tuesday-agenda">Tuesday Agenda</a></h3>
+<ul>
+<li>attendance</li>
+<li>review practice</li>
+<li>new topics
+<ul>
+<li>exceptions</li>
+<li>file APIs</li>
+</ul>
+</li>
+</ul>
+<h3 id="thursday-agenda"><a class="header" href="#thursday-agenda">Thursday Agenda</a></h3>
+<ul>
+<li>attendance</li>
+<li>new topics
+<ul>
+<li>file I/O</li>
+<li>practice</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="examples-3"><a class="header" href="#examples-3">Examples</a></h1>
+<p>After this week’s classes, you should understand and be able to write programs
+like the examples below:</p>
+<pre><code class="language-java">public class Sum {
+    public static void main(String[] args) {
+        // note: this program uses command line args for input, so no scanner
+
+        int sum = 0;
+
+        for (int i = 0; i &lt; args.length; i++) {
+            try {
+                int n = Integer.parseInt(args[i]);
+                sum += n;
+                System.out.printf("Adding %d, sum is now %d.\n", n, sum);
+            } catch (NumberFormatException e) {
+                System.out.printf("Skipping \"%s\" because it's not an integer.\n", args[i]);
+            }
+        }
+
+        System.out.printf("Finished! Final sum is %d.\n", sum);
+    }
+}
+</code></pre>
+<pre><code class="language-java">import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+public class WordSearch {
+    public static void main(String[] args) {
+        // print a helpful error message instead of a stack trace on no argument
+        // note that we're detecting something that would cause an exception and
+        // never triggering the ArrayIndexOutOfBoundsException
+        if (args.length != 2) {
+            System.err.println("USAGE: java WordSearch.java FILE WORD");
+            System.exit(1);
+        }
+
+        String filename = args[0];
+        String word = args[1];
+
+        File file = new File(filename);
+
+        try {
+            Scanner in = new Scanner(file);
+
+            // the actual work our program wants to do
+            search(in, word);
+
+            // important to close scanners to free the underlying resources
+            // not doing this will cause a memory leak
+            in.close();
+        } catch (FileNotFoundException e) {
+            System.err.printf("File not found: %s\n", filename);
+            System.exit(1);
+        }
+    }
+
+    public static void search(Scanner in, String word) {
+        while (in.hasNextLine()) {
+            String line = in.nextLine();
+            if (line.contains(word)) {
+                System.out.printf("Found \"%s\" in line: \"%s\"\n", word, line);
+            }
+        }
+    }
+}
+</code></pre>
+<pre><code class="language-java">import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class CircleEditor {
+    public static void main(String[] args) {
+        Scanner stdin = new Scanner(System.in);
+        Circle circle = new Circle();
+
+        boolean done = false;
+        while (!done) {
+            System.out.println(circle);
+            System.out.print("Enter command: ");
+            String[] command = stdin.nextLine();
+
+            switch (command[0]) {
+                case "quit", "q":
+                    done = true;
+                    break;
+                case "x":
+                    double x = Double.parseDouble(command[1]);
+                    circle.setX(x);
+                    break;
+                case "y":
+                    double y = Double.parseDouble(command[1]);
+                    circle.setY(y);
+                    break;
+                case "radius", "r":
+                    double radius = Double.parseDouble(command[1]);
+                    circle.setRadius(radius);
+                    break;
+                case "save":
+                    saveCircle(circle, command[1]);
+                    break;
+                case "load":
+                    circle = loadCircle(command[1]);
+                    break;
+                default:
+                    System.out.printf("Invalid command: \"%s\"", command[0]);
+            }
+        }
+
+        System.out.println("Goodbye!");
+    }
+
+    public static void saveCircle(Circle c, String filename) {
+        // try with resources pattern will close the writer for us
+        try (PrintWriter fileOut = new PrintWriter(new File(filename))) {
+            fileOut.println(c.getX());
+            fileOut.println(c.getY());
+            fileOut.println(c.getRadius());
+        } catch (FileNotFoundException e) {
+            // if the file wasn't created, then we might see this error
+            System.out.printf("File \"%s\" not found.\n", filename);
+        }
+    }
+
+    public static Circle loadCircle(String filename) {
+        // try with resources pattern will close the scanner for us
+        try (Scanner fileIn = new Scanner(new File(filename))) {
+            double x = fileIn.nextDouble();
+            double y = fileIn.nextDouble();
+            double radius = fileIn.nextDouble();
+            return new Circle(x, y, radius);
+        } catch (FileNotFoundException e) {
+            System.out.printf("File \"%s\" not found.\n", filename);
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="exceptions-1"><a class="header" href="#exceptions-1">Exceptions</a></h1>
+<ul>
+<li>error types
+<ul>
+<li>compile/syntax</li>
+<li>runtime (exceptions)</li>
+<li>logic</li>
+</ul>
+</li>
+<li>checked vs unchecked (see java spec quote)</li>
+<li>handling checked exceptions
+<ul>
+<li>throw (it’s the caller’s problem)</li>
+<li>try-catch (handle it now)</li>
+<li>ignore (abuse throw or try-catch to disable compile error)</li>
+</ul>
+</li>
+</ul>
+<p>from Java 25 spec,
+<a href="https://docs.oracle.com/javase/specs/jls/se25/html/jls-11.html#jls-11.2">section 11.2</a>:</p>
+<blockquote>
+<p>Error classes are exempted because they can occur at many points in the
+program and recovery from them is difficult or impossible. A program declaring
+such exceptions would be cluttered, pointlessly. Sophisticated programs may
+yet wish to catch and attempt to recover from some of these conditions.</p>
+<p>Run-time exception classes are exempted because, in the judgment of the
+designers of the Java programming language, having to declare such exceptions
+would not aid significantly in establishing the correctness of programs. Many
+of the operations and constructs of the Java programming language can result
+in exceptions at run time. The information available to a Java compiler, and
+the level of analysis a compiler performs, are usually not sufficient to
+establish that such run-time exceptions cannot occur, even though this may be
+obvious to the programmer. Requiring such exception classes to be declared
+would simply be an irritation to programmers.</p>
+<p>For example, certain code might implement a circular data structure that, by
+construction, can never involve null references; the programmer can then be
+certain that a NullPointerException cannot occur, but it would be difficult
+for a Java compiler to prove it. The theorem-proving technology that is needed
+to establish such global properties of data structures is beyond the scope of
+this specification.</p>
+</blockquote>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="file-apis"><a class="header" href="#file-apis">File APIs</a></h1>
+<ul>
+<li>java standard library:
+<ul>
+<li><code>java.io</code> package:
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html</a></li>
+<li><code>java.nio</code> package: &lt;&gt;</li>
+<li>the nio (new io) APIs are more convenient and abstracted</li>
+<li>we will use the IO APIs for now
+<ul>
+<li>better to know how to implement something yourself when a more convenient
+API doesn’t do the job (either can’t do what you want or you need better
+performance)</li>
+<li>knowing how to implement something yourself is more useful outside Java
+where you’ll deal with different APIs</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>classes we’ll use:
+<ul>
+<li><code>java.io.File</code> to represent and query files</li>
+<li><code>java.util.Scanner</code> to read from files</li>
+<li><code>java.io.PrintWriter</code> to write to files</li>
+<li>note that <code>PrintWriter</code> is similar to <code>PrintStream</code> (<code>System.out</code> and
+<code>System.err</code>), so it will feel familiar</li>
+<li><code>java.io.FileNotFoundException</code> and <code>java.io.IOException</code> are two checked
+exceptions we’ll have to deal with</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 
