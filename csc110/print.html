@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-9e1220f5.js";
+            window.path_to_searchindex_js = "searchindex-06d09059.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-e5a01357.js"></script>
+        <script src="toc-9fcf8238.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1755,6 +1755,11 @@ equality in math</li>
 <li>integer division vs real number division</li>
 <li>overflow</li>
 <li>limited precision with <code>double</code></li>
+<li>comparisons: <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code>, <code>&gt;=</code>
+<ul>
+<li>won’t use much this week, just including them to preview next week’s topic</li>
+</ul>
+</li>
 </ul>
 <h2 id="strings"><a class="header" href="#strings">Strings</a></h2>
 <ul>
@@ -1788,6 +1793,151 @@ equality in math</li>
 </ul>
 </li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="functions-and-methods"><a class="header" href="#functions-and-methods">Functions and Methods</a></h1>
+<ul>
+<li>terms:
+<ul>
+<li><strong>function</strong>: named block of code that we can <strong>call</strong> (run the code in the
+block)</li>
+<li><strong>method</strong>: function attached to an object</li>
+<li><strong>code block</strong>: section of code surrounded by curly braces, such as a
+function body</li>
+<li><strong>function call</strong>: code that runs a function</li>
+<li><strong>function definition</strong>: code that creates a function; code in the
+definition won’t execute until the function is called</li>
+</ul>
+</li>
+<li>all Java functions are technically methods, but this doesn’t matter to us
+right now</li>
+<li>calling them functions isn’t necessarily wrong, just less specific</li>
+<li>for now, I’ll use “function” and “method” based on <em>how</em> we call a function
+because this is a more meaningful distinction to us
+<ul>
+<li>I will refer to functions that can be called on their own as functions</li>
+<li>I will refer to functions that must be called on an object as methods</li>
+</ul>
+</li>
+</ul>
+<h2 id="useful-functions-and-methods"><a class="header" href="#useful-functions-and-methods">Useful Functions and Methods</a></h2>
+<ul>
+<li>i/o functions:
+<ul>
+<li><code>IO.print(x)</code> converts <code>x</code> into a <code>String</code> and prints it to standard output</li>
+<li><code>IO.println(x)</code> as <code>IO.print</code>, plus it adds a line break after <code>x</code></li>
+<li><code>IO.println()</code> with no argument, <code>IO.println</code> just prints a line break</li>
+<li><code>IO.readln(x)</code> prints <code>x</code> (as <code>IO.print</code>), blocks (pauses program) until
+user presses enter, and returns whatever the user typed (uses standard
+input) before pressing enter as a <code>String</code></li>
+</ul>
+</li>
+<li>parsing functions:
+<ul>
+<li><code>Integer.parseInt(x)</code> attempts to convert a <code>String</code> <code>x</code> to an <code>int</code></li>
+<li><code>Double.parseDouble(x)</code> attempts to convert a <code>String</code> <code>x</code> to a <code>double</code></li>
+<li><code>Boolean.parseBoolean(x)</code> attempts to convert a <code>String</code> <code>x</code> to a <code>boolean</code></li>
+<li>these functions will crash the program if given a <code>String</code> that cannot be
+parsed: for example, <code>Integer.parseInt("abc")</code></li>
+</ul>
+</li>
+<li>math functions:
+<ul>
+<li><code>Math.pow(x, y)</code> returns <code>x</code> raised to the power <code>y</code></li>
+<li><code>Math.abs(x)</code> returns the absolute value of <code>x</code></li>
+<li><code>Math.max(x, y)</code> returns the largest of its two arguments</li>
+<li><code>Math.min(x, y)</code> returns the smallest of its two arguments</li>
+</ul>
+</li>
+<li><code>String</code> methods:
+<ul>
+<li>assume <code>x</code> in the examples below is a variable of type <code>String</code>, but it can
+be replaced with any <code>String</code> variable, literal, or expression</li>
+<li><code>x.toUpperCase()</code> returns a String identical to <code>x</code>, but with every letter
+capitalized</li>
+<li><code>x.toLowerCase()</code> I bet you can’t guess what this one does</li>
+<li><code>x.length()</code> returns the number of characters in <code>x</code></li>
+<li><code>x.substring(y)</code> returns a substring of <code>x</code> starting at index <code>y</code></li>
+<li><code>x.substring(y, z)</code> returns a substring of <code>x</code> starting at index <code>y</code> and
+ending on the character <em>before</em> index <code>z</code></li>
+<li>a substring is a portion of a string: “ello W” is a substring of “Hello
+World”</li>
+<li>an <strong>index</strong> is how far a character is from the start of a string: the
+letter “H” has an index of 0 because it’s at the start, but “W” has an index
+of 6 because it’s six characters away from the start</li>
+</ul>
+</li>
+</ul>
+<h2 id="defining-functions"><a class="header" href="#defining-functions">Defining Functions</a></h2>
+<ul>
+<li>functions can return a value of any type:
+<ul>
+<li><code>void</code> (used for <code>main</code> and some earlier examples) means the function
+returns nothing</li>
+<li>another type, such as <code>int</code> or <code>String</code>, means we can store the result of
+calling that function in a variable of that type</li>
+</ul>
+</li>
+<li>functions can declare parameters to accept input from the code that calls
+them:
+<ul>
+<li>a parameter is declared in the parenthesis after the name</li>
+<li>multiple parameters are separated by commas</li>
+<li>a parameter is declared like a variable: a type followed by an identifier</li>
+<li>a parameter’s value is set <em>by the code that calls the function</em>, not the
+code in the function’s body</li>
+<li>a parameter can (and should) be used in the function body</li>
+</ul>
+</li>
+</ul>
+<h2 id="calling-functions"><a class="header" href="#calling-functions">Calling Functions</a></h2>
+<ul>
+<li>if a function returns something (not <code>void</code>), then we can use it as an
+expression or a part of an expression</li>
+<li>if a function has one or more parameters, then we have to include those
+parameters in the parenthesis after the function’s name whenever we call it</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-1"><a class="header" href="#practice-1">Practice</a></h1>
+<ol>
+<li>Experiment with the <code>Arithmetic.java</code> program and answer the questions in the
+comments.</li>
+<li>For each expression below, predict the type (<code>int</code>, <code>double</code>, <code>String</code>, or
+<code>boolean</code>) and value of the expression. After you wrote down your
+predictions, try entering each expression into jshell to see if you were
+correct. Try to explain any unexpected results. Note: jshell won’t show the
+type by default, but it will print quotes around a <code>String</code>, booleans as
+<code>true</code> or <code>false</code> without quotes, a decimal point in a <code>double</code> (if the
+<code>double</code> is a whole number it will end with <code>.0</code>), and no decimal point for
+an <code>int</code>.</li>
+</ol>
+<pre><code>2 + 2 + 2
+"2" + 2 + 2
+"2" + (2 + 2)
+2 + 2 * 3
+(2 + 2) * 3
+20 / 7
+20 / 7.0
+20 % 7
+20 &gt; 20
+20 &gt;= 20
+"hello" + "world".toUpperCase()
+("hello" + "world").toUpperCase()
+Math.max(20, 15.0)
+</code></pre>
+<ol start="3">
+<li>Try writing a program that generates a shorter school email address:
+<code>fmlast@quinnipiac.edu</code> (first initial, middle initial, last name) instead of
+<code>first.last@quinnipiac.edu</code>. Ask for the user’s first name, middle initial,
+last name, and school name. Use <code>toLowerCase</code> to ensure nothing is
+capitalized, and use <code>substring</code> to get the user’s first initial.</li>
+<li>Try writing a program that calculates the total minutes from a number of
+days, hours, and minutes. For example, if a user inputs 4 days, 17 hours, and
+11 minutes, then the program should respond with “6791 total minutes.”</li>
+<li>Try writing a program that does the opposite of the previous program: take a
+number of minutes and convert it to days, hours, and minutes. For example, if
+a user inputs 6791 minutes, then the program should respond with “4 days, 17
+hours, and 11 minutes.” This process is similar to the <code>Height.java</code> program.</li>
+</ol>
 
                     </main>
 

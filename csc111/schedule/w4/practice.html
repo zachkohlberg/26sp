@@ -175,33 +175,50 @@
                     <main>
                         <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
 <ol>
-<li>Try making the following changes to the example programs:
-<ol>
-<li>Rewrite the printf statements in Example1 as println statements. Use
-string concatenation to include any variables in the output.</li>
-<li>Change the do-while loop in Example2 into a while loop. What problem
-occurs and how can you fix it?</li>
-<li>Add numeric labels to the args printed by the odd method in Example3.
-Don’t number each character, just each arg.</li>
-</ol>
-</li>
-<li>Let’s solve a classic coding interview problem: FizzBuzz!
+<li>Modify the word search program as follows:
 <ul>
-<li>Write a program that prints the numbers 1 to 15.</li>
-<li>Replace all multiples of 3 with the word “Fizz”.</li>
-<li>Replace all multiples of 5 with the word “Buzz”. Multiples of both 3 and 5
-should be replaced with “FizzBuzz”.</li>
+<li>when a word is found, find its index in that line and print the index below
+the line</li>
+<li>instead of printing the index, print a <code>^</code> below the line at the start of
+the word</li>
+<li>instead of printing a single <code>^</code>, print a <code>^</code> below each character of the
+word</li>
 </ul>
 </li>
-<li>Write a program that converts a distance in centimeters to a distance in feet
-and inches. An inch is about 2.54 centimeters, and your output should be
-rounded to the nearest inch (<code>Math.round()</code> will help). You can take user
-input however you want: the args array, IO class, or a Scanner.</li>
-<li>Make the following changes to your FizzBuzz program:
+<li>Write your own (simplified) version of the terminal command <code>cat</code>:
 <ul>
-<li>Make your program count up to 200 instead of 15.</li>
-<li>Replace all multiples of 7 with the word “Beep”. Multiples of 7 and 3, 7
-and 5, or all three numbers should include each applicable word.</li>
+<li>accept zero or more command line arguments, each of which should represent
+a file path</li>
+<li>open each file in order and print the entire file to the terminal</li>
+<li>if a file cannot be opened, then print an error message stating the name of
+the file and that it wasn’t found</li>
+<li>you don’t need to do anything if there are zero args, just let the program
+exit without printing anything (does this require its own if statement, or
+can you structure the rest of the program so that it happens by default?)</li>
+<li>see the <code>Sum.java</code> (iterating over command line args) and the file reader
+we wrote during class for examples</li>
+</ul>
+</li>
+<li>Modify the <code>Sum.java</code> program as follows:
+<ul>
+<li>when the program starts, try to open a “sum.txt” file</li>
+<li>if the file exists and can be read:
+<ul>
+<li>read an int from the file and then close your scanner</li>
+<li>print a message stating that you loaded the previous sum, including the
+number from the file in your message</li>
+<li>instead of starting your sum at 0, start it at the number you read from
+the file</li>
+</ul>
+</li>
+<li>if the file doesn’t exist or can’t be read:
+<ul>
+<li>print a message stating that no previous sum was found, and that you will
+start at 0</li>
+</ul>
+</li>
+<li>after you finish summing every number, write the sum to a file named
+“sum.txt” so that it can be used the next time you run this program</li>
 </ul>
 </li>
 </ol>
@@ -210,11 +227,11 @@ and 5, or all three numbers should include each applicable word.</li>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w1c2/examples.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w4/file_io.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w2c1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w4/homework.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -224,11 +241,11 @@ and 5, or all three numbers should include each applicable word.</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w1c2/examples.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w4/file_io.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w2c1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w4/homework.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

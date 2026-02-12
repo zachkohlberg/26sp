@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Practice - CSC 111 Data Structures and Abstractions</title>
+        <title>Functions and Methods - CSC 110 Programming and Problem Solving</title>
 
 
         <!-- Custom HTML head -->
@@ -12,7 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="shortcut icon" href="../../favicon-c3b505ff.png">
+        <link rel="shortcut icon" href="../../favicon-fbc660e6.png">
         <link rel="stylesheet" href="../../css/variables-8adf115d.css">
         <link rel="stylesheet" href="../../css/general-d1f80d55.css">
         <link rel="stylesheet" href="../../css/chrome-ae938929.css">
@@ -34,10 +34,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-a30ae0dc.js";
+            window.path_to_searchindex_js = "../../searchindex-06d09059.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-4572d1c3.js"></script>
+        <script src="../../toc-9fcf8238.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -136,7 +136,7 @@
                         </button>
                     </div>
 
-                    <h1 class="menu-title">CSC 111 Data Structures and Abstractions</h1>
+                    <h1 class="menu-title">CSC 110 Programming and Problem Solving</h1>
 
                     <div class="right-buttons">
                         <a href="../../print.html" title="Print this book" aria-label="Print this book">
@@ -173,48 +173,118 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="practice"><a class="header" href="#practice">Practice</a></h1>
-<ol>
-<li>Try making the following changes to the example programs:
-<ol>
-<li>Rewrite the printf statements in Example1 as println statements. Use
-string concatenation to include any variables in the output.</li>
-<li>Change the do-while loop in Example2 into a while loop. What problem
-occurs and how can you fix it?</li>
-<li>Add numeric labels to the args printed by the odd method in Example3.
-Don’t number each character, just each arg.</li>
-</ol>
-</li>
-<li>Let’s solve a classic coding interview problem: FizzBuzz!
+                        <h1 id="functions-and-methods"><a class="header" href="#functions-and-methods">Functions and Methods</a></h1>
 <ul>
-<li>Write a program that prints the numbers 1 to 15.</li>
-<li>Replace all multiples of 3 with the word “Fizz”.</li>
-<li>Replace all multiples of 5 with the word “Buzz”. Multiples of both 3 and 5
-should be replaced with “FizzBuzz”.</li>
+<li>terms:
+<ul>
+<li><strong>function</strong>: named block of code that we can <strong>call</strong> (run the code in the
+block)</li>
+<li><strong>method</strong>: function attached to an object</li>
+<li><strong>code block</strong>: section of code surrounded by curly braces, such as a
+function body</li>
+<li><strong>function call</strong>: code that runs a function</li>
+<li><strong>function definition</strong>: code that creates a function; code in the
+definition won’t execute until the function is called</li>
 </ul>
 </li>
-<li>Write a program that converts a distance in centimeters to a distance in feet
-and inches. An inch is about 2.54 centimeters, and your output should be
-rounded to the nearest inch (<code>Math.round()</code> will help). You can take user
-input however you want: the args array, IO class, or a Scanner.</li>
-<li>Make the following changes to your FizzBuzz program:
+<li>all Java functions are technically methods, but this doesn’t matter to us
+right now</li>
+<li>calling them functions isn’t necessarily wrong, just less specific</li>
+<li>for now, I’ll use “function” and “method” based on <em>how</em> we call a function
+because this is a more meaningful distinction to us
 <ul>
-<li>Make your program count up to 200 instead of 15.</li>
-<li>Replace all multiples of 7 with the word “Beep”. Multiples of 7 and 3, 7
-and 5, or all three numbers should include each applicable word.</li>
+<li>I will refer to functions that can be called on their own as functions</li>
+<li>I will refer to functions that must be called on an object as methods</li>
 </ul>
 </li>
-</ol>
+</ul>
+<h2 id="useful-functions-and-methods"><a class="header" href="#useful-functions-and-methods">Useful Functions and Methods</a></h2>
+<ul>
+<li>i/o functions:
+<ul>
+<li><code>IO.print(x)</code> converts <code>x</code> into a <code>String</code> and prints it to standard output</li>
+<li><code>IO.println(x)</code> as <code>IO.print</code>, plus it adds a line break after <code>x</code></li>
+<li><code>IO.println()</code> with no argument, <code>IO.println</code> just prints a line break</li>
+<li><code>IO.readln(x)</code> prints <code>x</code> (as <code>IO.print</code>), blocks (pauses program) until
+user presses enter, and returns whatever the user typed (uses standard
+input) before pressing enter as a <code>String</code></li>
+</ul>
+</li>
+<li>parsing functions:
+<ul>
+<li><code>Integer.parseInt(x)</code> attempts to convert a <code>String</code> <code>x</code> to an <code>int</code></li>
+<li><code>Double.parseDouble(x)</code> attempts to convert a <code>String</code> <code>x</code> to a <code>double</code></li>
+<li><code>Boolean.parseBoolean(x)</code> attempts to convert a <code>String</code> <code>x</code> to a <code>boolean</code></li>
+<li>these functions will crash the program if given a <code>String</code> that cannot be
+parsed: for example, <code>Integer.parseInt("abc")</code></li>
+</ul>
+</li>
+<li>math functions:
+<ul>
+<li><code>Math.pow(x, y)</code> returns <code>x</code> raised to the power <code>y</code></li>
+<li><code>Math.abs(x)</code> returns the absolute value of <code>x</code></li>
+<li><code>Math.max(x, y)</code> returns the largest of its two arguments</li>
+<li><code>Math.min(x, y)</code> returns the smallest of its two arguments</li>
+</ul>
+</li>
+<li><code>String</code> methods:
+<ul>
+<li>assume <code>x</code> in the examples below is a variable of type <code>String</code>, but it can
+be replaced with any <code>String</code> variable, literal, or expression</li>
+<li><code>x.toUpperCase()</code> returns a String identical to <code>x</code>, but with every letter
+capitalized</li>
+<li><code>x.toLowerCase()</code> I bet you can’t guess what this one does</li>
+<li><code>x.length()</code> returns the number of characters in <code>x</code></li>
+<li><code>x.substring(y)</code> returns a substring of <code>x</code> starting at index <code>y</code></li>
+<li><code>x.substring(y, z)</code> returns a substring of <code>x</code> starting at index <code>y</code> and
+ending on the character <em>before</em> index <code>z</code></li>
+<li>a substring is a portion of a string: “ello W” is a substring of “Hello
+World”</li>
+<li>an <strong>index</strong> is how far a character is from the start of a string: the
+letter “H” has an index of 0 because it’s at the start, but “W” has an index
+of 6 because it’s six characters away from the start</li>
+</ul>
+</li>
+</ul>
+<h2 id="defining-functions"><a class="header" href="#defining-functions">Defining Functions</a></h2>
+<ul>
+<li>functions can return a value of any type:
+<ul>
+<li><code>void</code> (used for <code>main</code> and some earlier examples) means the function
+returns nothing</li>
+<li>another type, such as <code>int</code> or <code>String</code>, means we can store the result of
+calling that function in a variable of that type</li>
+</ul>
+</li>
+<li>functions can declare parameters to accept input from the code that calls
+them:
+<ul>
+<li>a parameter is declared in the parenthesis after the name</li>
+<li>multiple parameters are separated by commas</li>
+<li>a parameter is declared like a variable: a type followed by an identifier</li>
+<li>a parameter’s value is set <em>by the code that calls the function</em>, not the
+code in the function’s body</li>
+<li>a parameter can (and should) be used in the function body</li>
+</ul>
+</li>
+</ul>
+<h2 id="calling-functions"><a class="header" href="#calling-functions">Calling Functions</a></h2>
+<ul>
+<li>if a function returns something (not <code>void</code>), then we can use it as an
+expression or a part of an expression</li>
+<li>if a function has one or more parameters, then we have to include those
+parameters in the parenthesis after the function’s name whenever we call it</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w1c2/examples.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w4/conversions.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w2c1.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w4/practice.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -224,11 +294,11 @@ and 5, or all three numbers should include each applicable word.</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w1c2/examples.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w4/conversions.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w2c1.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w4/practice.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

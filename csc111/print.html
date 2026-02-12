@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-61fea0ab.js";
+            window.path_to_searchindex_js = "searchindex-a30ae0dc.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-04bd9dfc.js"></script>
+        <script src="toc-4572d1c3.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1877,15 +1877,17 @@ this specification.</p>
 <ul>
 <li><code>java.io</code> package:
 <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/io/package-summary.html</a></li>
-<li><code>java.nio</code> package: &lt;&gt;</li>
+<li><code>java.nio</code> package:
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/nio/package-summary.html</a></li>
 <li>the nio (new io) APIs are more convenient and abstracted</li>
 <li>we will use the IO APIs for now
 <ul>
 <li>better to know how to implement something yourself when a more convenient
-API doesn’t do the job (either can’t do what you want or you need better
-performance)</li>
-<li>knowing how to implement something yourself is more useful outside Java
-where you’ll deal with different APIs</li>
+API doesn’t do the job (either it can’t do what you want or you need
+better performance)</li>
+<li>knowing a simplified API like <code>nio</code> doesn’t help if you need to work with
+another API (such as in another programming language), but knowing how
+file I/O works at a lower level makes it easier to learn other file APIs</li>
 </ul>
 </li>
 </ul>
@@ -1901,6 +1903,100 @@ where you’ll deal with different APIs</li>
 exceptions we’ll have to deal with</li>
 </ul>
 </li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="file-io"><a class="header" href="#file-io">File I/O</a></h1>
+<p>try with resources tutorial for further reading:
+<a href="https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html">https://docs.oracle.com/javase/tutorial/essential/exceptions/tryResourceClose.html</a></p>
+<h2 id="reading-files"><a class="header" href="#reading-files">Reading Files</a></h2>
+<ul>
+<li>task: print contents of a file</li>
+<li>write code with no try-catch
+<ul>
+<li>what exception(s) do we need to handle and what code throws them?</li>
+</ul>
+</li>
+<li>add try-catch to make it work
+<ul>
+<li>compare failing gracefully to abusing <code>throws</code> and crashing</li>
+</ul>
+</li>
+<li>use newer “try with resources” to auto-close scanner</li>
+</ul>
+<h2 id="writing-files"><a class="header" href="#writing-files">Writing Files</a></h2>
+<ul>
+<li>task: write “Hello World” to a file named <code>HelloWorld.txt</code></li>
+<li>write code with no try-catch
+<ul>
+<li>what exception(s) do we need to handle and what code throws them?</li>
+</ul>
+</li>
+<li>add try-catch to make it work</li>
+<li>use newer “try with resources” to auto-close writer</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-2"><a class="header" href="#practice-2">Practice</a></h1>
+<ol>
+<li>Modify the word search program as follows:
+<ul>
+<li>when a word is found, find its index in that line and print the index below
+the line</li>
+<li>instead of printing the index, print a <code>^</code> below the line at the start of
+the word</li>
+<li>instead of printing a single <code>^</code>, print a <code>^</code> below each character of the
+word</li>
+</ul>
+</li>
+<li>Write your own (simplified) version of the terminal command <code>cat</code>:
+<ul>
+<li>accept zero or more command line arguments, each of which should represent
+a file path</li>
+<li>open each file in order and print the entire file to the terminal</li>
+<li>if a file cannot be opened, then print an error message stating the name of
+the file and that it wasn’t found</li>
+<li>you don’t need to do anything if there are zero args, just let the program
+exit without printing anything (does this require its own if statement, or
+can you structure the rest of the program so that it happens by default?)</li>
+<li>see the <code>Sum.java</code> (iterating over command line args) and the file reader
+we wrote during class for examples</li>
+</ul>
+</li>
+<li>Modify the <code>Sum.java</code> program as follows:
+<ul>
+<li>when the program starts, try to open a “sum.txt” file</li>
+<li>if the file exists and can be read:
+<ul>
+<li>read an int from the file and then close your scanner</li>
+<li>print a message stating that you loaded the previous sum, including the
+number from the file in your message</li>
+<li>instead of starting your sum at 0, start it at the number you read from
+the file</li>
+</ul>
+</li>
+<li>if the file doesn’t exist or can’t be read:
+<ul>
+<li>print a message stating that no previous sum was found, and that you will
+start at 0</li>
+</ul>
+</li>
+<li>after you finish summing every number, write the sum to a file named
+“sum.txt” so that it can be used the next time you run this program</li>
+</ul>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="homework"><a class="header" href="#homework">Homework</a></h1>
+<p>For next week:</p>
+<ul>
+<li>Attempt each practice exercise that you didn’t get to during class.</li>
+<li>If you would like to review exceptions and some of the other material we’ve
+covered recently, read or skim chapter 14 from OpenDSA’s CS1 textbook
+(exceptions are in 14.1.6):
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/StaticMainAndExceptions.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/IntroToSoftwareDesign/html/StaticMainAndExceptions.html</a>.</li>
+<li>Read 7.1 to 7.3 from our primary textbook:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/RecIntro.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/RecIntro.html</a>. Pay
+attention to the interactive examples and attempt some of the coding exercises
+in 7.3. This will prepare you for next week’s introduction to recursion.</li>
 </ul>
 
                     </main>
