@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-a3878e35.js";
+            window.path_to_searchindex_js = "searchindex-ac9381dc.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-4572d1c3.js"></script>
+        <script src="toc-f903a201.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1087,10 +1087,10 @@ below shows a summary of past, current, and planned assignments:</p>
 </thead>
 <tbody>
 <tr><td><a href="assignments/hello_world.html">A1: Hello World</a></td><td>-</td><td>-</td><td>15</td></tr>
-<tr><td><a href="assignments/monster.html">A2: Monster Battle</a></td><td>-</td><td>-</td><td>15</td></tr>
+<tr><td><a href="#a2-monster-battle">A2: Monster Battle</a></td><td>2/17</td><td>3/8, revision due 3/19</td><td>20</td></tr>
 <tr><td><a href="assignments/maze.html">A3: Maze</a></td><td>-</td><td>-</td><td>15</td></tr>
 <tr><td><a href="assignments/sorting.html">A4: Sorting Experiment</a></td><td>-</td><td>-</td><td>15</td></tr>
-<tr><td><a href="assignments/ds.html">A5: Data Structure TBD</a></td><td>-</td><td>-</td><td>20</td></tr>
+<tr><td><a href="assignments/ds.html">A5: Data Structure TBD</a></td><td>-</td><td>-</td><td>15</td></tr>
 <tr><td><a href="assignments/self_directed_project.html">Self-Directed Project</a></td><td>-</td><td>-</td><td>15</td></tr>
 </tbody>
 </table>
@@ -1103,6 +1103,237 @@ you.</p>
 <p>I will post a Blackboard announcement on the start date for an assignment. If
 the deadline or part of the assignment changes after the start date, then I will
 post another Blackboard announcement explaining the changes.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="a2-monster-battle"><a class="header" href="#a2-monster-battle">A2: Monster Battle</a></h1>
+<p>This program simulates a battle between two monsters. It involves the following
+topics:</p>
+<ul>
+<li>Writing a class to represent a simple object (Monster)</li>
+<li>Writing code that instantiates and uses the public API of a class you wrote</li>
+<li>Reading from a text file and handling exceptions</li>
+</ul>
+<h2 id="aia-policy"><a class="header" href="#aia-policy">AIA Policy</a></h2>
+<p>Our usual <a href="#academic-integrity-and-accountability">AIA Policy</a> applies to this assignment. In
+addition to that policy:</p>
+<ul>
+<li>You are allowed to reuse all material from the CSC111L “Lab 3: Monster” and
+“Lab 4: File Input/Output” assignments on this assignment. This includes all
+starter/example code and all code you wrote for these assignments.</li>
+</ul>
+<h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
+<p>You must use the parts of the Java API that we covered in class for File I/O and
+exception handling.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="submission-and-grading"><a class="header" href="#submission-and-grading">Submission and Grading</a></h1>
+<p>This is <em>not</em> an autograded assignment. You will have one submission and one
+opportunity to revise your work.</p>
+<p>I expect you to complete the entire assignment before making your first
+submission, and to make that submission as early as you reasonably can. This
+assignment is expected to take two or three days to complete, so you have been
+given about three weeks to finish it. Please ask for help during class or office
+hours if you are stuck on any part of the assignment.</p>
+<h2 id="grading-1"><a class="header" href="#grading-1">Grading</a></h2>
+<p>I will run your program and review your code to check whether you have completed
+each task. Minor errors that don’t prevent your program from running and don’t
+significantly affect a task’s requirements will not impact your grade (for
+example, a misnamed function that still behaves as intended and doesn’t result
+in a compiler error).</p>
+<p>Each task will be marked <strong>complete</strong>, <strong>revise</strong>, or <strong>incomplete</strong>:</p>
+<ul>
+<li>A task that meets its requirements with only minor/inconsequential mistakes is
+considered <strong>complete</strong>.</li>
+<li>A task that has more serious mistakes but demonstrates a clear effort to
+complete the entire task will be marked <strong>revise</strong>. If you correct these
+issues in your revision, then the task will be changed to <strong>complete</strong>. If you
+do not submit a revision on time or do not correct the issues, then the task
+will count as <strong>incomplete</strong> when scoring the assignment.</li>
+<li>A task that is neither of the above is <strong>incomplete</strong> and cannot be fixed in
+your revision.</li>
+</ul>
+<h2 id="initial-submission"><a class="header" href="#initial-submission">Initial Submission</a></h2>
+<p>Your initial submission must be made before the deadline. Test your code to
+confirm it compiles and runs with Java 25 before submitting. Code that doesn’t
+compile or run will not be graded, which may result in a zero on the whole
+assignment.</p>
+<p>You must submit your work using the appropriate link on Blackboard, attaching
+your source code (.java files, not .class files) and any other required files.
+View your submission on Blackboard to confirm it was made correctly, and email
+me the correct files if you spot a mistake. I will not penalize you for an
+invalid submission if you email me the correct version shortly after making it.
+Otherwise, if you make a submission that has obvious problems and would receive
+an incomplete on all or most tasks, then I will allow you to resubmit <em>one time
+before the deadline</em> with a -4 penalty to your assignment grade.</p>
+<p>You can expect feedback within one week of submitting the assignment, and you
+will not receive an extension to redo an invalid submission. The earlier you
+complete and submit the assignment, the earlier you will receive feedback and
+the more time you will have to make revisions or fix an invalid submission. If
+you submit close to the deadline, then you should not expect to have any time to
+fix an invalid submission and may only have a few days to complete your
+revision.</p>
+<h2 id="revision"><a class="header" href="#revision">Revision</a></h2>
+<p>After you receive feedback, you will have until the revision date to correct any
+tasks marked as <strong>revise</strong> and submit your revised work. A revision won’t change
+your grade on a task marked <strong>incomplete</strong>. It will also not affect any
+penalties received for invalid submissions, AIA violations, and similar issues.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="tasks"><a class="header" href="#tasks">Tasks</a></h1>
+<h2 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h2>
+<p>Write a <code>Monster</code> class (<code>Monster.java</code>). This class must have the variables,
+constructors, and methods described below. You should not have any other
+instance variables or static variables. You’re free to include other methods and
+constructors if you wish.</p>
+<ul>
+<li>instance variables (private)
+<ul>
+<li><code>name: String</code></li>
+<li><code>health: double</code></li>
+<li><code>strength: double</code></li>
+</ul>
+</li>
+<li>constructor
+<ul>
+<li><code>Monster(String, double, double)</code> initializes the name, health (second
+parameter), and strength (third parameter)</li>
+</ul>
+</li>
+<li>methods
+<ul>
+<li>a getter for each instance variable</li>
+<li><code>attack(): double</code> returns a random number from 0.0 to strength (strength
+multiplied by <code>Math.random()</code>)</li>
+<li><code>damage(double): void</code> decreases the monster’s health by the parameter,
+which represents how much damage the monster took</li>
+<li><code>isAlive(): boolean</code> returns <code>true</code> if the monster’s health is positive and
+<code>false</code> if it is not</li>
+<li><code>toString(): String</code> returns a <code>String</code> containing the monster’s name,
+health, and strength, with health and strength rounded to two decimal places</li>
+</ul>
+</li>
+</ul>
+<p>Use the following test program to verify your <code>Monster</code> class works:</p>
+<pre><code class="language-java">public class MonsterTest {
+    public static void main(String[] args) {
+        Monster a = new Monster("Goblin", 100, 10);
+
+        System.out.printf("%s is here to show how monsters work!\n", a.getName());
+        System.out.printf("%s has the following stats:\n", a.getName());
+        System.out.printf("\thealth: %.2f\n", a.getHealth());
+        System.out.printf("\tstrength: %.2f\n", a.getStrength());
+        System.out.println();
+
+        System.out.println("We can also print the monster like this:");
+        System.out.println(a);
+        System.out.println("If that doesn't look right, then you need to fix your toString().");
+
+        System.out.printf(
+                "%s accidentally punches itself to demonstrate attacking:\n", a.getName());
+
+        // monster a attacks something
+        double dmg = a.attack();
+
+        // monster a receives the damage from an attack
+        a.damage(dmg);
+
+        // we report the incident
+        System.out.printf("%s attacked %s for %.2f damage.\n", a.getName(), a.getName(), dmg);
+        System.out.println(a);
+
+        // falling rocks are a workplace hazard
+        double boulderDamage = 100;
+        a.takeDamage(boulderDamage);
+        System.out.printf(
+                "A large boulder landed on %s, dealing %.2f damage!\n", a.getName(), boulderDamage);
+
+        if (a.isAlive()) {
+            System.out.printf("%s survived the boulder.\n", a.getName());
+        } else {
+            System.out.printf("%s was squashed by the boulder.\n", a.getName());
+        }
+    }
+}
+</code></pre>
+<p>Advice:</p>
+<ul>
+<li>Most of this is the same as your lab assignment, with the addition of a
+<code>toString()</code> method</li>
+<li>You can use <code>String.format()</code> in your <code>toString()</code> method to round numbers</li>
+</ul>
+<p>Requirements:</p>
+<ul>
+<li>Includes the required variables, constructor, and methods</li>
+<li>Does not include extra instance or static variables</li>
+<li>Provided test code compiles and runs with your <code>Monster</code> class</li>
+</ul>
+<h2 id="2-load-monster-function-5-points"><a class="header" href="#2-load-monster-function-5-points">2. Load Monster Function (5 points)</a></h2>
+<p>In a separate <code>MonsterBattle</code> class (<code>MonsterBattle.java</code>), write a static
+<code>loadMonster()</code> method that takes a string representing a filename and returns a
+monster with the properties given in the file. Expect the file to contain the
+monster’s name, health, and strength in that order, each on a separate line. For
+example:</p>
+<pre><code>Sans
+1.0
+1.0
+</code></pre>
+<p>You may assume all files this method attempts to read are formatted correctly.</p>
+<p>Requirements:</p>
+<ul>
+<li>First task is complete</li>
+<li>Returns a monster with the correct properties when reading a file with the
+correct format</li>
+<li>Returns a default monster or <code>null</code> (your choice) if the file doesn’t exist</li>
+<li>Must correctly handle a <code>FileNotFoundException</code> with try-catch</li>
+<li>Must close the scanner when finished reading the file</li>
+</ul>
+<h2 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h2>
+<p>Add a static <code>battle</code> method to your <code>MonsterBattle</code> class that takes two
+monsters and has them take turns attacking until one is dead. Print a summary of
+each attack: state the name of the attacker, the amount of damage, and the name
+of the defender. Print both monsters after each round of attacks (a attacks b, b
+attacks a, then we print a and b).</p>
+<p>Advice:</p>
+<ul>
+<li>Look at the example code in the lab if you’re not sure how to do this</li>
+</ul>
+<p>Requirements</p>
+<ul>
+<li>First task is complete</li>
+<li>Starting with the first parameter, monsters alternate between attacking each
+other and continue until one runs out of health</li>
+<li>Uses the <code>attack</code> and <code>damage</code> methods correctly to make each monster attack
+the other (use <code>attack</code> to generate the damage and pass it to <code>damage</code> to
+apply the damage)</li>
+<li>Feedback is printed for attacks as described above</li>
+</ul>
+<h2 id="4-main-function-5-points"><a class="header" href="#4-main-function-5-points">4. Main Function (5 points)</a></h2>
+<p>Add a <code>main</code> method to your <code>MonsterBattle</code> class so we can run it as a program.
+Your program should do the following:</p>
+<ul>
+<li>Load four monster files: <code>Hero.txt</code>, <code>Minion1.txt</code>, <code>Minion2.txt</code>, <code>Boss.txt</code>
+<ul>
+<li>You can make up whatever names and stats you want for each monster, but I
+will use my own when testing and will expect your code to load the names
+shown above (always assume filenames are case-sensitive)</li>
+</ul>
+</li>
+<li>Print all of the monsters</li>
+<li>Have the hero fight the other three monsters in order until either the hero
+dies or all three other monsters die</li>
+<li>Print a summary after the battles are over:
+<ul>
+<li>State whether the hero won or lost</li>
+<li>List the names of any monsters the hero defeated</li>
+<li>If the hero won, then print them so we can see their stats at the end of the
+journey</li>
+<li>If the hero lost, then print the monster that defeated the hero</li>
+<li>Include any other descriptive text or formatting you would like</li>
+</ul>
+</li>
+</ul>
+<p>Requirements</p>
+<ul>
+<li>First three tasks are complete</li>
+<li>Implement <code>main</code> as described above</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="schedule"><a class="header" href="#schedule">Schedule</a></h1>
 <p>This is a tentative schedule for topics, assigned readings, and activities.
@@ -1828,64 +2059,6 @@ public class CircleEditor {
     }
 }
 </code></pre>
-<pre><code class="language-java">// previous Circle2 example with an added default constructor and toString method
-public class Circle {
-    private double x, y;
-    private double radius;
-
-    public Circle() {
-        this.setX(0);
-        this.setY(0);
-        this.setRadius(0);
-    }
-
-    public Circle(double initX, double initY, double initRadius) {
-        this.setX(initX);
-        this.setY(initY);
-        this.setRadius(initRadius);
-    }
-
-    public void setX(double newX) {
-        this.x = newX;
-    }
-
-    public void setY(double newY) {
-        this.y = newY;
-    }
-
-    public void setRadius(double newRadius) {
-        if (newRadius &lt; 0) {
-            this.radius = 0;
-        } else {
-            this.radius = newRadius;
-        }
-    }
-
-    public double getX() {
-        return this.x;
-    }
-
-    public double getY() {
-        return this.y;
-    }
-
-    public double getRadius() {
-        return this.radius;
-    }
-
-    public double getArea() {
-        return Math.PI * this.radius * this.radius;
-    }
-
-    public double getCircumference() {
-        return 2 * Math.PI * this.radius;
-    }
-
-    public String toString() {
-        return String.format("Circle(center: (%.02f, %.02f), radius: %.02f)", x, y, radius);
-    }
-}
-</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="exceptions-1"><a class="header" href="#exceptions-1">Exceptions</a></h1>
 <ul>
@@ -2056,6 +2229,178 @@ covered recently, read or skim chapter 14 from OpenDSA’s CS1 textbook
 attention to the interactive examples and attempt some of the coding exercises
 in 7.3. This will prepare you for next week’s introduction to recursion.</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-5-0217-0219"><a class="header" href="#week-5-0217-0219">Week 5 (02/17, 02/19)</a></h1>
+<h3 id="tuesday-agenda-1"><a class="header" href="#tuesday-agenda-1">Tuesday Agenda</a></h3>
+<ul>
+<li>attendance</li>
+<li>homework:
+<ul>
+<li>read 7.4, 7.5:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/HarderWrite.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/HarderWrite.html</a></li>
+<li>attempt 7.5 problems</li>
+<li>first assignment</li>
+</ul>
+</li>
+<li>first assignment
+<ul>
+<li>not autograded</li>
+<li>one submission, one revision</li>
+<li>review during class or office hours before submission</li>
+<li>submit early for extra revision time</li>
+<li>use <code>Monster</code> class from lab to get started</li>
+</ul>
+</li>
+<li>review practice (exceptions and file i/o, recursion review is later)</li>
+<li>topics
+<ul>
+<li>recursion intro</li>
+<li>iteration via recursion</li>
+</ul>
+</li>
+</ul>
+<h3 id="thursday-agenda-1"><a class="header" href="#thursday-agenda-1">Thursday Agenda</a></h3>
+<ul>
+<li>attendance</li>
+<li>homework
+<ul>
+<li>note: may change this depending on how far we get this week</li>
+<li>read 7.6-7.9:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/WritingEx.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/WritingEx.html</a></li>
+<li>read 4.1-4.3:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html</a></li>
+<li>as always, attempt practice exercises</li>
+<li>work on assignment</li>
+</ul>
+</li>
+<li>topics
+<ul>
+<li>branching recursion</li>
+<li>eight queens problem</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="recursion-intro"><a class="header" href="#recursion-intro">Recursion Intro</a></h1>
+<p>what is recursion?</p>
+<ul>
+<li>a recursive function is a function that calls itself</li>
+<li>a recursive algorithm appears in its own steps</li>
+</ul>
+<p>why learn/use it?</p>
+<ul>
+<li>to repeat something, like a loop</li>
+<li>compared to iterative (loop) version, recursive algorithms can be simple and
+concise</li>
+<li>more powerful than plain loops and nested loops</li>
+<li>some problems are easier to understand through recursive algorithms, even if
+you end up converting it to an iterative algorithm</li>
+<li>important in functional programming, math (have you seen proof by induction
+yet?)</li>
+</ul>
+<p>why not use it?</p>
+<ul>
+<li>expensive: function call overhead compared to loop overhead
+<ul>
+<li>some compilers can optimize recursive functions into loops</li>
+</ul>
+</li>
+<li>loops are equally powerful when combined with a stack</li>
+</ul>
+<p>we’ll tackle recursion in three phases:</p>
+<ol>
+<li>use recursive functions to perform iteration, imitate for loops (today)</li>
+<li>write more complex recursive functions, aware of branching/backtracking and
+the call stack (next class, maybe also next week)</li>
+<li>solve recursive problems without recursion (later, if time permits)</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="recursion-for-iteration"><a class="header" href="#recursion-for-iteration">Recursion For Iteration</a></h1>
+<p>two goals:</p>
+<ul>
+<li>start developing an intuition for recursive functions</li>
+<li>practice writing simple recursive functions</li>
+</ul>
+<h2 id="comparison"><a class="header" href="#comparison">Comparison</a></h2>
+<ul>
+<li>how do we design loops?
+<ul>
+<li>where does the loop start?</li>
+<li>how does the loop make progress?</li>
+<li>how does the loop end?</li>
+<li>what if loop doesn’t end?</li>
+</ul>
+</li>
+<li>how do we design recursive functions?
+<ul>
+<li>where does the function start?</li>
+<li>how does the function make progress?</li>
+<li>how does the function end?</li>
+<li>what if function doesn’t end?</li>
+</ul>
+</li>
+</ul>
+<h2 id="function-design"><a class="header" href="#function-design">Function Design</a></h2>
+<ul>
+<li>base case
+<ul>
+<li>no recursion</li>
+</ul>
+</li>
+<li>recursive case
+<ul>
+<li>solve part of problem</li>
+<li>recursive call to solve <em>a smaller version of the problem</em></li>
+</ul>
+</li>
+</ul>
+<p>let’s steal the textbook’s idea: count the occupants of this room.</p>
+<p>how to find out how many people are sitting in the room:</p>
+<ol>
+<li>stand up</li>
+<li>if you’re the only one sitting, then the answer is one</li>
+<li>if not, then find someone else who’s sitting
+<ol>
+<li>ask them how many people are sitting in the room</li>
+<li>stand and wait for them to tell you the answer</li>
+<li>when they tell you, go sit down</li>
+<li>the answer is whatever they said plus one</li>
+</ol>
+</li>
+</ol>
+<p>let’s analyze:</p>
+<ul>
+<li>what’s our base case?</li>
+<li>how did we solve part of the problem?</li>
+<li>how did we shrink the problem before delegating the rest?</li>
+</ul>
+<h2 id="recursive-for-function"><a class="header" href="#recursive-for-function">“Recursive For” Function</a></h2>
+<p>write a for loop as a class:</p>
+<ul>
+<li>write a for loop that counts from 1 to 10</li>
+<li>make it its own function</li>
+<li>parameterize it: caller says where we count from and to</li>
+</ul>
+<p>write a recursive version:</p>
+<ul>
+<li>what’s the base case?</li>
+<li>what’s the recursive case?
+<ul>
+<li>what work do we do?</li>
+<li>what’s the recursive call?</li>
+</ul>
+</li>
+</ul>
+<p>generalize it: for loop skeleton vs recursive “for function” skeleton</p>
+<h2 id="factorial"><a class="header" href="#factorial">Factorial</a></h2>
+<ul>
+<li>what is it?</li>
+<li>math version, piecewise function</li>
+<li>iterative version</li>
+<li>recursive version</li>
+</ul>
+<h2 id="review"><a class="header" href="#review">Review</a></h2>
+<p>review some of the practice exercises from the textbook</p>
 
                     </main>
 
