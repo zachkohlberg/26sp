@@ -27,7 +27,7 @@ public class MonsterTest {
 
         // falling rocks are a workplace hazard
         double boulderDamage = 100;
-        a.takeDamage(boulderDamage);
+        a.damage(boulderDamage);
         System.out.printf(
                 "A large boulder landed on %s, dealing %.2f damage!\n", a.getName(), boulderDamage);
 
