@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Tasks - CSC 111 Data Structures and Abstractions</title>
+        <title>Branching Recursion - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -34,10 +34,10 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-eb658f04.js";
+            window.path_to_searchindex_js = "../../searchindex-ca1c4ca5.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-f903a201.js"></script>
+        <script src="../../toc-06157fe0.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -173,174 +173,17 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="tasks"><a class="header" href="#tasks">Tasks</a></h1>
-<h2 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h2>
-<p>Write a <code>Monster</code> class (<code>Monster.java</code>). This class must have the variables,
-constructors, and methods described below. You should not have any other
-instance variables or static variables. You’re free to include other methods and
-constructors if you wish.</p>
-<ul>
-<li>instance variables (private)
-<ul>
-<li><code>name: String</code></li>
-<li><code>health: double</code></li>
-<li><code>strength: double</code></li>
-</ul>
-</li>
-<li>constructor
-<ul>
-<li><code>Monster(String, double, double)</code> initializes the name, health (second
-parameter), and strength (third parameter)</li>
-</ul>
-</li>
-<li>methods
-<ul>
-<li>a getter for each instance variable</li>
-<li><code>attack(): double</code> returns a random number from 0.0 to strength (strength
-multiplied by <code>Math.random()</code>)</li>
-<li><code>damage(double): void</code> decreases the monster’s health by the parameter,
-which represents how much damage the monster took</li>
-<li><code>isAlive(): boolean</code> returns <code>true</code> if the monster’s health is positive and
-<code>false</code> if it is not</li>
-<li><code>toString(): String</code> returns a <code>String</code> containing the monster’s name,
-health, and strength, with health and strength rounded to two decimal places</li>
-</ul>
-</li>
-</ul>
-<p>Use the following test program to verify your <code>Monster</code> class works:</p>
-<pre><code class="language-java">public class MonsterTest {
-    public static void main(String[] args) {
-        Monster a = new Monster("Goblin", 100, 10);
-
-        System.out.printf("%s is here to show how monsters work!\n", a.getName());
-        System.out.printf("%s has the following stats:\n", a.getName());
-        System.out.printf("\thealth: %.2f\n", a.getHealth());
-        System.out.printf("\tstrength: %.2f\n", a.getStrength());
-        System.out.println();
-
-        System.out.println("We can also print the monster like this:");
-        System.out.println(a);
-        System.out.println("If that doesn't look right, then you need to fix your toString().");
-
-        System.out.printf(
-                "%s accidentally punches itself to demonstrate attacking:\n", a.getName());
-
-        // monster a attacks something
-        double dmg = a.attack();
-
-        // monster a receives the damage from an attack
-        a.damage(dmg);
-
-        // we report the incident
-        System.out.printf("%s attacked %s for %.2f damage.\n", a.getName(), a.getName(), dmg);
-        System.out.println(a);
-
-        // falling rocks are a workplace hazard
-        double boulderDamage = 100;
-        a.damage(boulderDamage);
-        System.out.printf(
-                "A large boulder landed on %s, dealing %.2f damage!\n", a.getName(), boulderDamage);
-
-        if (a.isAlive()) {
-            System.out.printf("%s survived the boulder.\n", a.getName());
-        } else {
-            System.out.printf("%s was squashed by the boulder.\n", a.getName());
-        }
-    }
-}
-</code></pre>
-<p>Advice:</p>
-<ul>
-<li>Most of this is the same as your lab assignment, with the addition of a
-<code>toString()</code> method</li>
-<li>You can use <code>String.format()</code> in your <code>toString()</code> method to round numbers</li>
-</ul>
-<p>Requirements:</p>
-<ul>
-<li>Includes the required variables, constructor, and methods</li>
-<li>Does not include extra instance or static variables</li>
-<li>Provided test code compiles and runs with your <code>Monster</code> class</li>
-</ul>
-<h2 id="2-load-monster-function-5-points"><a class="header" href="#2-load-monster-function-5-points">2. Load Monster Function (5 points)</a></h2>
-<p>In a separate <code>MonsterBattle</code> class (<code>MonsterBattle.java</code>), write a static
-<code>loadMonster()</code> method that takes a string representing a filename and returns a
-monster with the properties given in the file. Expect the file to contain the
-monster’s name, health, and strength in that order, each on a separate line. For
-example:</p>
-<pre><code>Sans
-1.0
-1.0
-</code></pre>
-<p>You may assume all files this method attempts to read are formatted correctly.</p>
-<p>Requirements:</p>
-<ul>
-<li>First task is complete</li>
-<li>Returns a monster with the correct properties when reading a file with the
-correct format</li>
-<li>Returns a default monster or <code>null</code> (your choice) if the file doesn’t exist</li>
-<li>Must correctly handle a <code>FileNotFoundException</code> with try-catch</li>
-<li>Must close the scanner when finished reading the file</li>
-</ul>
-<h2 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h2>
-<p>Add a static <code>battle</code> method to your <code>MonsterBattle</code> class that takes two
-monsters and has them take turns attacking until one is dead. Print a summary of
-each attack: state the name of the attacker, the amount of damage, and the name
-of the defender. Print both monsters after each round of attacks (a attacks b, b
-attacks a, then we print a and b).</p>
-<p>Advice:</p>
-<ul>
-<li>Look at the example code in the lab if you’re not sure how to do this</li>
-</ul>
-<p>Requirements</p>
-<ul>
-<li>First task is complete</li>
-<li>Starting with the first parameter, monsters alternate between attacking each
-other and continue until one runs out of health</li>
-<li>Uses the <code>attack</code> and <code>damage</code> methods correctly to make each monster attack
-the other (use <code>attack</code> to generate the damage and pass it to <code>damage</code> to
-apply the damage)</li>
-<li>Feedback is printed for attacks as described above</li>
-</ul>
-<h2 id="4-main-function-5-points"><a class="header" href="#4-main-function-5-points">4. Main Function (5 points)</a></h2>
-<p>Add a <code>main</code> method to your <code>MonsterBattle</code> class so we can run it as a program.
-Your program should do the following:</p>
-<ul>
-<li>Load four monster files: <code>Hero.txt</code>, <code>Minion1.txt</code>, <code>Minion2.txt</code>, <code>Boss.txt</code>
-<ul>
-<li>You can make up whatever names and stats you want for each monster, but I
-will use my own when testing and will expect your code to load the names
-shown above (always assume filenames are case-sensitive)</li>
-</ul>
-</li>
-<li>Print all of the monsters</li>
-<li>Have the hero fight the other three monsters in order until either the hero
-dies or all three other monsters die</li>
-<li>Print a summary after the battles are over:
-<ul>
-<li>State whether the hero won or lost</li>
-<li>List the names of any monsters the hero defeated</li>
-<li>If the hero won, then print them so we can see their stats at the end of the
-journey</li>
-<li>If the hero lost, then print the monster that defeated the hero</li>
-<li>Include any other descriptive text or formatting you would like</li>
-</ul>
-</li>
-</ul>
-<p>Requirements</p>
-<ul>
-<li>First three tasks are complete</li>
-<li>Implement <code>main</code> as described above</li>
-</ul>
+                        <h1 id="branching-recursion"><a class="header" href="#branching-recursion">Branching Recursion</a></h1>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../assignments/monster/grading.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w5/iteration.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w5/stack.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -350,11 +193,11 @@ journey</li>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../assignments/monster/grading.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w5/iteration.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w5/stack.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

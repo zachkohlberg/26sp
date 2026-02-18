@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-eb658f04.js";
+            window.path_to_searchindex_js = "searchindex-ca1c4ca5.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-f903a201.js"></script>
+        <script src="toc-06157fe0.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1112,6 +1112,21 @@ topics:</p>
 <li>Writing code that instantiates and uses the public API of a class you wrote</li>
 <li>Reading from a text file and handling exceptions</li>
 </ul>
+<h2 id="submission-and-grading"><a class="header" href="#submission-and-grading">Submission and Grading</a></h2>
+<p>This assignment is manually graded. See the
+<a href="#manual-grading">manual grading</a> page for more details about how I handle
+manual grading on assignments like this. You are allowed one submission and one
+revision.</p>
+<p>This assignment is expected to take 3-5 hours or 2-3 days (assuming you work on
+it for an hour or two each day). The deadline is set to allow for 19 days in
+keeping with the <a href="#deadlines">deadline policy</a>.</p>
+<p>Submit this assignment on Blackboard, attaching the following files:</p>
+<ul>
+<li>Monster.java</li>
+<li>MonsterBattle.java</li>
+</ul>
+<p>Please don’t zip them or include extra files with them. I don’t need any of the
+text files you used during your own testing.</p>
 <h2 id="aia-policy"><a class="header" href="#aia-policy">AIA Policy</a></h2>
 <p>Our usual <a href="#academic-integrity-and-accountability">AIA Policy</a> applies to this assignment. In
 addition to that policy:</p>
@@ -1123,61 +1138,8 @@ starter/example code and all code you wrote for these assignments.</li>
 <h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
 <p>You must use the parts of the Java API that we covered in class for File I/O and
 exception handling.</p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="submission-and-grading"><a class="header" href="#submission-and-grading">Submission and Grading</a></h1>
-<p>This is <em>not</em> an autograded assignment. You will have one submission and one
-opportunity to revise your work.</p>
-<p>I expect you to complete the entire assignment before making your first
-submission, and you should aim to submit at least a week before the deadline.
-This assignment is expected to take two or three days to complete, so you have
-been given about three weeks to finish it. Please ask for help during class or
-office hours if you are stuck on any part of the assignment.</p>
-<h2 id="grading-1"><a class="header" href="#grading-1">Grading</a></h2>
-<p>I will run your program and review your code to check whether you have completed
-each task. Minor errors that don’t prevent your program from running and don’t
-significantly affect a task’s requirements will not impact your grade (for
-example, a misnamed function that still behaves as intended and doesn’t result
-in a compiler error).</p>
-<p>Each task will be marked <strong>complete</strong>, <strong>revise</strong>, or <strong>incomplete</strong>:</p>
-<ul>
-<li>A task that meets its requirements with only minor/inconsequential mistakes is
-considered <strong>complete</strong>.</li>
-<li>A task that has more serious mistakes but demonstrates a clear effort to
-complete the entire task will be marked <strong>revise</strong>. If you correct these
-issues in your revision, then the task will be changed to <strong>complete</strong>. If you
-do not submit a revision on time or do not correct the issues, then the task
-will count as <strong>incomplete</strong> when scoring the assignment.</li>
-<li>A task that is neither of the above is <strong>incomplete</strong> and cannot be fixed in
-your revision.</li>
-</ul>
-<h2 id="initial-submission"><a class="header" href="#initial-submission">Initial Submission</a></h2>
-<p>Your initial submission must be made before the deadline. Test your code to
-confirm it compiles and runs with Java 25 before submitting. Code that doesn’t
-compile or run will not be graded, which may result in a zero on the whole
-assignment.</p>
-<p>You must submit your work using the appropriate link on Blackboard, attaching
-your source code (.java files, not .class files) and any other required files.
-View your submission on Blackboard to confirm it was made correctly, and email
-me the correct files if you spot a mistake. I will not penalize you for an
-invalid submission if you email me the correct version shortly after making it.
-Otherwise, if you make a submission that has obvious problems and would receive
-an incomplete on all or most tasks, then I will allow you to resubmit <em>one time
-before the deadline</em> with a -4 penalty to your assignment grade.</p>
-<p>You can expect feedback within one week of submitting the assignment, and you
-will not receive an extension to redo an invalid submission. The earlier you
-complete and submit the assignment, the earlier you will receive feedback and
-the more time you will have to make revisions or fix an invalid submission. If
-you submit close to the deadline, then you should not expect to have any time to
-fix an invalid submission and may only have a few days to complete your
-revision.</p>
-<h2 id="revision"><a class="header" href="#revision">Revision</a></h2>
-<p>After you receive feedback, you will have until the revision date to correct any
-tasks marked as <strong>revise</strong> and submit your revised work. A revision won’t change
-your grade on a task marked <strong>incomplete</strong>. It will also not affect any
-penalties received for invalid submissions, AIA violations, and similar issues.</p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="tasks"><a class="header" href="#tasks">Tasks</a></h1>
-<h2 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h2>
+<h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
+<h3 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h3>
 <p>Write a <code>Monster</code> class (<code>Monster.java</code>). This class must have the variables,
 constructors, and methods described below. You should not have any other
 instance variables or static variables. You’re free to include other methods and
@@ -1264,7 +1226,7 @@ health, and strength, with health and strength rounded to two decimal places</li
 <li>Does not include extra instance or static variables</li>
 <li>Provided test code compiles and runs with your <code>Monster</code> class</li>
 </ul>
-<h2 id="2-load-monster-function-5-points"><a class="header" href="#2-load-monster-function-5-points">2. Load Monster Function (5 points)</a></h2>
+<h3 id="2-load-monster-function-5-points"><a class="header" href="#2-load-monster-function-5-points">2. Load Monster Function (5 points)</a></h3>
 <p>In a separate <code>MonsterBattle</code> class (<code>MonsterBattle.java</code>), write a static
 <code>loadMonster()</code> method that takes a string representing a filename and returns a
 monster with the properties given in the file. Expect the file to contain the
@@ -1284,7 +1246,7 @@ correct format</li>
 <li>Must correctly handle a <code>FileNotFoundException</code> with try-catch</li>
 <li>Must close the scanner when finished reading the file</li>
 </ul>
-<h2 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h2>
+<h3 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h3>
 <p>Add a static <code>battle</code> method to your <code>MonsterBattle</code> class that takes two
 monsters and has them take turns attacking until one is dead. Print a summary of
 each attack: state the name of the attacker, the amount of damage, and the name
@@ -1304,7 +1266,7 @@ the other (use <code>attack</code> to generate the damage and pass it to <code>d
 apply the damage)</li>
 <li>Feedback is printed for attacks as described above</li>
 </ul>
-<h2 id="4-main-function-5-points"><a class="header" href="#4-main-function-5-points">4. Main Function (5 points)</a></h2>
+<h3 id="4-main-function-5-points"><a class="header" href="#4-main-function-5-points">4. Main Function (5 points)</a></h3>
 <p>Add a <code>main</code> method to your <code>MonsterBattle</code> class so we can run it as a program.
 Your program should do the following:</p>
 <ul>
@@ -1335,6 +1297,78 @@ journey</li>
 <li>Implement <code>main</code> as described above</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="manual-grading"><a class="header" href="#manual-grading">Manual Grading</a></h1>
+<p>I did not have my test program (necessary for autograded assignments) ready in
+time for our first assignment, so this covers the manual grading process I will
+use for assignments that would otherwise have been checked with my “autograder”
+program.</p>
+<p>These assignments allow one submission and one revision. I expect you to
+complete the entire assignment before making your first submission, and you
+should aim to submit at least a week before the deadline. Please ask for help
+during class or office hours if you are stuck on any part of the assignment.</p>
+<h2 id="grading-1"><a class="header" href="#grading-1">Grading</a></h2>
+<p>I will run your program and review your code to check whether you have completed
+each task. Minor errors that don’t prevent your program from running and don’t
+significantly affect a task’s requirements will not impact your grade (for
+example, a misnamed function that still behaves as intended and doesn’t result
+in a compiler error).</p>
+<p>Each task will be marked <strong>complete</strong>, <strong>revise</strong>, or <strong>incomplete</strong>:</p>
+<ul>
+<li>A task that meets its requirements with only minor/inconsequential mistakes is
+considered <strong>complete</strong>.</li>
+<li>A task that has more serious mistakes but demonstrates a clear effort to
+complete the entire task will be marked <strong>revise</strong>. If you correct these
+issues in your revision, then the task will be changed to <strong>complete</strong>. If you
+do not submit a revision on time or do not correct the issues, then the task
+will count as <strong>incomplete</strong> when scoring the assignment.</li>
+<li>A task that is neither of the above is <strong>incomplete</strong> and cannot be fixed in
+your revision. Examples of an incomplete task:
+<ul>
+<li>Your code has compiler errors when compiled with Java 25. It’s not hard to
+run <code>java MyProgram.java</code> before you submit your work to make sure it
+compiles, and you should have
+<a href="#java">installed Java 25</a> at the start of the
+semester.</li>
+<li>You are missing all or part of the task. This tells me you haven’t read the
+directions or just decided not to finish your work.</li>
+<li>Your work has obvious, serious issues that show a significant lack of
+understanding of the task. I expect you to ask for help if you don’t
+understand something.</li>
+</ul>
+</li>
+</ul>
+<p>The intent is that any task you completed incorrectly but still completed to the
+best of your ability should qualify as “revise” and not “incomplete”. I don’t
+want to punish mistakes made in a good faith effort to finish the assignment,
+but stopping when you know something isn’t finished or not asking for help when
+you believe you can’t figure something out on your own do not, in my opinion,
+qualify as a “good faith effort to finish the assignment.”</p>
+<h2 id="initial-submission"><a class="header" href="#initial-submission">Initial Submission</a></h2>
+<p>Your initial submission must be made before the deadline. Test your code to
+confirm it compiles and runs with Java 25 before submitting. Code that doesn’t
+compile or run will not be graded, which may result in a zero on the whole
+assignment.</p>
+<p>You must submit your work using the appropriate link on Blackboard, attaching
+your source code (.java files, not .class files) and any other required files.
+View your submission on Blackboard to confirm it was made correctly, and email
+me the correct files if you spot a mistake. I will not penalize you for an
+invalid submission if you email me the correct version shortly after making it.
+Otherwise, if you make a submission that has obvious problems and would receive
+an incomplete on all or most tasks, then I will allow you to resubmit <em>one time
+before the deadline</em> with a -4 penalty to your assignment grade.</p>
+<p>You can expect feedback within one week of submitting the assignment, and you
+will not receive an extension to redo an invalid submission. The earlier you
+complete and submit the assignment, the earlier you will receive feedback and
+the more time you will have to make revisions or fix an invalid submission. If
+you submit close to the deadline, then you should not expect to have any time to
+fix an invalid submission and may only have a few days to complete your
+revision.</p>
+<h2 id="revision"><a class="header" href="#revision">Revision</a></h2>
+<p>After you receive feedback, you will have until the revision date to correct any
+tasks marked as <strong>revise</strong> and submit your revised work. A revision won’t change
+your grade on a task marked <strong>incomplete</strong>. It will also not affect any
+penalties received for invalid submissions, AIA violations, and similar issues.</p>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="schedule"><a class="header" href="#schedule">Schedule</a></h1>
 <p>This is a tentative schedule for topics, assigned readings, and activities.
 Pages for specific dates include more detailed outlines and examples for those
@@ -1350,10 +1384,10 @@ class meetings. Expect this section to be updated frequently.</p>
 <tr><td>3</td><td>2/3</td><td>2/5</td><td>OOP intro</td><td></td><td></td></tr>
 <tr><td>4</td><td>2/10</td><td>2/12</td><td>exceptions, file I/O</td><td></td><td></td></tr>
 <tr><td>5</td><td>2/17</td><td>2/19</td><td>recursion</td><td></td><td></td></tr>
-<tr><td>6</td><td>2/24</td><td>2/26</td><td>algorithm efficiency, searching</td><td></td><td></td></tr>
-<tr><td>7</td><td>3/3</td><td>3/5</td><td>sorting algorithms</td><td></td><td></td></tr>
+<tr><td>6</td><td>2/24</td><td>2/26</td><td>recursion, algorithm analysis</td><td></td><td></td></tr>
+<tr><td>7</td><td>3/3</td><td>3/5</td><td>algorithm analysis, searching, sorting</td><td></td><td></td></tr>
 <tr><td>Break</td><td>3/10</td><td>3/12</td><td><strong>NO CLASS</strong></td><td></td><td></td></tr>
-<tr><td>8</td><td>3/17</td><td>3/19</td><td>data structures: array vs linked</td><td></td><td>midterm grades due Wednesday, 3/18</td></tr>
+<tr><td>8</td><td>3/17</td><td>3/19</td><td>algorithm analysis, searching, sorting</td><td></td><td>midterm grades due Wednesday, 3/18</td></tr>
 <tr><td>9</td><td>3/24</td><td>3/26</td><td>lists</td><td></td><td></td></tr>
 <tr><td>10</td><td>3/31</td><td>4/2</td><td>stacks</td><td></td><td></td></tr>
 <tr><td>11</td><td>4/7</td><td>4/9</td><td>queues</td><td></td><td>withdraw deadline Friday, 4/10</td></tr>
@@ -2255,7 +2289,6 @@ in 7.3. This will prepare you for next week’s introduction to recursion.</li>
 <li>topics
 <ul>
 <li>recursion intro</li>
-<li>iteration via recursion</li>
 </ul>
 </li>
 </ul>
@@ -2264,19 +2297,16 @@ in 7.3. This will prepare you for next week’s introduction to recursion.</li>
 <li>attendance</li>
 <li>homework
 <ul>
-<li>note: may change this depending on how far we get this week</li>
-<li>read 7.6-7.9:
+<li>read 7.6-7.9 and attempt practice exercises:
 <a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/WritingEx.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/WritingEx.html</a></li>
-<li>read 4.1-4.3:
-<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html</a></li>
-<li>as always, attempt practice exercises</li>
 <li>work on assignment</li>
 </ul>
 </li>
 <li>topics
 <ul>
+<li>iteration via recursion</li>
 <li>branching recursion</li>
-<li>eight queens problem</li>
+<li>review OpenDSA problems</li>
 </ul>
 </li>
 </ul>
@@ -2401,6 +2431,45 @@ the call stack (next class, maybe also next week)</li>
 </ul>
 <h2 id="review"><a class="header" href="#review">Review</a></h2>
 <p>review some of the practice exercises from the textbook</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="branching-recursion"><a class="header" href="#branching-recursion">Branching Recursion</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="the-stack-and-infinite-recursion"><a class="header" href="#the-stack-and-infinite-recursion">The Stack and Infinite Recursion</a></h1>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-6-0224-0226"><a class="header" href="#week-6-0224-0226">Week 6 (02/24, 02/26)</a></h1>
+<h3 id="tuesday-agenda-2"><a class="header" href="#tuesday-agenda-2">Tuesday Agenda</a></h3>
+<ul>
+<li>attendance</li>
+<li>homework:
+<ul>
+<li>read 4.1-4.3:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html</a></li>
+<li>work on assignments</li>
+</ul>
+</li>
+<li>topics
+<ul>
+<li>branching recursion</li>
+<li>eight queens problem</li>
+<li>review some OpenDSA problems</li>
+</ul>
+</li>
+</ul>
+<h3 id="thursday-agenda-2"><a class="header" href="#thursday-agenda-2">Thursday Agenda</a></h3>
+<ul>
+<li>attendance</li>
+<li>homework
+<ul>
+<li>reading TBD</li>
+</ul>
+</li>
+<li>topics
+<ul>
+<li>algorithm analysis</li>
+<li>big-o notation</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 
