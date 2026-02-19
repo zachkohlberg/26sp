@@ -34,7 +34,7 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-f7b27262.js";
+            window.path_to_searchindex_js = "../../searchindex-07fbddaf.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc-06157fe0.js"></script>
@@ -174,6 +174,65 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="branching-recursion"><a class="header" href="#branching-recursion">Branching Recursion</a></h1>
+<h2 id="review"><a class="header" href="#review">Review</a></h2>
+<p>recursive algorithms require:</p>
+<ul>
+<li>a base case</li>
+<li>one or more recursive cases that
+<ul>
+<li>solve part of the problem</li>
+<li>recursively solve a <em>smaller version</em> of the problem</li>
+</ul>
+</li>
+<li>the base case to always be reached</li>
+</ul>
+<p>executing/tracing a recursive function (see
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/Trace.html">7.7.1</a>):</p>
+<ul>
+<li>wind-up phase: stacking up unfinished function calls</li>
+<li>unwinding phase: resolving each function call, passing information back to
+eventually reach the original function call</li>
+</ul>
+<p>compare to the counting example:</p>
+<ul>
+<li>wind-up: delegating counting task to other students</li>
+<li>unwind: getting other student’s answer and reporting your answer to whoever
+asked you</li>
+</ul>
+<h2 id="branching"><a class="header" href="#branching">Branching</a></h2>
+<p>what changes when we allow multiple recursive calls?</p>
+<ul>
+<li>multiple wind-up/unwind phases</li>
+<li>these normally happen sequentially, but if we imagine them in parallel we can
+see a branching tree structure rather than a simple stack of function calls</li>
+<li>this branching is what makes recursion more powerful than loops</li>
+</ul>
+<p>example problem: print <em>all</em> the files in a directory and its subdirectories</p>
+<ul>
+<li>try solving this with a loop
+<ul>
+<li>why doesn’t the loop work?</li>
+</ul>
+</li>
+<li>try solving this with recursion
+<ul>
+<li>why does recursion work?</li>
+</ul>
+</li>
+</ul>
+<p>another way to look at this: exploring a maze (this will be an assignment later)</p>
+<ul>
+<li>when you reach a branching point, you…
+<ul>
+<li>explore one path</li>
+<li>determine it’s a dead end</li>
+<li>backtrack to the branching point</li>
+<li>and repeat!</li>
+</ul>
+</li>
+<li>exploration and backtracking are just the wind-up and unwind phases from
+before</li>
+</ul>
 
                     </main>
 

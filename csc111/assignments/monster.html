@@ -34,7 +34,7 @@
             const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-f7b27262.js";
+            window.path_to_searchindex_js = "../searchindex-07fbddaf.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-06157fe0.js"></script>
@@ -174,8 +174,9 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="a2-monster-battle"><a class="header" href="#a2-monster-battle">A2: Monster Battle</a></h1>
-<p>This program simulates a battle between two monsters. It involves the following
-topics:</p>
+<p>This program simulates a series of battles between a hero and several monsters
+(technically the hero is also a monster, but nobody else needs to know that). It
+involves the following topics:</p>
 <ul>
 <li>Writing a class to represent a simple object (Monster)</li>
 <li>Writing code that instantiates and uses the public API of a class you wrote</li>
@@ -206,7 +207,7 @@ starter/example code and all code you wrote for these assignments.</li>
 </ul>
 <h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
 <p>You must use the parts of the Java API that we covered in class for File I/O and
-exception handling.</p>
+exception handling. Do not use any static variables in your program.</p>
 <h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
 <h3 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h3>
 <p>Write a <code>Monster</code> class (<code>Monster.java</code>). This class must have the variables,
@@ -317,10 +318,10 @@ correct format</li>
 </ul>
 <h3 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h3>
 <p>Add a static <code>battle</code> method to your <code>MonsterBattle</code> class that takes two
-monsters and has them take turns attacking until one is dead. Print a summary of
-each attack: state the name of the attacker, the amount of damage, and the name
-of the defender. Print both monsters after each round of attacks (a attacks b, b
-attacks a, then we print a and b).</p>
+<code>Monster</code> parameters and has them take turns attacking until one is dead. Print
+a summary of each attack: state the name of the attacker, the amount of damage,
+and the name of the defender. Print both monsters after each round of attacks (a
+attacks b, b attacks a, then we print a and b).</p>
 <p>Advice:</p>
 <ul>
 <li>Look at the example code in the lab if you’re not sure how to do this</li>

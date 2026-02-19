@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Functions - CSC 110 Programming and Problem Solving</title>
+        <title>A2: Character Sheet - CSC 110 Programming and Problem Solving</title>
 
 
         <!-- Custom HTML head -->
@@ -12,32 +12,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="shortcut icon" href="../../favicon-fbc660e6.png">
-        <link rel="stylesheet" href="../../css/variables-8adf115d.css">
-        <link rel="stylesheet" href="../../css/general-d1f80d55.css">
-        <link rel="stylesheet" href="../../css/chrome-ae938929.css">
-        <link rel="stylesheet" href="../../css/print-9e4910d8.css" media="print">
+        <link rel="shortcut icon" href="../favicon-fbc660e6.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-d1f80d55.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../../fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="../../highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../../tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../../ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "../../";
+            const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-bac4e74b.js";
+            window.path_to_searchindex_js = "../searchindex-bac4e74b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../../toc-811e954f.js"></script>
+        <script src="../toc-811e954f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -104,7 +104,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -139,7 +139,7 @@
                     <h1 class="menu-title">CSC 110 Programming and Problem Solving</h1>
 
                     <div class="right-buttons">
-                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
@@ -173,35 +173,225 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+                        <h1 id="a2-character-sheet"><a class="header" href="#a2-character-sheet">A2: Character Sheet</a></h1>
+<p>This program assists someone in creating a character for a tabletop roleplaying
+game (TTRPG). While you don’t need to be familiar with TTRPGs to complete the
+assignment, I’ve included some <a href="./character_sheet/background.html">background</a>
+information in case you’d like to know more.</p>
+<p>When finished, your program will allow the user to input some information about
+their character, then it will print a “character sheet” to the terminal for them
+to use in a fictional TTRPG.</p>
+<p>This project involves the following topics:</p>
 <ul>
-<li><code>void</code> functions, subroutines</li>
-<li>calling a function
+<li>Calling I/O functions to interact with a user</li>
+<li>Writing expressions to perform calculations</li>
+<li>Writing and calling small functions</li>
+<li>Using if statements to decide which parts of a program to run</li>
+</ul>
+<h2 id="submission-and-grading"><a class="header" href="#submission-and-grading">Submission and Grading</a></h2>
+<p>This assignment is manually graded. See the
+<a href="./manual_grading.html">manual grading</a> page for more details about how I handle
+manual grading on assignments like this. You are allowed one submission and one
+revision.</p>
+<p>This assignment is expected to take 3-5 hours or 2-3 days (assuming you work on
+it for an hour or two each day). The deadline is set to allow for 17 days in
+keeping with the <a href="../policies/assignments.html#deadlines">deadline policy</a>.</p>
+<p>Submit this assignment on Blackboard, attaching the following files:</p>
 <ul>
-<li>function identifier (name)</li>
-<li>namespace (package name, class name)</li>
-<li>parenthesis</li>
+<li>PromptDemo.java</li>
+<li>CharacterSheet.java</li>
+</ul>
+<p>Please don’t zip them or include extra files with them.</p>
+<h2 id="aia-policy"><a class="header" href="#aia-policy">AIA Policy</a></h2>
+<p>Our usual <a href="../policies/aia.html">AIA Policy</a> applies to this assignment.</p>
+<h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
+<p>You are only allowed to use functions, methods, types, and Java language
+features that have been covered in class during weeks 1-6.</p>
+<h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
+<h3 id="1-demo-user-input-5-points"><a class="header" href="#1-demo-user-input-5-points">1. Demo: User Input (5 points)</a></h3>
+<p>Create a new program called <code>PromptDemo.java</code>. This program’s <code>main</code> function
+must prompt the user for the following information:</p>
+<ul>
+<li>The user’s name (string)</li>
+<li>The name of the character they’re creating for a TTRPG (string)</li>
+<li>The character’s level (integer)</li>
+<li>The character’s strength score, dexterity score, and constitution score
+(integers)
+<ul>
+<li>These values are called “ability scores”</li>
 </ul>
 </li>
-<li>writing a function
+</ul>
+<p>After the user enters this information, print all of the user’s answers with
+appropriate labels (for example, “Character Level: 12”). Also print the sum of
+the four integer inputs (level, strength score, dexterity score, and
+constitution score).</p>
+<p>Requirements:</p>
 <ul>
-<li><code>void</code></li>
-<li>identifier</li>
-<li>parameter list</li>
-<li>body</li>
+<li>Reads and prints all of the information as described above</li>
+</ul>
+<h3 id="2-demo-calculations-5-points"><a class="header" href="#2-demo-calculations-5-points">2. Demo: Calculations (5 points)</a></h3>
+<p>Modify <code>PromptDemo.java</code> to calculate and print (with an appropriate label) the
+following information about the character:</p>
+<ul>
+<li>Strength modifier, dexterity modifier, and constitution modifier
+<ul>
+<li>These values are called “ability modifiers”</li>
 </ul>
 </li>
+<li>Hit points</li>
+<li>Armor class</li>
+<li>Proficiency bonus</li>
+<li>Attack bonus</li>
+</ul>
+<p>Use the following formulas to calculate these properties:</p>
+<ul>
+<li>Each ability modifier is based on the corresponding ability score:
+<code>modifier = score / 2 - 5</code></li>
+<li><code>hit points = level * (4 + constitution modifier)</code></li>
+<li><code>armor class = 10 + dexterity modifier</code></li>
+<li><code>proficiency bonus = 2 + (level - 1) / 4</code></li>
+<li><code>attack bonus = proficiency bonus + strength modifier</code></li>
+</ul>
+<p>Requirements:</p>
+<ul>
+<li>Task 1 is complete</li>
+<li>Calculates each property using the correct formula</li>
+<li>Print all of the properties listed above with a suitable label</li>
+</ul>
+<h3 id="3-helper-functions-10-points"><a class="header" href="#3-helper-functions-10-points">3. Helper Functions (10 points)</a></h3>
+<p>Create a second program called <code>CharacterSheet.java</code>. Write the following
+functions in your new program:</p>
+<ul>
+<li><code>calculateModifier(int): int</code>
+<ul>
+<li>name: calculateModifier</li>
+<li>takes one <code>int</code> parameter representing an ability score</li>
+<li>returns the ability modifier calculated with the formula in Task 2</li>
+</ul>
+</li>
+<li><code>rollAbilityScore(): int</code>
+<ul>
+<li>name: rollAbilityScore</li>
+<li>no parameters</li>
+<li>rolls four six-sided dice and returns the sum of the three largest rolls
+<ul>
+<li>simulate rolling a six-sided die with the following expression:
+<code>(int)(Math.random() * 6 + 1)</code></li>
+<li>put each die roll in its own variable</li>
+<li>find the smallest of the four rolls using the <code>Math.min</code> function (only
+works on two numbers at a time, so you will need to call it more than
+once)</li>
+<li>add all four numbers, then subtract the smallest number to get your result</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>checkPointBuy(int, int, int): boolean</code>
+<ul>
+<li>name: checkPointBuy</li>
+<li>takes three <code>int</code> parameters, each representing a different ability score</li>
+<li>returns <code>true</code> if these ability scores sum to 36 or less</li>
+<li>returns <code>false</code> if these ability scores sum to greater than 36</li>
+</ul>
+</li>
+</ul>
+<p>Requirements:</p>
+<ul>
+<li>Each function is included in the program</li>
+<li>Each function has the correct return type, correct number of parameters, and
+correct parameter type(s)</li>
+<li>Each function calculates the correct result</li>
+</ul>
+<h3 id="4-character-sheet-main-function-5-points"><a class="header" href="#4-character-sheet-main-function-5-points">4. Character Sheet Main Function (5 points)</a></h3>
+<p>Add a <code>main</code> function to your character sheet program so that you can run it.
+You can use the <code>main</code> function from your demo program as a starting point. The
+character sheet program must do the following:</p>
+<ul>
+<li>Prompt the user for the same information as the demo, but also ask for the
+character’s class (a string).
+<ul>
+<li>The word <code>class</code> is a reserved word in Java (like <code>int</code> and <code>if</code>), which
+means it can’t be used as a variable name. You can use <code>clazz</code> (a common
+workaround) or add another word to make the name longer (such as
+<code>characterClass</code>).</li>
+</ul>
+</li>
+<li>Perform the same calculations as the demo, but with the adjusted formulas
+listed below for hit points and armor class.</li>
+<li>Print all of the information you printed in the demo, but try adding some
+formatting so that it looks nicer. Don’t just print each variable’s name
+followed by its value.</li>
+</ul>
+<p>Adjusted formulas: based on the character’s class, some calculations will be
+different.</p>
+<ul>
+<li>Hit points:
+<ul>
+<li>Fighter: <code>hit points = level * (10 + constitution modifier)</code></li>
+<li>Barbarian: <code>hit points = level * (12 + constitution modifier)</code></li>
+<li>Rogue: <code>hit points = level * (8 + constitution modifier)</code></li>
+<li>Any other choice: <code>hit points = level * (4 + constitution modifier)</code></li>
+</ul>
+</li>
+<li>Armor class:
+<ul>
+<li>Fighter: <code>armor class = 18</code></li>
+<li>Barbarian: <code>armor class = 10 + dexterity modifier + constitution modifier</code></li>
+<li>Rogue: <code>armor class = 13 + dexterity modifier</code></li>
+<li>Any other choice: <code>armor class = 10 + dexterity modifier</code></li>
+</ul>
+</li>
+</ul>
+<p>Requirements:</p>
+<ul>
+<li>Prompts for and displays all required information</li>
+<li>Shows some effort to make the character sheet look nice</li>
+<li>Calculates additional properties correctly, including using the correct
+formula depending on the chosen class</li>
+</ul>
+<h3 id="5-ability-score-rules-5-points"><a class="header" href="#5-ability-score-rules-5-points">5. Ability Score Rules (5 points)</a></h3>
+<p>Finally, we will make use of the helper functions from Task 3 to give the user
+different choices for generating their character’s ability scores.</p>
+<p>Instead of asking the user to input ability scores, ask them to choose either
+“point buy” or “roll” to generate their ability scores:</p>
+<ul>
+<li>If the user chooses “point buy”, then:
+<ul>
+<li>Ask the user to enter their ability scores as before, but warn them that the
+scores must add up to 36 or less</li>
+<li>Use the <code>checkPointBuy</code> function to check whether the ability scores are
+valid</li>
+<li>If they’re valid, then proceed with the rest of the program as normal</li>
+<li>If they’re not valid, then print an error message and set each ability score
+to 12 before continuing</li>
+</ul>
+</li>
+<li>If the user chooses “roll”, then set each ability score by calling the
+<code>rollAbilityScore</code> function</li>
+<li>If the user chooses something else, then set each ability score to 12</li>
+</ul>
+<p>When you calculate the ability modifiers, call the <code>calculateAbilityModifier</code>
+function instead of writing the formula in your <code>main</code> function.</p>
+<p>Requirements:</p>
+<ul>
+<li>Tasks 3 and 4 are complete</li>
+<li>Prompts user for method of generating ability scores</li>
+<li>Correctly handles the three options for generating ability scores (point buy,
+roll, and invalid input)</li>
+<li>Uses the helper functions where appropriate</li>
+<li>No variables are declared outside of functions</li>
 </ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w3c1/output.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../assignments.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w3c1/main.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../assignments/manual_grading.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -211,11 +401,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w3c1/output.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../assignments.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w3c1/main.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../assignments/manual_grading.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
@@ -235,13 +425,13 @@
         </script>
 
 
-        <script src="../../elasticlunr-ef4e11c1.min.js"></script>
-        <script src="../../mark-09e88c2c.min.js"></script>
-        <script src="../../searcher-c2a407aa.js"></script>
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
 
-        <script src="../../clipboard-1626706a.min.js"></script>
-        <script src="../../highlight-abc7f01d.js"></script>
-        <script src="../../book-a0b12cfe.js"></script>
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 

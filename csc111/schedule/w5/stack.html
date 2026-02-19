@@ -34,7 +34,7 @@
             const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../../searchindex-f7b27262.js";
+            window.path_to_searchindex_js = "../../searchindex-07fbddaf.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../../toc-06157fe0.js"></script>
@@ -174,6 +174,42 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="the-stack-and-infinite-recursion"><a class="header" href="#the-stack-and-infinite-recursion">The Stack and Infinite Recursion</a></h1>
+<p>the stack</p>
+<ul>
+<li>region of memory in a running program</li>
+<li>local variables and function calls use the stack</li>
+<li>objects live in another region called the heap</li>
+<li>calling a function creates a new “stack frame” where its parameters and local
+variables live</li>
+<li>returning from a function frees that stack frame and passes return value to
+the stack frame below it</li>
+</ul>
+<p>why this matters for recursion</p>
+<ul>
+<li>recursion involves repeated function calls, which use the stack</li>
+<li>recursion is powerful because it uses the stack to remember all the function
+calls it hasn’t finished resolving</li>
+<li>we can (and will) make our own stack data structure, and a loop can use it to
+remember unfinished tasks like a recursive function</li>
+<li>stack memory is limited, which leads to…</li>
+</ul>
+<p>stack overflow</p>
+<ul>
+<li>why can infinite loops run indefinitely?
+<ul>
+<li>each iteration finishes before the next starts</li>
+<li>memory used in previous iteration is normally free for the next to use</li>
+<li>the amount of memory needed does not change as the loop runs</li>
+</ul>
+</li>
+<li>why can’t infinite recursion run indefinitely?
+<ul>
+<li>wind-up phase consumes more stack memory with each function call</li>
+<li>memory isn’t freed until function returns (unwind phase)</li>
+<li>infinite wind-up will run out of memory before the unwind phase frees it</li>
+</ul>
+</li>
+</ul>
 
                     </main>
 

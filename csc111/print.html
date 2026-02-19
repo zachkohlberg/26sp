@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-f7b27262.js";
+            window.path_to_searchindex_js = "searchindex-07fbddaf.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-06157fe0.js"></script>
@@ -1105,8 +1105,9 @@ the deadline or part of the assignment changes after the start date, then I will
 post another Blackboard announcement explaining the changes.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="a2-monster-battle"><a class="header" href="#a2-monster-battle">A2: Monster Battle</a></h1>
-<p>This program simulates a battle between two monsters. It involves the following
-topics:</p>
+<p>This program simulates a series of battles between a hero and several monsters
+(technically the hero is also a monster, but nobody else needs to know that). It
+involves the following topics:</p>
 <ul>
 <li>Writing a class to represent a simple object (Monster)</li>
 <li>Writing code that instantiates and uses the public API of a class you wrote</li>
@@ -1137,7 +1138,7 @@ starter/example code and all code you wrote for these assignments.</li>
 </ul>
 <h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
 <p>You must use the parts of the Java API that we covered in class for File I/O and
-exception handling.</p>
+exception handling. Do not use any static variables in your program.</p>
 <h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
 <h3 id="1-monster-class-5-points"><a class="header" href="#1-monster-class-5-points">1. Monster Class (5 points)</a></h3>
 <p>Write a <code>Monster</code> class (<code>Monster.java</code>). This class must have the variables,
@@ -1248,10 +1249,10 @@ correct format</li>
 </ul>
 <h3 id="3-battle-function-5-points"><a class="header" href="#3-battle-function-5-points">3. Battle Function (5 points)</a></h3>
 <p>Add a static <code>battle</code> method to your <code>MonsterBattle</code> class that takes two
-monsters and has them take turns attacking until one is dead. Print a summary of
-each attack: state the name of the attacker, the amount of damage, and the name
-of the defender. Print both monsters after each round of attacks (a attacks b, b
-attacks a, then we print a and b).</p>
+<code>Monster</code> parameters and has them take turns attacking until one is dead. Print
+a summary of each attack: state the name of the attacker, the amount of damage,
+and the name of the defender. Print both monsters after each round of attacks (a
+attacks b, b attacks a, then we print a and b).</p>
 <p>Advice:</p>
 <ul>
 <li>Look at the example code in the lab if you’re not sure how to do this</li>
@@ -2491,8 +2492,103 @@ the call stack (next class, maybe also next week)</li>
 <p>review some of the practice exercises from the textbook</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="branching-recursion"><a class="header" href="#branching-recursion">Branching Recursion</a></h1>
+<h2 id="review-1"><a class="header" href="#review-1">Review</a></h2>
+<p>recursive algorithms require:</p>
+<ul>
+<li>a base case</li>
+<li>one or more recursive cases that
+<ul>
+<li>solve part of the problem</li>
+<li>recursively solve a <em>smaller version</em> of the problem</li>
+</ul>
+</li>
+<li>the base case to always be reached</li>
+</ul>
+<p>executing/tracing a recursive function (see
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/Trace.html">7.7.1</a>):</p>
+<ul>
+<li>wind-up phase: stacking up unfinished function calls</li>
+<li>unwinding phase: resolving each function call, passing information back to
+eventually reach the original function call</li>
+</ul>
+<p>compare to the counting example:</p>
+<ul>
+<li>wind-up: delegating counting task to other students</li>
+<li>unwind: getting other student’s answer and reporting your answer to whoever
+asked you</li>
+</ul>
+<h2 id="branching"><a class="header" href="#branching">Branching</a></h2>
+<p>what changes when we allow multiple recursive calls?</p>
+<ul>
+<li>multiple wind-up/unwind phases</li>
+<li>these normally happen sequentially, but if we imagine them in parallel we can
+see a branching tree structure rather than a simple stack of function calls</li>
+<li>this branching is what makes recursion more powerful than loops</li>
+</ul>
+<p>example problem: print <em>all</em> the files in a directory and its subdirectories</p>
+<ul>
+<li>try solving this with a loop
+<ul>
+<li>why doesn’t the loop work?</li>
+</ul>
+</li>
+<li>try solving this with recursion
+<ul>
+<li>why does recursion work?</li>
+</ul>
+</li>
+</ul>
+<p>another way to look at this: exploring a maze (this will be an assignment later)</p>
+<ul>
+<li>when you reach a branching point, you…
+<ul>
+<li>explore one path</li>
+<li>determine it’s a dead end</li>
+<li>backtrack to the branching point</li>
+<li>and repeat!</li>
+</ul>
+</li>
+<li>exploration and backtracking are just the wind-up and unwind phases from
+before</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="the-stack-and-infinite-recursion"><a class="header" href="#the-stack-and-infinite-recursion">The Stack and Infinite Recursion</a></h1>
+<p>the stack</p>
+<ul>
+<li>region of memory in a running program</li>
+<li>local variables and function calls use the stack</li>
+<li>objects live in another region called the heap</li>
+<li>calling a function creates a new “stack frame” where its parameters and local
+variables live</li>
+<li>returning from a function frees that stack frame and passes return value to
+the stack frame below it</li>
+</ul>
+<p>why this matters for recursion</p>
+<ul>
+<li>recursion involves repeated function calls, which use the stack</li>
+<li>recursion is powerful because it uses the stack to remember all the function
+calls it hasn’t finished resolving</li>
+<li>we can (and will) make our own stack data structure, and a loop can use it to
+remember unfinished tasks like a recursive function</li>
+<li>stack memory is limited, which leads to…</li>
+</ul>
+<p>stack overflow</p>
+<ul>
+<li>why can infinite loops run indefinitely?
+<ul>
+<li>each iteration finishes before the next starts</li>
+<li>memory used in previous iteration is normally free for the next to use</li>
+<li>the amount of memory needed does not change as the loop runs</li>
+</ul>
+</li>
+<li>why can’t infinite recursion run indefinitely?
+<ul>
+<li>wind-up phase consumes more stack memory with each function call</li>
+<li>memory isn’t freed until function returns (unwind phase)</li>
+<li>infinite wind-up will run out of memory before the unwind phase frees it</li>
+</ul>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-6-0224-0226"><a class="header" href="#week-6-0224-0226">Week 6 (02/24, 02/26)</a></h1>
 <h3 id="tuesday-agenda-2"><a class="header" href="#tuesday-agenda-2">Tuesday Agenda</a></h3>
