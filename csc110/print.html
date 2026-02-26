@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-f9dd523f.js";
+            window.path_to_searchindex_js = "searchindex-19bc3407.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-2383754b.js"></script>
+        <script src="toc-44e8eb6d.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -2529,6 +2529,148 @@ the number 23, then you might respond with “Your number is positive and odd.�
 </ul>
 </li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="example-programs-4"><a class="header" href="#example-programs-4">Example Programs</a></h1>
+<pre><code class="language-java">// file: Count.java
+
+// demonstrates a simple "counting loop"
+// - initialization happens before loop, creates a variable to track progress
+// - condition checks whether the counter variable from init has reached the
+//   target count
+// - update increments the counter variable; normally the last statement in
+//   loop's body
+// - task(s): whatever code we're repeating
+void main() {
+    // initialization: counter variable
+    int i = 0;
+    // condition: repeat 10 times
+    while (i &lt; 10) {
+        // task: print current repetition count
+        IO.println(i);
+
+        // update: increment counter variable
+        i = i + 1;
+    }
+}
+
+// practice exercises:
+// - from 1 to 10 instead of 0 to 9
+// - how many other ways can you make the loop count from 1 to 10?
+// - which of these is the "best" way?
+// - count down instead of up
+// - print only even numbers (count up by 2 instead of 1)
+</code></pre>
+<pre><code class="language-java">// file: Input.java
+
+void main() {
+    int x = Integer.parseInt(IO.readln("Enter a positive number: "));
+
+    // force user to enter a positive number before continuing
+    while (x &lt;= 0) {
+        // error message for user
+        IO.println("ERROR: " + x + " is not a positive number!");
+
+        // repeat the prompt
+        x = Integer.parseInt(IO.readln("Enter a positive number: "));
+    }
+
+    IO.println("Your number is " + x + ".");
+}
+
+// practice exercises
+// - what if we used a different variable inside the loop? (`int y = ...`
+//   instead of `x = ...` on line 12)
+// - what happens if we change `x = ...` to `int x = ...` on line 12?
+// - how would we ask for two positive numbers instead of just one?
+// - how would we ask for x to be between 1 and 100 (inclusive) instead of
+//   accepting any positive number?
+// - what happens if the user doesn't enter an integer? what kinds of user
+//   mistakes can we handle with this kind of loop?
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="while-loops"><a class="header" href="#while-loops">While Loops</a></h1>
+<p>just one form, just like a simple if:</p>
+<pre><code class="language-java">while (condition) {
+   // loop body
+}
+</code></pre>
+<p>a while loop will repeat a code block or a single statement until its condition
+is <code>false</code>, which carries several implications:</p>
+<ul>
+<li>unlike an if statement, a loop’s code block can execute multiple times</li>
+<li>if the condition is <code>false</code> when we reach the loop, then the body will execute
+zero times</li>
+<li>if the body does not eventually change the condition from <code>true</code> to <code>false</code>,
+then the loop will repeat indefinitely (an infinite loop)
+<ul>
+<li>you can use control + c (still control + c on macOS, not command + c) on the
+terminal to cancel a running program if you get stuck in an infinite loop</li>
+</ul>
+</li>
+</ul>
+<p>one useful pattern is a “counting loop” (see <code>Count.java</code> example)</p>
+<p>a good default template for a counting loop is:</p>
+<pre><code class="language-java">// default to starting at 0 unless you have a good reason to start at another
+// number
+int i = 0;
+
+// if the loop should repeat 25 times, then our condition would be `i &lt; 25`
+while (i &lt; _TOTAL_NUMBER_OF_REPETITIONS_) {
+    // whatever tasks the loop should repeat go here
+    // these tasks can and often should make use of your counter variable i
+
+    // increment your counter variable at the end of the loop body
+    i = i + 1;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="boolean-logic"><a class="header" href="#boolean-logic">Boolean Logic</a></h1>
+<p>boolean expressions can be negated with <code>!</code> and combined with <code>&amp;&amp;</code> and <code>||</code>:</p>
+<ul>
+<li>the <strong>not</strong> operator <code>!</code> gives the opposite of its operand, just like the <code>-</code>
+operator applied to a single number gives the opposite of that number:
+<ul>
+<li><code>!true</code> is <code>false</code></li>
+<li><code>!false</code> is <code>true</code></li>
+</ul>
+</li>
+<li>the <strong>and</strong> operator <code>&amp;&amp;</code> evaluates to <code>true</code> if and only if both operands are
+<code>true</code></li>
+<li>the <strong>or</strong> operator <code>||</code> evaluates to <code>true</code> if at least one operand is <code>true</code></li>
+</ul>
+<p>the following table shows the resulting values of every combination of boolean
+value:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th><code>a</code></th><th><code>b</code></th><th><code>!a</code></th><th><code>!b</code></th><th><code>a &amp;&amp; b</code></th><th><code>a || b</code></th></tr>
+</thead>
+<tbody>
+<tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+<tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td><code>false</code></td><td><code>true</code></td></tr>
+<tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td></tr>
+<tr><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-3"><a class="header" href="#practice-3">Practice</a></h1>
+<ol>
+<li>Test the example programs and complete the exercises at the end of those
+programs.</li>
+<li>Write a program that asks the user for two integers, <code>a</code> and <code>b</code>. Assume <code>a</code>
+is less than <code>b</code>. Print every integer from <code>a</code> (inclusive) to <code>b</code>
+(exclusive).</li>
+<li>Modify the previous program to force the user to enter a value for <code>b</code> that
+is greater than <code>a</code> before it counts from <code>a</code> to <code>b</code>.</li>
+<li>Modify the previous program to ask the user for a third number, <code>c</code>, that
+should be between <code>a</code> and <code>b</code>. If it is not, then force the user to enter
+more numbers until they provide an integer between <code>a</code> and <code>b</code>. Skip over <code>c</code>
+when printing each number from <code>a</code> to <code>b</code>.</li>
+<li>Ask the user to choose a favorite primary color (red, green, or blue). If the
+user does not choose one of those three colors, then print an error message
+and ask again until they enter a valid choice.</li>
+</ol>
 
                     </main>
 

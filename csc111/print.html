@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-faf8d903.js";
+            window.path_to_searchindex_js = "searchindex-74b97314.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-435a1f8c.js"></script>
+        <script src="toc-2864d3a4.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -2902,23 +2902,34 @@ remember unfinished tasks like a recursive function</li>
 </ul>
 <h3 id="thursday-agenda-2"><a class="header" href="#thursday-agenda-2">Thursday Agenda</a></h3>
 <ul>
-<li>attendance</li>
+<li>example: faster recursive fibonacci</li>
+<li>practice: draw fractals</li>
+<li>review ch 7 OpenDSA problems:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/RecIntro.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/RecIntro.html</a>
+<ul>
+<li>take requests first</li>
+<li>some that I like:
+<ul>
+<li>7.5.3: decimal to binary</li>
+<li>7.6.1: cannonballs</li>
+<li>7.6.3: subset sum</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>eight queens problem (probably not enough time)</li>
+<li>new assignment, A3: Maze Solver
+<ul>
+<li>due by 3/29</li>
+<li>involves recursion, more challenging than monster battle</li>
+<li>this week’s lab gets you started on it</li>
+</ul>
+</li>
 <li>homework
 <ul>
 <li>read 4.1-4.4:
 <a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalPrelim.html</a></li>
 <li>work on assignments</li>
-</ul>
-</li>
-<li>review some OpenDSA problems</li>
-<li>topics
-<ul>
-<li>example problems
-<ul>
-<li>fractals</li>
-<li>eight queens</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -3020,6 +3031,138 @@ number</li>
 <ul>
 <li>use the iterative algorithm to make a faster recursive algorithm</li>
 <li>compare them, which is faster?</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="drawing-fractals"><a class="header" href="#drawing-fractals">Drawing Fractals</a></h1>
+<p>The following program displays a window and draws to it using Java’s Swing
+library. We won’t cover Swing or how any of the graphical components work. This
+is just starter code so we can get right to drawing something.</p>
+<pre><code class="language-java">import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Drawing {
+    private JFrame frame;
+    private JPanel panel;
+
+    public Drawing() {
+        // change the drawing size here
+        final int w = 800, h = 800;
+
+        frame = new JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        panel =
+                new JPanel() {
+                    @Override
+                    public void paintComponent(Graphics g) {
+                        super.paintComponent(g);
+
+                        // you can change the drawing color here
+                        g.setColor(Color.WHITE);
+
+                        // call your fractal function here
+                        fractal(g, 0, 0, w, h);
+                    }
+                };
+        // you can change the bg color here
+        panel.setBackground(Color.BLACK);
+        panel.setPreferredSize(new Dimension(w, h));
+
+        frame.add(panel);
+        frame.pack();
+        frame.setVisible(true);
+
+        frame.setFocusable(true);
+        frame.addKeyListener(
+                new KeyAdapter() {
+                    @Override
+                    public void keyPressed(KeyEvent e) {
+                        if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+                            frame.dispatchEvent(new WindowEvent(frame, WindowEvent.WINDOW_CLOSING));
+                        }
+                    }
+                });
+    }
+
+    public static void main(String[] args) {
+        new Drawing();
+    }
+
+    // feel free to change the parameters, but don't delete the Graphics or you
+    // won't be able to draw anything!
+    public static void fractal(Graphics g, int x1, int y1, int x2, int y2) {
+        // rewrite this function to recursively draw your fractal
+        g.drawLine(x1, y1, x2, y2);
+    }
+}
+</code></pre>
+<p>Exercise:</p>
+<ul>
+<li>as a class, we’ll discuss how to draw the sierpinski triangle
+(<a href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle">https://en.wikipedia.org/wiki/Sierpi%C5%84ski_triangle</a>) and outline a
+recursive algorithm
+<ul>
+<li>there are multiple solutions, and I’ll guide us towards one where the math
+is simple (no trig)</li>
+</ul>
+</li>
+<li>as groups or individuals, you’ll implement this algorithm as a recursive
+function in the above program</li>
+</ul>
+<p>Other fractals to try:</p>
+<ul>
+<li>sierpinski carpet: <a href="https://en.wikipedia.org/wiki/Sierpi%C5%84ski_carpet">https://en.wikipedia.org/wiki/Sierpi%C5%84ski_carpet</a></li>
+<li>koch snowflake and its variations:
+<a href="https://en.wikipedia.org/wiki/Koch_snowflake">https://en.wikipedia.org/wiki/Koch_snowflake</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="eight-queens"><a class="header" href="#eight-queens">Eight Queens</a></h1>
+<p>Background:</p>
+<ul>
+<li>a chessboard is an 8x8 grid</li>
+<li>a queen “sees” (can move to and attack) spaces in the same row, column, and
+diagonals</li>
+</ul>
+<p>The below example shows a queen (Q) at r2c1 and all spaces it can attack (x)
+from r2c1:</p>
+<pre><code>+-+-+-+-+-+-+-+-+
+| |x| |x| | | | |
++-+-+-+-+-+-+-+-+
+|x|x|x| | | | | |
++-+-+-+-+-+-+-+-+
+|x|Q|x|x|x|x|x|x|
++-+-+-+-+-+-+-+-+
+|x|x|x| | | | | |
++-+-+-+-+-+-+-+-+
+| |x| |x| | | | |
++-+-+-+-+-+-+-+-+
+| |x| | |x| | | |
++-+-+-+-+-+-+-+-+
+| |x| | | |x| | |
++-+-+-+-+-+-+-+-+
+| |x| | | | |x| |
++-+-+-+-+-+-+-+-+
+</code></pre>
+<p>Eight queens problem: find a way to place eight queens on a chessboard so that
+none of the queens can attack any of the other queens.</p>
+<p>Exercise:</p>
+<ul>
+<li>design a recursive solution
+<ul>
+<li>this will be a brute-force algorithm that systematically checks every
+possible placement until it finds one that works</li>
+<li>involves “backtracking” after determining that the current placements cannot
+lead to a solution</li>
+</ul>
+</li>
+<li>implement solution as a recursive function</li>
 </ul>
 
                     </main>
