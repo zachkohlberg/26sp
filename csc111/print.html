@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-74b97314.js";
+            window.path_to_searchindex_js = "searchindex-d679bbbc.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-2864d3a4.js"></script>
@@ -1088,7 +1088,7 @@ below shows a summary of past, current, and planned assignments:</p>
 <tbody>
 <tr><td><a href="assignments/hello_world.html">A1: Hello World</a></td><td>-</td><td>-</td><td>10</td></tr>
 <tr><td><a href="#a2-monster-battle">A2: Monster Battle</a></td><td>2/17</td><td>3/8, revision due 3/22</td><td>20</td></tr>
-<tr><td><a href="#a3-maze-solver">A3: Maze</a></td><td>TBA</td><td>3/29, revision due 4/5</td><td>20</td></tr>
+<tr><td><a href="#a3-maze-solver">A3: Maze</a></td><td>2/28</td><td>3/29, revision due 4/5</td><td>20</td></tr>
 <tr><td><a href="assignments/sorting.html">A4: Sorting Experiment</a></td><td>-</td><td>-</td><td>15</td></tr>
 <tr><td><a href="assignments/ds.html">A5: Data Structure TBD</a></td><td>-</td><td>-</td><td>15</td></tr>
 <tr><td><a href="assignments/self_directed_project.html">Self-Directed Project</a></td><td>-</td><td>-</td><td>15</td></tr>
@@ -1335,9 +1335,10 @@ wrote for these assignments.</li>
 </ul>
 <h2 id="code-restrictions-1"><a class="header" href="#code-restrictions-1">Code Restrictions</a></h2>
 <p>You must use the parts of the Java API that we covered in class for File I/O and
-exception handling. Do not use any static variables in your program. Do not use
-any other parts of the Java API, especially any data structures like <code>ArrayList</code>
-or <code>Stack</code>.</p>
+exception handling. Do not use any static variables in your program unless they
+are marked <code>final</code> and store immutable data (such as primitives or <code>Strings</code>,
+not arrays). Do not use any other parts of the Java API, especially any data
+structures like <code>ArrayList</code> or <code>Stack</code>.</p>
 <h2 id="tasks-1"><a class="header" href="#tasks-1">Tasks</a></h2>
 <h3 id="1-maze-class-5-points"><a class="header" href="#1-maze-class-5-points">1. Maze Class (5 points)</a></h3>
 <blockquote class="blockquote-tag blockquote-tag-tip">
@@ -1568,6 +1569,8 @@ maze, and the coordinates should indicate where the user wants the solver to
 start. Your program should create a new maze from that file, then print the
 start coordinates and the loaded maze. If the file doesn’t exist, then print an
 error message instead.</p>
+<p>You may assume that the user always provides exactly three args and that the
+last two can be parsed as integers.</p>
 <blockquote class="blockquote-tag blockquote-tag-tip">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
 <p>You can access command line args through the main method’s <code>String[] args</code>
@@ -1584,7 +1587,107 @@ name like so:</p>
 <li>Prints the maze</li>
 </ul>
 <h2 id="task-3-recursive-solve-method-10-points"><a class="header" href="#task-3-recursive-solve-method-10-points">Task 3: Recursive Solve Method (10 points)</a></h2>
-<p>Not finished, will add this before assignment is officially announced.</p>
+<p>Add the <code>MazeConstants.java</code> file to your project before writing the solve
+method:</p>
+<pre><code class="language-java">public class MazeConstants {
+    public static final char EMPTY = ' ';
+    public static final char PATH = '.';
+    public static final char START = 'S';
+    public static final char VISITED = 'v';
+    public static final char WALL = '#';
+}
+</code></pre>
+<p>We must obey the following rules when trying to solve the maze:</p>
+<ul>
+<li>positions containing the space character <code>' '</code> are considered empty</li>
+<li>positions containing any other character are considered occupied, and we
+cannot enter them</li>
+<li>when we begin solving the maze, we will start at an empty position within the
+bounds of the maze</li>
+<li>from our current position, we are allowed to move to the adjacent north,
+south, east, or west position as long as it is empty
+<ul>
+<li>for example, we could move from (7, 3) to (7, 4), which is one cell south,
+but not to (7, 5) (two cells south) or (8, 4) (one cell diagonally
+southeast)</li>
+</ul>
+</li>
+<li>our goal is to find a path that leads outside of the maze (in other words, to
+reach a position that is out of bounds)</li>
+</ul>
+<p>You will use the following recursive algorithm to solve the maze:</p>
+<ul>
+<li><strong>input</strong>
+<ul>
+<li>a maze to solve and a starting position (x, y)</li>
+</ul>
+</li>
+<li><strong>first base case</strong>
+<ul>
+<li>condition: our starting position is out of bounds</li>
+<li>result: we’ve solved the maze (out of bounds means we’ve exited the maze)</li>
+</ul>
+</li>
+<li><strong>second base case</strong>
+<ul>
+<li>condition: our starting position isn’t empty (doesn’t contain
+<code>MazeConstants.EMPTY</code>)
+<ul>
+<li>you can use the maze’s <code>get</code> method to check whether a position is empty:
+<code>m.get(12, 27) == MazeConstants.EMPTY</code></li>
+</ul>
+</li>
+<li>result: we’ve failed to solve the maze (we’re trying to move through an
+occupied cell, which isn’t allowed)</li>
+</ul>
+</li>
+<li><strong>recursive case</strong>
+<ul>
+<li>mark our starting position as <code>MazeConstants.VISITED</code>
+<ul>
+<li>you can use the maze’s <code>set</code> method to mark a position:
+<code>m.set(MazeConstants.VISITED, 5, 11);</code></li>
+</ul>
+</li>
+<li>for each position we are allowed to move to, attempt to solve the maze
+starting at that position
+<ul>
+<li>these positions are (x - 1, y), (x + 1, y), (x, y - 1), and (x, y + 1)</li>
+</ul>
+</li>
+<li>if we succeed in solving the maze, then mark our starting position as
+<code>MazeConstants.PATH</code></li>
+</ul>
+</li>
+</ul>
+<p>You must implement this algorithm as a recursive <code>static</code> method:</p>
+<ul>
+<li>name: <code>solveMaze</code></li>
+<li>return type: <code>boolean</code> (<code>true</code> if solved and <code>false</code> if not)</li>
+<li>parameters:
+<ul>
+<li><code>m: Maze</code> is the maze to solve</li>
+<li><code>x: int</code> is the starting position’s x-coordinate</li>
+<li><code>y: int</code> is the starting position’s y-coordinate</li>
+</ul>
+</li>
+</ul>
+<p>Finally, update your <code>main</code> method to use solve maze:</p>
+<ul>
+<li>after printing the maze, solve it</li>
+<li>after solving the maze, mark the starting position as <code>MazeConstants.START</code></li>
+<li>print a message telling the user whether the maze was solved</li>
+<li>print the maze again to show the solution path (if one was found) and all the
+visited positions</li>
+</ul>
+<h3 id="requirements-2"><a class="header" href="#requirements-2">Requirements</a></h3>
+<ul>
+<li><code>solveMaze</code> implements the recursive algorithm described above</li>
+<li><code>solveMaze</code> marks a path to an exit if it solves the maze</li>
+<li><code>solveMaze</code> correctly returns whether or not it solved the maze</li>
+<li><code>main</code> calls your solver method, marks the start position, prints the maze,
+and prints whether it was solved</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="manual-grading"><a class="header" href="#manual-grading">Manual Grading</a></h1>
 <p>I did not have my test program (necessary for autograded assignments) ready in
