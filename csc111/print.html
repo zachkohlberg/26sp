@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-d679bbbc.js";
+            window.path_to_searchindex_js = "searchindex-e5397cfd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-2864d3a4.js"></script>
+        <script src="toc-d7bf9b3e.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3267,6 +3267,256 @@ lead to a solution</li>
 </li>
 <li>implement solution as a recursive function</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-7-0303-0305"><a class="header" href="#week-7-0303-0305">Week 7 (03/03, 03/05)</a></h1>
+<h3 id="tuesday-agenda-3"><a class="header" href="#tuesday-agenda-3">Tuesday Agenda</a></h3>
+<ul>
+<li>homework:
+<ul>
+<li>read 4.5-4.6:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalAsymptotic.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/AnalAsymptotic.html</a></li>
+<li>work on assignments</li>
+</ul>
+</li>
+<li>notes: algorithm analysis</li>
+<li>examples: linear and binary search</li>
+<li>notes: big-oh notation</li>
+<li>practice: measuring code</li>
+</ul>
+<h3 id="thursday-agenda-3"><a class="header" href="#thursday-agenda-3">Thursday Agenda</a></h3>
+<ul>
+<li>homework
+<ul>
+<li>read chapter 8:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/InSort.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/InSort.html</a></li>
+<li>Monster Battle due by 3/8</li>
+<li>Maze Solver due by 3/29</li>
+</ul>
+</li>
+<li>search algorithms</li>
+<li>assignment help/work time</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="search-algorithms"><a class="header" href="#search-algorithms">Search Algorithms</a></h1>
+<ul>
+<li>linear search
+<ul>
+<li>check each element starting at beginning</li>
+<li>stop when target found or end of array</li>
+</ul>
+</li>
+<li>binary search
+<ul>
+<li>requirement: array is sorted</li>
+<li>check middle element
+<ul>
+<li>if target, stop</li>
+<li>if greater than target, binary search first half of array</li>
+<li>if less than target, binary search second half of array</li>
+</ul>
+</li>
+<li>stop if the array (or section we’re searching) is empty</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="practice-guess-a-number"><a class="header" href="#practice-guess-a-number">Practice: Guess a Number</a></h1>
+<p>binary search is the optimal strategy (wins in the fewest queries) for the
+following game:</p>
+<ol>
+<li>I choose a number from 1 to 1 billion.</li>
+<li>You pick a number, and I’ll tell you whether it’s less than my number.</li>
+<li>You can either guess my number or return to step 2. You only get one guess!</li>
+</ol>
+<p>The GuessBot program below plays this game using a linear search strategy, which
+is much worse than binary search. Rewrite GuessBot to use a binary search!</p>
+<pre><code class="language-java">/**
+ * Implements an algorithm to guess a secret number. This starter version performs a linear search,
+ * but you can improve it by switching to a binary search.
+ *
+ * @author Zach Kohlberg
+ * @author YOU, after you rewrite this!
+ */
+public class GuessBot {
+    public static void main(String[] args) {
+        // choose a secret number from 1 to 1 billion
+        SecretNumber secret = new SecretNumber();
+
+        // shows what secret number will tell us before guessing
+        System.out.println("Secret number:");
+        System.out.println(secret);
+
+        // use some algorithm to figure out the number
+        int guess = findSecret(secret);
+
+        // guess the number once we've figured it out
+        secret.guessSecret(guess);
+
+        // shows whether we guessed correctly
+        // we will ALWAYS guess correctly if we correctly implemented our algorithm
+        // we want to guess correctly with the fewest possible queries
+        System.out.println("Secret number:");
+        System.out.println(secret);
+    }
+
+    static int findSecret(SecretNumber secret) {
+        // TODO: replace this inefficient linear search strategy (which takes about 500 million
+        // queries on average) with a much faster binary search
+
+        // try every possible value until we find the number
+        for (int i = SecretNumber.MIN_VALUE; i &lt;= SecretNumber.MAX_VALUE; ++i) {
+            // we started with the lowest possible value, so we've reached the secret number as soon
+            // as the secret isn't greater than our value
+            if (!secret.isGreaterThan(i)) {
+                return i;
+            }
+        }
+
+        // the secret number always exists, and we should never fail to find it if we implement our
+        // algorithm correctly
+        throw new RuntimeException(
+                "Our algorithm didn't find the secret. This means our code is wrong!");
+    }
+}
+</code></pre>
+<pre><code class="language-java">/**
+ * You don't need to read this code, and you MUST NOT edit it. All of your changes should be made to
+ * the GuessBot program. All you need to know about SecretNumber is the following:
+ *
+ * &lt;ul&gt;
+ *   &lt;li&gt;Upon creation, it chooses a secret int from 1 to 1 billion.
+ *   &lt;li&gt;You can call .isGreaterThan(x) to ask whether the secret int is greater than x.
+ *   &lt;li&gt;You can call .guessSecret(x) ONLY ONCE to guess that the secret number is x.
+ *   &lt;li&gt;It will only accept numbers from 1 to 1 billion.
+ *   &lt;li&gt;Correct usage is demonstrated by GuessBot.java.
+ * &lt;/ul&gt;
+ *
+ * &lt;p&gt;I felt like using javadoc comments in this code, which is why you see some html tags. You can
+ * use the javadoc program (included with your jdk installation) to generate a documentation website
+ * for this class.
+ *
+ * @author Zach Kohlberg
+ */
+public class SecretNumber {
+    /** Lowest number allowed. */
+    public static final int MIN_VALUE = 1;
+
+    /** Highest number allowed. */
+    public static final int MAX_VALUE = 1_000_000_000;
+
+    private static final int NULL_GUESS = MIN_VALUE - 1;
+
+    private int number;
+    private int guess;
+    private int queryCount;
+
+    public SecretNumber() {
+        number = (int) (Math.random() * MAX_VALUE) + MIN_VALUE;
+        guess = NULL_GUESS;
+        queryCount = 0;
+    }
+
+    /**
+     * Used to check whether the secret value is greater than another number. Only accepts numbers
+     * between the min and max values, and only allowed before guessing.
+     *
+     * @param n the number to compare to the secret number
+     * @return true if the secret number is greater than n and false if it is not
+     */
+    public boolean isGreaterThan(int n) {
+        if (guess != NULL_GUESS) {
+            throw new SecretNumberException("You must not query after guessing.");
+        }
+
+        if (n &lt; MIN_VALUE || n &gt; MAX_VALUE) {
+            throw new SecretNumberException(
+                    String.format(
+                            "You must only use numbers from %d to %d.", MIN_VALUE, MAX_VALUE));
+        }
+
+        ++queryCount;
+
+        return number &gt; n;
+    }
+
+    /**
+     * Used to guess the secret number. Can only be called once, and only accepts a number between
+     * the min and max value. This method should not be called until your code has narrowed the
+     * secret down to only one possibility.
+     *
+     * @param n the guess
+     * @return true if the guess is correct and false if it is not
+     */
+    public boolean guessSecret(int n) {
+        if (guess != NULL_GUESS) {
+            throw new SecretNumberException("You must not guess more than once.");
+        }
+
+        if (n &lt; MIN_VALUE || n &gt; MAX_VALUE) {
+            throw new SecretNumberException(
+                    String.format(
+                            "You must only use numbers from %d to %d.", MIN_VALUE, MAX_VALUE));
+        }
+
+        guess = n;
+
+        return number == guess;
+    }
+
+    @Override
+    public String toString() {
+        if (guess == 0) {
+            return String.format("Guess: NONE, Queries: %d, Number: SECRET", queryCount);
+        } else {
+            return String.format(
+                    "YOU %s! Guess: %d, Queries: %d, Number: %d",
+                    number == guess ? "WIN" : "LOSE", guess, queryCount, number);
+        }
+    }
+
+    public static class SecretNumberException extends RuntimeException {
+        public SecretNumberException(String msg) {
+            super(msg);
+        }
+    }
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="search-implementation"><a class="header" href="#search-implementation">Search Implementation</a></h1>
+<p>Let’s code a recursive linear search and a recursive binary search!</p>
+<p>Requirements:</p>
+<ul>
+<li>takes the following parameters:
+<ul>
+<li>array of ints</li>
+<li>start index (inclusive)</li>
+<li>end index (exclusive)</li>
+<li>x (the int to search for)</li>
+</ul>
+</li>
+<li>returns the index of x (if x is in the array) or -1 (if x isn’t in the array)</li>
+</ul>
+<p>Design:</p>
+<ul>
+<li>What are the base cases?
+<ul>
+<li>What’s the condition?</li>
+<li>What’s the result?</li>
+</ul>
+</li>
+<li>What are the recursive cases?
+<ul>
+<li>What’s the smaller problem to solve recursively?</li>
+<li>What work do we do right now?</li>
+</ul>
+</li>
+</ul>
+<p>We’ll make the design as a class, and you’ll code it on your own.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="spring-break"><a class="header" href="#spring-break">Spring Break</a></h1>
+<p>Enjoy the break!</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-8-0317-0319"><a class="header" href="#week-8-0317-0319">Week 8 (03/17, 03/19)</a></h1>
 
                     </main>
 
