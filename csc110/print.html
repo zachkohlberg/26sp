@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-19bc3407.js";
+            window.path_to_searchindex_js = "searchindex-d608addc.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-44e8eb6d.js"></script>
+        <script src="toc-8c51ec8b.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1458,13 +1458,13 @@ class meetings. Expect this section to be updated frequently.</p>
 <tr><td>4</td><td>2/10</td><td>2/12</td><td>statements, expressions, types</td><td></td><td></td></tr>
 <tr><td>5</td><td>2/17</td><td>2/19</td><td>functions</td><td></td><td></td></tr>
 <tr><td>6</td><td>2/24</td><td>2/26</td><td>booleans, if, while</td><td></td><td></td></tr>
-<tr><td>7</td><td>3/3</td><td>3/5</td><td>TBA</td><td></td><td></td></tr>
+<tr><td>7</td><td>3/3</td><td>3/5</td><td>number bases, binary, integers</td><td></td><td></td></tr>
 <tr><td>Break</td><td>3/10</td><td>3/12</td><td><strong>NO CLASS</strong></td><td></td><td></td></tr>
-<tr><td>8</td><td>3/17</td><td>3/19</td><td>TBA</td><td></td><td>midterm grades due Wednesday, 3/18</td></tr>
-<tr><td>9</td><td>3/24</td><td>3/26</td><td>TBA</td><td></td><td></td></tr>
-<tr><td>10</td><td>3/31</td><td>4/2</td><td>TBA</td><td></td><td></td></tr>
-<tr><td>11</td><td>4/7</td><td>4/9</td><td>TBA</td><td></td><td>withdraw deadline Friday, 4/10</td></tr>
-<tr><td>12</td><td>4/14</td><td>4/16</td><td>TBA</td><td></td><td></td></tr>
+<tr><td>8</td><td>3/17</td><td>3/19</td><td>floats, review/practice</td><td></td><td>midterm grades due Wednesday, 3/18</td></tr>
+<tr><td>9</td><td>3/24</td><td>3/26</td><td>types: primitives, arrays, objects</td><td></td><td></td></tr>
+<tr><td>10</td><td>3/31</td><td>4/2</td><td>control flow: for, switch, boolean logic</td><td></td><td></td></tr>
+<tr><td>11</td><td>4/7</td><td>4/9</td><td>programming with arrays</td><td></td><td>withdraw deadline Friday, 4/10</td></tr>
+<tr><td>12</td><td>4/14</td><td>4/16</td><td>exceptions and error handling</td><td></td><td></td></tr>
 <tr><td>13</td><td>4/21</td><td>4/23</td><td>TBA</td><td></td><td></td></tr>
 <tr><td>14</td><td>4/28</td><td>4/30</td><td>TBA</td><td></td><td></td></tr>
 <tr><td>Finals</td><td>5/5</td><td>5/7</td><td></td><td></td><td>final grades due Monday, 5/11</td></tr>
@@ -2671,6 +2671,164 @@ when printing each number from <code>a</code> to <code>b</code>.</li>
 user does not choose one of those three colors, then print an error message
 and ask again until they enter a valid choice.</li>
 </ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-7-0303-0305"><a class="header" href="#week-7-0303-0305">Week 7 (03/03, 03/05)</a></h1>
+<p>Topics:</p>
+<ul>
+<li>Number bases</li>
+<li>Binary and hexadecimal</li>
+<li>Arithmetic in different bases</li>
+<li>Converting to base-10 via base expansion</li>
+<li>Converting from base-10 via division</li>
+<li>Complements for representing negative numbers (ten’s complement, two’s
+complement)</li>
+<li>Integer types and overflow</li>
+</ul>
+<p>Most notes were on board (not added to repo), so check with a classmate if you
+want notes from this week’s classes.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="spring-break"><a class="header" href="#spring-break">Spring Break</a></h1>
+<p>Enjoy the break!</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="week-8-0317-0319"><a class="header" href="#week-8-0317-0319">Week 8 (03/17, 03/19)</a></h1>
+<h3 id="tuesday-agenda-3"><a class="header" href="#tuesday-agenda-3">Tuesday Agenda</a></h3>
+<ul>
+<li>assignments
+<ul>
+<li>Character Sheet revisions</li>
+<li>midterm grades</li>
+</ul>
+</li>
+<li>integer/floating-point demos: predict the output</li>
+<li>floating-point numbers</li>
+<li>integer/float review</li>
+<li>homework: watch PRNG video</li>
+</ul>
+<h3 id="thursday-agenda-3"><a class="header" href="#thursday-agenda-3">Thursday Agenda</a></h3>
+<ul>
+<li>demo: pseudorandom number generator</li>
+<li>in-class mini project: rock, paper, scissors</li>
+<li>next assignment: Dice Game</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="assignments-2"><a class="header" href="#assignments-2">Assignments</a></h1>
+<ul>
+<li>Character Sheet revisions</li>
+<li>next assignment: Dice Game
+<ul>
+<li>grading system, deadline</li>
+</ul>
+</li>
+<li>midterm grades due by 3/18
+<ul>
+<li>based on current progress, estimate of how well you’re doing</li>
+<li>does not affect final grade</li>
+<li>D/F will alert Learning Commons so they can offer support</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="floating-point-numbers"><a class="header" href="#floating-point-numbers">Floating-Point Numbers</a></h1>
+<p>Demo: predict the output of the example programs</p>
+<ul>
+<li><strong>DO NOT RUN ANY CODE</strong></li>
+<li>what does it look like the program is doing?</li>
+<li>what would be the output if it actually did that?</li>
+<li>what will it actually do and why?</li>
+<li>it’s possible to predict the first program’s output, but you will be wrong
+about the others</li>
+</ul>
+<p>how do floats work?</p>
+<ul>
+<li>scientific notation, but binary
+<ul>
+<li>significant digits</li>
+<li>exponent</li>
+</ul>
+</li>
+<li>what causes roundoff errors?</li>
+<li>example: 1/3 in base-10 with limited digits</li>
+<li><a href="https://float.exposed/">https://float.exposed/</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="review-exercises"><a class="header" href="#review-exercises">Review Exercises</a></h1>
+<p>arithmetic in binary (fixed size)</p>
+<ul>
+<li>add positive numbers</li>
+<li>use two’s complement to subtract</li>
+</ul>
+<p>conversions</p>
+<ul>
+<li>convert to decimal with base expansion</li>
+<li>convert to binary/hex with division</li>
+<li>convert between binary/hex</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="pseudorandom-number-generators-prngs"><a class="header" href="#pseudorandom-number-generators-prngs">Pseudorandom Number Generators (PRNGs)</a></h1>
+<ul>
+<li>video on several PRNG algorithms:
+<a href="https://www.youtube.com/watch?v=XDsYPXRCXAs">https://www.youtube.com/watch?v=XDsYPXRCXAs</a></li>
+<li>pseudorandom: appearing random, but not actually random
+<ul>
+<li>start with a “seed” value (just the initial number)</li>
+<li>use math and bitwise operations to get a new number</li>
+<li>this number is both the random value and the new seed</li>
+</ul>
+</li>
+<li>simple algorithm for a random double (see video):
+<ul>
+<li>use the formula <code>f(x) = (x * A + B) % C</code></li>
+<li>A, B, and C are constants, must have certain properties (see video or
+<a href="https://en.wikipedia.org/wiki/Linear_congruential_generator">https://en.wikipedia.org/wiki/Linear_congruential_generator</a>)
+<ul>
+<li>video showed a formula with A = 9301, B = 49297, and C = 233280</li>
+</ul>
+</li>
+<li>first update the seed value (<code>seed = f(seed)</code>)</li>
+<li>then return <code>seed / C</code> to scale the random number to be from 0.0 to 1.0
+<ul>
+<li>must divide by C as a double, not an int</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>the seed value
+<ul>
+<li>if your seed is always the same, then you’ll get the same “random” sequence
+every time you run the program</li>
+<li>you can initialize the seed value using a random value from another source
+or a nonrandom value that will change every time you run the program</li>
+<li>simple solution: use <code>System.currentTimeMillis()</code> and convert the returned
+<code>long</code> to an <code>int</code> (this is easy for an attacker to exploit, but we’re not
+concerned about making our example algorithm crytographically secure)</li>
+</ul>
+</li>
+</ul>
+<p>example:</p>
+<pre><code class="language-java">// declare seed outside function so it's not reset every time we call random()
+// usually not good to make "global" variables like this, but it's necessary for
+// our prng function
+int seed = 1;
+double random() {
+    seed = (seed * 9301 + 47297) % 233280;
+    return seed / 233280.0;
+}
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="rock-paper-scissors"><a class="header" href="#rock-paper-scissors">Rock, Paper, Scissors</a></h1>
+<p>class project: build a rock, paper, scissors program</p>
+<ul>
+<li>what features do we want? (computer opponent, multiple games, handle ties,
+etc.)</li>
+<li>design the program: problem decomposition</li>
+<li>each sub-problem is a function: take a function and code it
+<ul>
+<li>don’t be afraid to call the other functions, even if you don’t know how
+they’ll be written</li>
+</ul>
+</li>
+<li>combine our functions to make a working program</li>
+</ul>
 
                     </main>
 

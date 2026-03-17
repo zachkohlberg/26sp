@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-e5397cfd.js";
+            window.path_to_searchindex_js = "searchindex-d94d6f58.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-d7bf9b3e.js"></script>
+        <script src="toc-86edb2c0.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1779,10 +1779,10 @@ class meetings. Expect this section to be updated frequently.</p>
 <tr><td>6</td><td>2/24</td><td>2/26</td><td>recursion, algorithm analysis</td><td></td><td></td></tr>
 <tr><td>7</td><td>3/3</td><td>3/5</td><td>algorithm analysis, searching, sorting</td><td></td><td></td></tr>
 <tr><td>Break</td><td>3/10</td><td>3/12</td><td><strong>NO CLASS</strong></td><td></td><td></td></tr>
-<tr><td>8</td><td>3/17</td><td>3/19</td><td>algorithm analysis, searching, sorting</td><td></td><td>midterm grades due Wednesday, 3/18</td></tr>
-<tr><td>9</td><td>3/24</td><td>3/26</td><td>lists</td><td></td><td></td></tr>
-<tr><td>10</td><td>3/31</td><td>4/2</td><td>stacks</td><td></td><td></td></tr>
-<tr><td>11</td><td>4/7</td><td>4/9</td><td>queues</td><td></td><td>withdraw deadline Friday, 4/10</td></tr>
+<tr><td>8</td><td>3/17</td><td>3/19</td><td>sorting algorithms</td><td></td><td>midterm grades due Wednesday, 3/18</td></tr>
+<tr><td>9</td><td>3/24</td><td>3/26</td><td>data structures overview, array-based list</td><td></td><td></td></tr>
+<tr><td>10</td><td>3/31</td><td>4/2</td><td>linked list, stacks</td><td></td><td></td></tr>
+<tr><td>11</td><td>4/7</td><td>4/9</td><td>stacks, queues</td><td></td><td>withdraw deadline Friday, 4/10</td></tr>
 <tr><td>12</td><td>4/14</td><td>4/16</td><td>trees</td><td></td><td></td></tr>
 <tr><td>13</td><td>4/21</td><td>4/23</td><td>hashing</td><td></td><td></td></tr>
 <tr><td>14</td><td>4/28</td><td>4/30</td><td>TBA</td><td></td><td></td></tr>
@@ -3517,6 +3517,131 @@ public class SecretNumber {
 <p>Enjoy the break!</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-8-0317-0319"><a class="header" href="#week-8-0317-0319">Week 8 (03/17, 03/19)</a></h1>
+<h3 id="tuesday-agenda-4"><a class="header" href="#tuesday-agenda-4">Tuesday Agenda</a></h3>
+<ul>
+<li>assignments
+<ul>
+<li>Monster Battle revisions</li>
+<li>midterm grades</li>
+</ul>
+</li>
+<li>sorting game</li>
+<li>overview and specific sorting algorithms</li>
+<li>beat the sorting game with bubble sort</li>
+<li>how to analyze these algorithms</li>
+</ul>
+<h3 id="thursday-agenda-4"><a class="header" href="#thursday-agenda-4">Thursday Agenda</a></h3>
+<ul>
+<li>sorting algorithm pseudocode/implementations</li>
+<li>examples of measuring algorithms</li>
+<li>next assignment: Sorting Experiment</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sorting-game"><a class="header" href="#sorting-game">Sorting Game</a></h1>
+<p>Choose one person at your table to be the <strong>computer</strong>. Everyone else is a
+<strong>player</strong>.</p>
+<p>The computer’s job is to run the game and manage the cards. The computer is
+neutral and should not try to help or interfere with the players.</p>
+<p>The players have one goal: sort the cards without looking at them. The cards
+should be sorted from least to greatest when read from left to right. All
+players should sit on the same side of the table so there’s no confusion over
+the correct order.</p>
+<ol>
+<li>The computer shuffles six cards and deals them face down in a row.</li>
+<li>Choose a first player. All players are on the same team, but they will take
+turns going clockwise from the first player.</li>
+<li>On a player’s turn, they will choose two cards (don’t touch or look at them,
+just point to them so the computer knows which cards you chose).
+<ol>
+<li>The computer looks at the chosen cards without showing them to any players
+and says which of the two cards is larger. All cards are different, so
+there won’t be any ties.</li>
+<li>The player chooses to swap the cards or leave them where they are.</li>
+<li>The player chooses to end the game (proceed to step 4) or continue on to
+the next player (repeat step 3 with that player). You should not end the
+game unless you believe the cards are sorted.</li>
+</ol>
+</li>
+<li>Flip over each card. If the cards are sorted from least to greatest, then the
+players win! If not, then the players lose!</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sorting-algorithms-overview"><a class="header" href="#sorting-algorithms-overview">Sorting Algorithms Overview</a></h1>
+<p>basic operations:</p>
+<ul>
+<li>comparison</li>
+<li>swap</li>
+</ul>
+<p>less common:</p>
+<ul>
+<li>shift multiple elements instead of swapping (optimization for insertion sort)</li>
+<li>create additional arrays and copy from one array to another (mergesort)</li>
+<li>create more sophisticated data structures (heapsort, radix sort)</li>
+</ul>
+<p>many algorithms, but we’ll look at five:</p>
+<ul>
+<li>slower algorithms (n squared)
+<ul>
+<li>bubble sort</li>
+<li>selection sort</li>
+<li>insertion sort</li>
+</ul>
+</li>
+<li>faster algorithms (n log n)
+<ul>
+<li>mergesort</li>
+<li>quicksort</li>
+</ul>
+</li>
+</ul>
+<p>other algorithms worth noting</p>
+<ul>
+<li>robsort (<a href="http://www.robsort.org/">http://www.robsort.org/</a>) designed to be as inefficient as possible,
+O(n!)</li>
+<li>radix sort (<a href="https://en.wikipedia.org/wiki/Radix_sort">https://en.wikipedia.org/wiki/Radix_sort</a>) sorts without
+comparing elements and can be very efficient for certain kinds of input</li>
+</ul>
+<p>in practice</p>
+<ul>
+<li>fast algorithms work well for large input sizes, but there’s overhead that
+makes them worse for small input sizes</li>
+<li>the “slower” algorithms can outperform the fast algorithms for small input
+sizes</li>
+<li>general-purpose sorting algorithms, like those in the Java standard library,
+will use a combination of sorting algorithms (for example, quicksort on large
+input sizes and insertion sort on small input sizes)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sorting-game-strategy"><a class="header" href="#sorting-game-strategy">Sorting Game Strategy</a></h1>
+<ul>
+<li>the first time you play the game, just use whatever strategy your team can
+improvise</li>
+<li>after you play the first time, we’ll outline bubble sort and use it to win the
+sorting game more reliably</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="analyzing-sorting-algorithms"><a class="header" href="#analyzing-sorting-algorithms">Analyzing Sorting Algorithms</a></h1>
+<p>we can analyze algorithms independent of their implementation (code):</p>
+<ul>
+<li>how many swaps/comparisons does the algorithm require?</li>
+<li>how much extra memory does the algorithm require?</li>
+<li>how do these scale with the input size (big-oh and the like)</li>
+</ul>
+<p>we can also run experiments to see how they actually perform:</p>
+<ul>
+<li>record swaps and comparisons</li>
+<li>measure memory usage</li>
+<li>measure running time</li>
+</ul>
+<p>experiments (especially measuring the running time) have many additional
+variables that can be hard to control:</p>
+<ul>
+<li>different kinds of input are more expensive to compare</li>
+<li>garbage collector can have a significant and unpredictable impact on running
+time</li>
+<li>other optimizations like cpu cache and branch prediction can affect running
+time</li>
+</ul>
 
                     </main>
 
