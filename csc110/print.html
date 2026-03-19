@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-9bc0bbdc.js";
+            window.path_to_searchindex_js = "searchindex-87720e2c.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-49d7aa3d.js"></script>
@@ -2609,14 +2609,39 @@ about the others</li>
 <h1 id="review-exercises"><a class="header" href="#review-exercises">Review Exercises</a></h1>
 <p>arithmetic in binary (fixed size)</p>
 <ul>
-<li>add positive numbers</li>
-<li>use two’s complement to subtract</li>
+<li>add positive numbers
+<ul>
+<li>choose two numbers from 20 to 60</li>
+<li>convert them to binary (8-bit with as many leading zeroes as necessary)</li>
+<li>add the binary numbers</li>
+<li>use jshell to check results</li>
+</ul>
+</li>
+<li>use two’s complement to subtract
+<ul>
+<li>choose two numbers from 20 to 60</li>
+<li>convert them to binary (8-bit with as many leading zeroes as necessary)</li>
+<li>get two’s complement of one number to make it negative</li>
+<li>add the binary numbers, discarding a 9th carry bit if you get one</li>
+<li>use jshell to check your results (typecast to byte to correctly show
+negative numbers)</li>
+</ul>
+</li>
 </ul>
 <p>conversions</p>
 <ul>
 <li>convert to decimal with base expansion</li>
 <li>convert to binary/hex with division</li>
 <li>convert between binary/hex</li>
+<li>check results in jshell</li>
+</ul>
+<p>float</p>
+<ul>
+<li>represent 262,144.0 as a 32-bit float</li>
+<li>represent numbers immediately above and below 262,144.0 as 32-bit floats</li>
+<li>represent 0.01 as a 32-bit float</li>
+<li>try adding 0.01 to 262,144.0 within constraints of 32-bit floating-point
+numbers</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="pseudorandom-number-generators-prngs"><a class="header" href="#pseudorandom-number-generators-prngs">Pseudorandom Number Generators (PRNGs)</a></h1>
@@ -2671,18 +2696,32 @@ double random() {
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="rock-paper-scissors"><a class="header" href="#rock-paper-scissors">Rock, Paper, Scissors</a></h1>
-<p>class project: build a rock, paper, scissors program</p>
+<p>goal: design a larger program by breaking a problem into smaller parts</p>
+<p>program: rock, paper, scissors game played on terminal</p>
 <ul>
-<li>what features do we want? (computer opponent, multiple games, handle ties,
-etc.)</li>
-<li>design the program: problem decomposition</li>
-<li>each sub-problem is a function: take a function and code it
+<li>allow user to play against the computer</li>
+<li>computer chooses random moves (use our PRNG function for the random moves)</li>
+<li>play until one side wins</li>
+<li>allow playing again after a winner is declared</li>
+</ul>
+<p>design</p>
 <ul>
-<li>don’t be afraid to call the other functions, even if you don’t know how
-they’ll be written</li>
+<li>outline the whole program, minimal detail</li>
+<li>outline any complex tasks that appear in the previous outline</li>
+<li>repeat above until all complex tasks are outlined</li>
+</ul>
+<p>code</p>
+<ul>
+<li>turn each outline into a function</li>
+<li>homework: code one of the functions (we’ll assign functions at end of class)
+<ul>
+<li>if your function needs to call one of the other functions, <strong>DO NOT</strong> code
+the other function (just pretend it already exists and call it, like you
+would call IO.println or Math.max)</li>
+<li>we’ll be able to test these functions next class when we combine them into a
+working program</li>
 </ul>
 </li>
-<li>combine our functions to make a working program</li>
 </ul>
 
                     </main>

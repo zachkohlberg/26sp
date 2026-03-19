@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Class vs Instance - CSC 111 Data Structures and Abstractions</title>
+        <title>Sorting Algorithm Pseudocode - CSC 111 Data Structures and Abstractions</title>
 
 
         <!-- Custom HTML head -->
@@ -173,36 +173,125 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="class-vs-instance"><a class="header" href="#class-vs-instance">Class vs Instance</a></h1>
+                        <h1 id="sorting-algorithm-pseudocode"><a class="header" href="#sorting-algorithm-pseudocode">Sorting Algorithm Pseudocode</a></h1>
+<p>Note: in my pseudocode’s for loops, I use “to” to imply a value is included in
+the range and “until” to imply a value is excluded from the range. Functions
+that take a start and end parameter to specify a range will consider the start
+to be inclusive and the end to be exclusive.</p>
+<h2 id="comparison-and-swap"><a class="header" href="#comparison-and-swap">Comparison and Swap</a></h2>
+<p>Swapping elements in an array involves three steps, with a temporary variable to
+hold one of the elements:</p>
+<pre><code>swap(arr, i, j):
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+</code></pre>
+<p>You can write a <code>swap</code> method like the above pseudocode, or you can write those
+three steps whenever you need to perform a swap.</p>
+<p>Comparing numbers is easy (just use the usual inequality operators). For more
+complex types, there are a few options. The simplest for strings is to use the
+<code>compareTo</code> method
+(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html#compareTo(java.lang.String)">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html#compareTo(java.lang.String)</a>).
+Calling <code>a.compareTo(b)</code> returns an <code>int</code> indicating one of three possible
+results:</p>
 <ul>
-<li>class (static) variables and methods
-<ul>
-<li>methods invoked through class, not instances</li>
-<li>one copy of each variable per class, not per instance</li>
+<li>a negative number means <code>a</code> is “less than” <code>b</code></li>
+<li>a positive number means <code>a</code> is “greater than” <code>b</code></li>
+<li>a zero means <code>a</code> and <code>b</code> are equal</li>
 </ul>
-</li>
-<li>instance (non-static) variables and methods
-<ul>
-<li>methods invoked through instance, not class</li>
-<li>methods have instance (<code>this</code>) as implicit parameter
-<ul>
-<li>see <code>Circle.getCircumference</code> for explicit static equivalent</li>
-</ul>
-</li>
-<li>one copy of each variable per instance</li>
-</ul>
-</li>
-</ul>
+<h2 id="bubble-sort"><a class="header" href="#bubble-sort">Bubble Sort</a></h2>
+<pre><code>sort(arr):
+    for each lastSwap from arr.length - 2 to 0
+        for each i from 0 to lastSwap
+            if arr[i] &lt; arr[i + 1]
+                swap arr, i, i+1
+</code></pre>
+<h2 id="selection-sort"><a class="header" href="#selection-sort">Selection Sort</a></h2>
+<pre><code>sort(arr):
+    for each swapIndex from arr.length - 1 to 0
+        greatest = 0
+        for each i from 1 to swapIndex
+            if arr[i] &gt; arr[greatest]
+                greatest = i
+        swap arr, greatest, swapIndex
+</code></pre>
+<h2 id="insertion-sort"><a class="header" href="#insertion-sort">Insertion Sort</a></h2>
+<pre><code>sort(arr):
+    for each int index from 1 until arr.length
+        for each i from index to 1
+            if arr[i] &lt; arr[i - 1]
+                swap arr, i, i-1
+            else
+                break
+</code></pre>
+<h2 id="mergesort"><a class="header" href="#mergesort">Mergesort</a></h2>
+<pre><code>sort(arr):
+    mergeSort(arr, 0, arr.length)
+
+mergeSort(arr, start, end):
+    if end - start &lt; 2
+        return
+    mergeSort(arr, start, (end + start) / 2)
+    mergeSort(arr, (end + start) / 2, end)
+    merge(arr, start, (end + start) / 2, end)
+
+merge(arr, start, mid, end):
+    mergeArr = new array with length of (end - start)
+    index1 = start
+    end1 = mid
+    index2 = mid
+    end2 = end
+
+    for each i from 0 until mergeArr.length
+        if index1 and index2 have not reached end of their section
+            if arr[index2] &lt; arr[index1]
+                copy arr[index2] to mergeArr[i]
+                increment index2
+            else
+                copy arr[index1] to mergeArr[i]
+                increment index1
+        else if index1 has not reached end of its section
+            copy arr[index1] to mergeArr[i]
+            increment index1
+        else
+            copy arr[index2] to mergeArr[i]
+            increment index2
+
+    copy mergeArr's contents (0 to length - 1) back to arr (start to end - 1)
+</code></pre>
+<h2 id="quicksort"><a class="header" href="#quicksort">Quicksort</a></h2>
+<pre><code>sort(arr):
+    quicksort(arr, 0, arr.length)
+
+quicksort(arr, start, end):
+    if end - start &lt; 2
+        return
+    pivot = partition(arr, start, end)
+    quicksort(arr, start, pivot)
+    quicksort(arr, pivot + 1, end)
+
+partition(arr, start, end):
+    pivot = random number from start (inclusive) to end (exclusive)
+    swap arr, start, pivot
+    secondPartitionStart = start + 1
+    for each i from start + 1 until end
+        if arr[i] &lt; arr[start]
+            swap arr[i] and arr[secondPartitionStart]
+            increment secondPartitionStart
+    pivot = secondPartitionStart - 1
+    swap arr, start, pivot
+    return pivot
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../../schedule/w3c2/use.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w8/analysis.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../../schedule/w3c2.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w8/measure.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -212,11 +301,11 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../../schedule/w3c2/use.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w8/analysis.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../../schedule/w3c2.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w8/measure.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

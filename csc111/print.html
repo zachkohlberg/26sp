@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-8b70be83.js";
+            window.path_to_searchindex_js = "searchindex-a801f746.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-88e59066.js"></script>
+        <script src="toc-128ca154.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3502,6 +3502,130 @@ variables that can be hard to control:</p>
 time</li>
 <li>other optimizations like cpu cache and branch prediction can affect running
 time</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="sorting-algorithm-pseudocode"><a class="header" href="#sorting-algorithm-pseudocode">Sorting Algorithm Pseudocode</a></h1>
+<p>Note: in my pseudocode’s for loops, I use “to” to imply a value is included in
+the range and “until” to imply a value is excluded from the range. Functions
+that take a start and end parameter to specify a range will consider the start
+to be inclusive and the end to be exclusive.</p>
+<h2 id="comparison-and-swap"><a class="header" href="#comparison-and-swap">Comparison and Swap</a></h2>
+<p>Swapping elements in an array involves three steps, with a temporary variable to
+hold one of the elements:</p>
+<pre><code>swap(arr, i, j):
+    temp = arr[i]
+    arr[i] = arr[j]
+    arr[j] = temp
+</code></pre>
+<p>You can write a <code>swap</code> method like the above pseudocode, or you can write those
+three steps whenever you need to perform a swap.</p>
+<p>Comparing numbers is easy (just use the usual inequality operators). For more
+complex types, there are a few options. The simplest for strings is to use the
+<code>compareTo</code> method
+(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html#compareTo(java.lang.String)">https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html#compareTo(java.lang.String)</a>).
+Calling <code>a.compareTo(b)</code> returns an <code>int</code> indicating one of three possible
+results:</p>
+<ul>
+<li>a negative number means <code>a</code> is “less than” <code>b</code></li>
+<li>a positive number means <code>a</code> is “greater than” <code>b</code></li>
+<li>a zero means <code>a</code> and <code>b</code> are equal</li>
+</ul>
+<h2 id="bubble-sort"><a class="header" href="#bubble-sort">Bubble Sort</a></h2>
+<pre><code>sort(arr):
+    for each lastSwap from arr.length - 2 to 0
+        for each i from 0 to lastSwap
+            if arr[i] &lt; arr[i + 1]
+                swap arr, i, i+1
+</code></pre>
+<h2 id="selection-sort"><a class="header" href="#selection-sort">Selection Sort</a></h2>
+<pre><code>sort(arr):
+    for each swapIndex from arr.length - 1 to 0
+        greatest = 0
+        for each i from 1 to swapIndex
+            if arr[i] &gt; arr[greatest]
+                greatest = i
+        swap arr, greatest, swapIndex
+</code></pre>
+<h2 id="insertion-sort"><a class="header" href="#insertion-sort">Insertion Sort</a></h2>
+<pre><code>sort(arr):
+    for each int index from 1 until arr.length
+        for each i from index to 1
+            if arr[i] &lt; arr[i - 1]
+                swap arr, i, i-1
+            else
+                break
+</code></pre>
+<h2 id="mergesort"><a class="header" href="#mergesort">Mergesort</a></h2>
+<pre><code>sort(arr):
+    mergeSort(arr, 0, arr.length)
+
+mergeSort(arr, start, end):
+    if end - start &lt; 2
+        return
+    mergeSort(arr, start, (end + start) / 2)
+    mergeSort(arr, (end + start) / 2, end)
+    merge(arr, start, (end + start) / 2, end)
+
+merge(arr, start, mid, end):
+    mergeArr = new array with length of (end - start)
+    index1 = start
+    end1 = mid
+    index2 = mid
+    end2 = end
+
+    for each i from 0 until mergeArr.length
+        if index1 and index2 have not reached end of their section
+            if arr[index2] &lt; arr[index1]
+                copy arr[index2] to mergeArr[i]
+                increment index2
+            else
+                copy arr[index1] to mergeArr[i]
+                increment index1
+        else if index1 has not reached end of its section
+            copy arr[index1] to mergeArr[i]
+            increment index1
+        else
+            copy arr[index2] to mergeArr[i]
+            increment index2
+
+    copy mergeArr's contents (0 to length - 1) back to arr (start to end - 1)
+</code></pre>
+<h2 id="quicksort"><a class="header" href="#quicksort">Quicksort</a></h2>
+<pre><code>sort(arr):
+    quicksort(arr, 0, arr.length)
+
+quicksort(arr, start, end):
+    if end - start &lt; 2
+        return
+    pivot = partition(arr, start, end)
+    quicksort(arr, start, pivot)
+    quicksort(arr, pivot + 1, end)
+
+partition(arr, start, end):
+    pivot = random number from start (inclusive) to end (exclusive)
+    swap arr, start, pivot
+    secondPartitionStart = start + 1
+    for each i from start + 1 until end
+        if arr[i] &lt; arr[start]
+            swap arr[i] and arr[secondPartitionStart]
+            increment secondPartitionStart
+    pivot = secondPartitionStart - 1
+    swap arr, start, pivot
+    return pivot
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="algorithm-measurement"><a class="header" href="#algorithm-measurement">Algorithm Measurement</a></h1>
+<ul>
+<li>implement selection sort</li>
+<li>implement random array and is sorted methods</li>
+<li>look at two methods of measuring:
+<ul>
+<li>record swaps and comparisons</li>
+<li>record running time</li>
+</ul>
+</li>
+<li>just for fun, implement selection sort that finds and swaps the smallest
+element rather than the largest element</li>
 </ul>
 
                     </main>
