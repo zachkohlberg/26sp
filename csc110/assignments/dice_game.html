@@ -1,0 +1,854 @@
+<!DOCTYPE HTML>
+<html lang="en" class="navy sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>A2: Dice Game - CSC 110 Programming and Problem Solving</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="shortcut icon" href="../favicon-fbc660e6.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-d1f80d55.css">
+        <link rel="stylesheet" href="../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "navy";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bf3581a1.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0ef54851.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('navy')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">CSC 110 Programming and Problem Solving</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="a2-dice-game"><a class="header" href="#a2-dice-game">A2: Dice Game</a></h1>
+<p>This program allows the user to play a dice game similar to
+<a href="https://en.wikipedia.org/wiki/Yahtzee">Yahtzee</a>. Our game will include most of
+the scoring options that Yahtzee uses, but we’ve left out a few of the trickier
+ones. This is a single player game, so the player will just be trying to earn
+the highest possible score.</p>
+<p>This project involves the following topics:</p>
+<ul>
+<li>Breaking a larger program into many small functions</li>
+<li>Generating random numbers (you’ll implement your own LCG like the one we
+showed in class)</li>
+<li>Arrays</li>
+<li>While loops</li>
+</ul>
+<h2 id="submission"><a class="header" href="#submission">Submission</a></h2>
+<p>Submit this assignment on Blackboard, attaching the following files:</p>
+<ul>
+<li>DiceGame.java</li>
+</ul>
+<p>Please don’t zip them or include extra files with them.</p>
+<h2 id="aia-policy"><a class="header" href="#aia-policy">AIA Policy</a></h2>
+<p>Our usual <a href="../policies/aia.html">AIA Policy</a> applies to this assignment.</p>
+<h2 id="code-restrictions"><a class="header" href="#code-restrictions">Code Restrictions</a></h2>
+<p>You are only allowed to use functions, methods, types, and Java language
+features that have been covered in class during weeks 1-11.</p>
+<h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
+<h3 id="1-dice-rolling-functions-5-points"><a class="header" href="#1-dice-rolling-functions-5-points">1. Dice-Rolling Functions (5 points)</a></h3>
+<p>Create a new program called <code>DiceGame.java</code>. To start, we’re going to write some
+functions that will allow you to simulate rolling dice.</p>
+<p>Add an <code>int</code> variable named <code>seed</code> to your program. This is a “global” variable,
+and it must be placed <em>outside</em> of any functions. Only two of your functions
+will use it directly, and it lets us keep track of the state of our random
+number generator. You are not allowed to have any other global variables in your
+program except for the category names suggested in task 3. All other variables
+must be function parameters or local variables declared within functions.</p>
+<h4 id="rolldie"><a class="header" href="#rolldie"><code>rollDie</code></a></h4>
+<ul>
+<li>generates a random number from 1 to 6, simulating a die roll</li>
+<li>parameters: none</li>
+<li>return type: integer</li>
+</ul>
+<p>This is similar to the <a href="../schedule/w8/prng.html">PRNG example</a> we wrote during
+class, but with a few changes:</p>
+<ul>
+<li>use the same formula to update the seed:
+<code>seed = (seed * 9301 + 47297) % 233280</code></li>
+<li>to scale this integer to be a random number from 0 to 5, multiply by 6 and
+divide by 233280: <code>seed * 6 / 233280</code></li>
+<li>add 1 to make the range 1 to 6 instead of 0 to 5: <code>(seed * 6 / 233280) + 1</code></li>
+<li>remember to <code>return</code> the number from 1 to 6</li>
+</ul>
+<h4 id="rollall"><a class="header" href="#rollall"><code>rollAll</code></a></h4>
+<ul>
+<li>lets us roll all of the dice in an array, which we’ll do at the start of each
+round</li>
+<li>parameters: an integer array representing five dice</li>
+<li>return type: none</li>
+</ul>
+<p>This function must set each element of the array to a random number from 1 to 6.
+Each random number must be generated by calling your <code>rollDie</code> function.</p>
+<h4 id="rollsome"><a class="header" href="#rollsome"><code>rollSome</code></a></h4>
+<ul>
+<li>lets us roll some of the dice, which is used during the reroll phase before
+scoring</li>
+<li>parameters: an integer array representing five dice and a string containing
+the labels of any dice to reroll</li>
+<li>return type: none</li>
+</ul>
+<p>Each die has a label from a to e (first die is a, second is b, etc.). The
+function’s second parameter may contain any combination of these letters in any
+order. If a die’s label appears in that string, then that die must be rerolled.
+If a die’s label does not appear in that string, then that die must not be
+changed.</p>
+<p>The dice are stored in an array, which means each die has an index starting
+at 0. You can convert a die’s index to its label with the formula
+<code>(char)('a' + index)</code>. You can check whether a character <code>x</code> appears in a string
+<code>y</code> by calling its <code>indexOf</code> method: <code>y.indexOf(x)</code>. If <code>x</code> appears in the
+string, then this will evaluate to a valid index (an integer greater than or
+equal to zero). If <code>x</code> does not appear in the string, then this will evaluate to
+negative one.</p>
+<p>You can use a counting loop to check each die’s index and reroll the die if its
+label appears in the string. Here’s an outline of the whole function:</p>
+<pre><code>rollSome(dice, labels):
+    int index = 0
+    while index &lt; number of dice
+        char label = convert index to label
+        if labels.indexOf(label) isn't negative one
+            dice[index] = roll a new die
+        increase index by one
+</code></pre>
+<h4 id="testing"><a class="header" href="#testing">Testing</a></h4>
+<p>You can test this code in your main function by setting your seed variable to a
+certain value, figuring out which random numbers that seed produces, calling
+each of your functions, and printing the resulting numbers. Here’s a test using
+the seed <code>123456</code>:</p>
+<pre><code class="language-java">void main() {
+    // the seed 123456 will produce the following sequence of die rolls:
+    // 3, 1, 5, 2, 2,
+    // 5, 2, 6, 2, 5,
+    // 6, 4, 4, 2, 5
+    seed = 123456;
+
+    // an array for the rollAll and rollSome functions
+    int[] dice = new int[5];
+
+    // should print the first five values
+    // 3
+    // 1
+    // 5
+    // 2
+    // 2
+    IO.println(rollDie());
+    IO.println(rollDie());
+    IO.println(rollDie());
+    IO.println(rollDie());
+    IO.println(rollDie());
+
+    // roll all dice
+    // should print next five values: 5 2 6 2 5
+    rollAll(dice);
+    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]);
+
+    // roll first, third, and fifth dice
+    // should print: 6 2 4 2 4
+    rollSome(dice, "ace");
+    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]);
+
+    // roll first and fourth dice
+    // should print: 2 2 4 5 4
+    rollSome(dice, "ad");
+    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]);
+}
+</code></pre>
+<h3 id="2-scoring-functions-5-points"><a class="header" href="#2-scoring-functions-5-points">2. Scoring Functions (5 points)</a></h3>
+<p>Next we’ll write some functions to score the user’s dice. We’ll leave out the
+straight and full house categories (these are the hardest to score), but you’re
+free to include them if you want to spend extra time on your dice game.</p>
+<h4 id="countdice"><a class="header" href="#countdice"><code>countDice</code></a></h4>
+<ul>
+<li>tells us how many times a die value appears in our array, which is important
+for most of the score calculations</li>
+<li>parameters: an integer array representing five dice and an integer
+representing the die value we want to count</li>
+<li>return type: integer</li>
+</ul>
+<p>You should make a sum variable, then check whether each element of the array is
+equal to the value we’re counting. If it is, then increase the sum by 1. With a
+counting loop this is easy:</p>
+<pre><code>countDice(dice, value):
+    sum = 0
+    index = 0
+    while index &lt; number of dice
+        if dice[index] = value
+            increase sum
+        increase index
+    return sum
+</code></pre>
+<h4 id="countmostcommon"><a class="header" href="#countmostcommon"><code>countMostCommon</code></a></h4>
+<ul>
+<li>tells us how many times the most common value appears in our array, which is
+useful for scoring 3 of a kind, 4 of a kind, and 5 of a kind (yahtzee)</li>
+<li>parameters: an integer array representing five dice</li>
+<li>return type: integer</li>
+</ul>
+<p>This function should use a counting loop, but you’re not counting indexes in the
+array. Instead, you’re counting from 1 to 6 and checking how many times each
+value appears in the array. Your <code>countDice</code> function can take care of searching
+the array, so all you need to do is keep track of the highest count you’ve seen
+so far:</p>
+<pre><code>countMostCommon(dice):
+    count = 0
+    dieValue = 1
+    while dieValue &lt;= 6
+        count = max(count, countDice(dice, dieValue))
+        increase dieValue
+    return count
+</code></pre>
+<h4 id="sumdice"><a class="header" href="#sumdice"><code>sumDice</code></a></h4>
+<ul>
+<li>adds all the die values</li>
+<li>parameters: an integer array representing five dice</li>
+<li>return type: integer</li>
+</ul>
+<p>You just need to return the sum of the numbers in an array. You can use a
+simplified version of the loop in <code>countDice</code> to do this.</p>
+<h4 id="calculatescore"><a class="header" href="#calculatescore"><code>calculateScore</code></a></h4>
+<ul>
+<li>tells us the score for our dice in one category</li>
+<li>parameters: an integer array representing five dice and an integer
+representing the score category</li>
+<li>return type: integer</li>
+</ul>
+<p>This is where most of the work happens, but the other three functions will make
+this one a lot easier to write. There are ten score categories you need to
+handle, but six of them can be scored with the same code, so you really just
+have five cases. You may assume that the category is always a valid number or
+return 0 for invalid categories.</p>
+<p>Here are the categories and their rules:</p>
+<ul>
+<li>1, 2, 3, 4, 5, and 6: Aces, Twos, Threes, Fours, Fives, Sixes
+<ul>
+<li>score equals the sum of any dice matching the category number</li>
+<li>for example, scoring category 5 with the dice 1, 5, 6, 5, 5 would result in
+15 points, the sum of all dice showing a 5</li>
+</ul>
+</li>
+<li>7: Three of a Kind
+<ul>
+<li>if there are at least three matching dice, then the score is the sum of
+<strong>all</strong> dice</li>
+<li>if there are fewer than three matching dice, then the score is 0</li>
+</ul>
+</li>
+<li>8: Four of a Kind
+<ul>
+<li>if there are at least four matching dice, then the score is the sum of
+<strong>all</strong> dice</li>
+<li>if there are fewer than four matching dice, then the score is 0</li>
+</ul>
+</li>
+<li>9: Five of a Kind (Yahtzee)
+<ul>
+<li>if there are at least five matching dice, then the score is 50</li>
+<li>if there are fewer than five matching dice, then the score is 0</li>
+</ul>
+</li>
+<li>10: Chance
+<ul>
+<li>the score is the sum of all dice</li>
+</ul>
+</li>
+</ul>
+<p>To get started, I recommend breaking up this function with some if statements:</p>
+<pre><code>calculateScore(dice, category):
+    if category is 1 to 6
+        ...
+    else if category is 7
+        ...
+    else if category is 8
+        ...
+    else if category is 9
+        ...
+    else
+        ...
+</code></pre>
+<p>Make sure you end in an else, which represents chance. We don’t check because
+we’re assuming a valid category number. If you don’t want to make that
+assumption, then add an additional case to catch any invalid categories:</p>
+<pre><code>    (earlier cases elided)
+
+    else if category is 9
+        ...
+    else if category is 10
+        ...
+    else
+        return 0
+</code></pre>
+<p>For categories 1 to 6: return the category multiplied by
+<code>countDice(dice, category)</code>.</p>
+<p>Categories 7, 8, and 9 should all use <code>countMostCommon</code> to check whether we have
+the required number of matching dice:</p>
+<pre><code>if countMostCommon(dice) &gt; minimum (minimum depends on category)
+    return ??? points
+else
+    return 0
+</code></pre>
+<p>If you have the required number of matching dice, then you either return
+<code>sumDice(dice)</code> (three/four of a kind) or 50 (five of a kind). If not, then you
+return 0.</p>
+<p>Chance is the easiest: just return <code>sumDice(dice)</code>.</p>
+<h4 id="testing-1"><a class="header" href="#testing-1">Testing</a></h4>
+<p>You should test these functions as well. You can add the following test code to
+your main function and check the output, but feel free to add more test cases if
+you want to be thorough.</p>
+<pre><code class="language-java">void main() {
+    int[] dice1 = new int[] { 1, 1, 1, 1, 1 };
+    int[] dice2 = new int[] { 5, 6, 6, 5, 3 };
+    int[] dice3 = new int[] { 2, 3, 4, 4, 4 };
+
+    // should print
+    // 5
+    // 0
+    // 2
+    IO.println("countDice");
+    IO.println(countDice(dice1, 1));
+    IO.println(countDice(dice1, 2));
+    IO.println(countDice(dice2, 6));
+
+    // should print
+    // 5
+    // 2
+    // 3
+    IO.println("countMostCommon");
+    IO.println(countMostCommon(dice1));
+    IO.println(countMostCommon(dice2));
+    IO.println(countMostCommon(dice3));
+
+    // should print
+    // 5
+    // 30
+    // 17
+    IO.println("sumDice");
+    IO.println(sumDice(dice1));
+    IO.println(sumDice(dice2));
+    IO.println(sumDice(dice3));
+
+    // should print
+    // 5
+    // 0
+    // 5
+    // 50
+    IO.println("calculateScore p1");
+    IO.println(calculateScore(dice1, 1));
+    IO.println(calculateScore(dice1, 6));
+    IO.println(calculateScore(dice1, 7));
+    IO.println(calculateScore(dice1, 9));
+
+
+    // should print
+    // 10
+    // 3
+    // 30
+    // 0
+    // 0
+    IO.println("calculateScore p2");
+    IO.println(calculateScore(dice2, 5));
+    IO.println(calculateScore(dice2, 3));
+    IO.println(calculateScore(dice2, 10));
+    IO.println(calculateScore(dice2, 9));
+    IO.println(calculateScore(dice2, 7));
+
+
+    // should print
+    // 0
+    // 12
+    // 17
+    // 0
+    IO.println("calculateScore p3");
+    int[] dice3 = new int[] { 2, 3, 4, 4, 4 };
+    IO.println(calculateScore(dice3, 1));
+    IO.println(calculateScore(dice3, 4));
+    IO.println(calculateScore(dice3, 7));
+    IO.println(calculateScore(dice3, 8));
+
+}
+</code></pre>
+<h3 id="3-printing-functions-5-points"><a class="header" href="#3-printing-functions-5-points">3. Printing Functions (5 points)</a></h3>
+<p>Finally, you’ll need some functions to format and print information for the
+user. Once you’re done with these, you’ll be ready to make the game.</p>
+<p>Some notes about the score array:</p>
+<ul>
+<li>the user’s scores will be stored in an array of ten integers</li>
+<li>a score of -1 means a category has not been used and is still available</li>
+<li>a score of 0 or more means a category has already been used</li>
+<li>you can add the array below to your program as a global variable to make it
+easier to look up category names</li>
+</ul>
+<pre><code class="language-java">String[] categories = new String[] {
+    "Aces",
+    "Twos",
+    "Threes",
+    "Fours",
+    "Fives",
+    "Sixes",
+    "Three of a Kind",
+    "Four of a Kind",
+    "Yahtzee",
+    "Chance"
+};
+</code></pre>
+<h4 id="printdice"><a class="header" href="#printdice"><code>printDice</code></a></h4>
+<ul>
+<li>displays the dice with their labels so the user can choose which dice to
+reroll</li>
+<li>parameters: an integer array representing five dice</li>
+<li>return type: none</li>
+</ul>
+<p>This function must print each die value along with its label (labels were
+explained earlier in the <a href="#rollsome"><code>rollSome</code></a> function). The exact format is
+up to you.</p>
+<p>Here are a few examples:</p>
+<pre><code>Easy to code and easy to read:
+
+A B C D E
+1 5 4 1 4
+
+Some box shapes to make them look more like dice:
+
+ A   B   C   D   E
++-+ +-+ +-+ +-+ +-+
+|1| |5| |4| |1| |4|
++-+ +-+ +-+ +-+ +-+
+
+Much more work, but it looks cool!
+
+  A     B     C     D     E
+ ---   ---   ---   ---   ---
+|   | |o o| |o o| |   | |o o|
+| o | | o | |   | | o | |   |
+|   | |o o| |o o| |   | |o o|
+ ---   ---   ---   ---   ---
+</code></pre>
+<h4 id="printscorecard"><a class="header" href="#printscorecard"><code>printScorecard</code></a></h4>
+<ul>
+<li>displays the user’s score at the end of the game</li>
+<li>parameters: an integer array representing the user’s score in each of the ten
+categories</li>
+<li>return type: none</li>
+</ul>
+<p>This function must print the name and number of each score category followed by
+the score stored in the array (if the category was used) or a hyphen (if still
+available). Remember that the category numbers start at 1, but array indexes
+start at 0. The score for category 1, Aces, is stored at index 0.</p>
+<p>After printing every category, print the user’s total score. Remember to skip
+any available categories when calculating the total score, or you’ll get the
+wrong number. Here’s some pseudocode to help:</p>
+<pre><code>printScorecard(scores):
+    totalScore = 0
+    index = 0
+    while index &lt; number of categories
+        number = index + 1
+        name = categories[index]
+        score = scores[index]
+        if category is available
+            print "number. name: -"
+        else
+            print "number. name: scores[index]"
+            totalScore = totalScore + scores[index]
+    print "Total: totalScore"
+</code></pre>
+<h4 id="printcategories"><a class="header" href="#printcategories"><code>printCategories</code></a></h4>
+<ul>
+<li>displays the remaining score categories when the user is scoring their dice</li>
+<li>parameters: an integer array representing the user’s score in each of the ten
+categories and an integer array representing five dice</li>
+<li>return type: none</li>
+</ul>
+<p>This function must print the name and number of any <em>available</em> categories
+followed by the score the user’s dice would receive for that category. If a
+category is not available, then skip it.</p>
+<pre><code>printCategories(scores, dice):
+    index = 0
+    while index &lt; number of categories
+        if category is available
+            number = index + 1
+            name = categories[index]
+            score = calculateScore(dice)
+            print "number. name: score"
+</code></pre>
+<h4 id="testing-2"><a class="header" href="#testing-2">Testing</a></h4>
+<p>Try printing some arrays with your functions to make sure they display
+correctly.</p>
+<h3 id="4-game-structure-5-points"><a class="header" href="#4-game-structure-5-points">4. Game Structure (5 points)</a></h3>
+<p>This task will give us a usable program, but we won’t be able to play a full
+game yet. It requires you to write your real <code>main</code> function (no more test code)
+and a function that plays one round of the game.</p>
+<h4 id="round"><a class="header" href="#round"><code>round</code></a></h4>
+<ul>
+<li>plays a single round of the game</li>
+<li>parameters: an integer array representing the user’s score in each of the ten
+categories</li>
+<li>return type: none</li>
+</ul>
+<p>This function will be be missing a few parts, but we’ll add those during the
+last two tasks. For now, our function must do the following:</p>
+<ul>
+<li>create a <code>done</code> variable to control the loop
+<ul>
+<li><code>false</code> means we’re not done, and the loop should keep going</li>
+<li><code>true</code> means we’re done, and the loop can stop</li>
+</ul>
+</li>
+<li>create an array for our dice</li>
+<li>randomize the dice with <code>rollAll</code></li>
+<li>in a loop that repeats while <code>done</code> is <code>false</code> (<code>!done</code>)
+<ul>
+<li>call <code>printCategories</code> to show the remaining scoring categories</li>
+<li>call <code>printDice</code> to show the current values of the dice</li>
+<li>prompt the user for a command</li>
+<li>if the command starts with “r” or “s”, print some placeholder message (we’ll
+replace this in the next two tasks)
+<ul>
+<li>you can use <code>command.startsWith("r")</code> to check whether a string <code>command</code>
+starts with the letter r</li>
+</ul>
+</li>
+<li>for all other commands, print a message stating “invalid command”</li>
+</ul>
+</li>
+</ul>
+<p>Here’s an outline of the <code>round</code> function:</p>
+<pre><code>round(scores):
+    done = false
+    dice = new array
+    roll all dice
+    while not done
+        printCategories(scores, dice)
+        printDice(dice)
+        command = readln
+        if command starts with "r"
+            print "TODO: reroll"
+        else if command starts with "s"
+            print "TODO: score"
+        else
+            print "invalid command"
+</code></pre>
+<h4 id="main"><a class="header" href="#main"><code>main</code></a></h4>
+<p>Your main function should do the following:</p>
+<ul>
+<li>randomize your random number generator’s seed
+<ul>
+<li>as shown in class, a sufficient (but generally inadvisable) way to do this
+is <code>seed = (int)(System.currentTimeMillis() % 233280);</code></li>
+</ul>
+</li>
+<li>create a new array of ten integers for the scores</li>
+<li>in a loop that repeats ten times, call the <code>round</code> function and pass it the
+scores array</li>
+<li>after the loop, call <code>printScorecard</code></li>
+</ul>
+<h4 id="testing-3"><a class="header" href="#testing-3">Testing</a></h4>
+<p>Run your program and try entering a few commands. You should see your
+placeholder messages for commands starting with “r” or “s”, and the invalid
+message for anything else.</p>
+<h3 id="5-reroll-command-5-points"><a class="header" href="#5-reroll-command-5-points">5. Reroll Command (5 points)</a></h3>
+<p>At the beginning of your round function, make a variable to track how many times
+the user is allowed to reroll their dice. Set the variable to 2 (normal Yahtzee
+rules allow up to two rerolls per round).</p>
+<p>A reroll command consists of the letter “r”, followed by a space, followed by
+one or more letters from “a” to “e” to indicate which dice to reroll. If the
+user enters a command starting with r, then assume it is a properly-formatted
+reroll command.</p>
+<p>To implement the reroll command:</p>
+<ul>
+<li>if the user has any remaining rerolls
+<ul>
+<li>call <code>rollSome</code> and pass it the entire command string (extra characters that
+aren’t letters from a to e should have no effect on the <code>rollSome</code>
+function’s behavior)</li>
+<li>decrease the reroll variable by 1</li>
+</ul>
+</li>
+<li>if the user does not have any remaining rerolls
+<ul>
+<li>print a message telling them they can’t reroll any more dice</li>
+</ul>
+</li>
+</ul>
+<p>To summarize the changes, here’s updated pseudocode for <code>round</code>:</p>
+<pre><code>round(scores):
+    rerolls = 2
+    ...
+    while not done
+        ...
+        if command starts with "r"
+            if rerolls &gt; 0
+                rollSome(dice, command)
+                decrease rerolls
+            else
+                print warning message
+        ...
+</code></pre>
+<h4 id="testing-4"><a class="header" href="#testing-4">Testing</a></h4>
+<p>Try entering a few roll commands to make sure the correct dice are being
+rerolled and that you can’t reroll more than two times.</p>
+<h3 id="6-score-command-5-points"><a class="header" href="#6-score-command-5-points">6. Score Command (5 points)</a></h3>
+<p>A score command consists of the letter “s”, followed by a space, followed by a
+number from 1 to 10 to indicate which score category the user wants to claim
+this round. If the user enters a command starting with s, then assume it is a
+properly-formatted score command.</p>
+<p>To implement the score command:</p>
+<ul>
+<li>take a substring from the command starting at index 2 and parse it as an
+integer to get the <strong>category number</strong></li>
+<li>subtract one from the category number to get the <strong>category index</strong></li>
+<li>if the category number is not between 1 and 10 (inclusive)
+<ul>
+<li>print a message telling the user they must choose a category from 1 to 10</li>
+</ul>
+</li>
+<li>if the score at the category index is not -1
+<ul>
+<li>print a message telling the user they’ve already used that category</li>
+</ul>
+</li>
+<li>otherwise
+<ul>
+<li>calculate the score for that category</li>
+<li>assign the score to the scores array at the category index</li>
+<li>print a message confirming the name of the category and how many points were
+scored</li>
+<li>set <code>done</code> to <code>true</code> so the round can end</li>
+<li>use <code>IO.readln</code> to prompt the user to press enter to continue, which gives
+them a chance to see the score confirmation before the next round starts</li>
+</ul>
+</li>
+</ul>
+<p>To summarize the changes, here’s updated pseudocode for <code>round</code>:</p>
+<pre><code>round(scores):
+    ...
+    while not done
+        ...
+        else if command starts with "s"
+            substring = command.substring(2)
+            number = parse substring as int
+            index = number - 1
+            if number is not from 1 to 10
+                print warning message
+            else if category isn't available
+                print warning message
+            else
+                score = calculateScore(dice, number)
+                scores[index] = score
+                print confirmation message
+                done = true
+                prompt user to press enter
+        ...
+</code></pre>
+<h4 id="testing-5"><a class="header" href="#testing-5">Testing</a></h4>
+<p>You should now be able to play a full game of our simplified Yahtzee on your
+terminal. Play a game or two to make sure your program works correctly.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../assignments/character_sheet.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../schedule.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../assignments/character_sheet.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../schedule.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-c2a407aa.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
