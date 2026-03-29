@@ -34,7 +34,7 @@
             const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-bf3581a1.js";
+            window.path_to_searchindex_js = "../searchindex-dfd8f1e3.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-0ef54851.js"></script>
@@ -601,6 +601,7 @@ wrong number. Here’s some pseudocode to help:</p>
         else
             print "number. name: scores[index]"
             totalScore = totalScore + scores[index]
+        increase index
     print "Total: totalScore"
 </code></pre>
 <h4 id="printcategories"><a class="header" href="#printcategories"><code>printCategories</code></a></h4>
@@ -621,6 +622,7 @@ category is not available, then skip it.</p>
             name = categories[index]
             score = calculateScore(dice)
             print "number. name: score"
+        increase index
 </code></pre>
 <h4 id="testing-2"><a class="header" href="#testing-2">Testing</a></h4>
 <p>Try printing some arrays with your functions to make sure they display
@@ -678,6 +680,7 @@ starts with the letter r</li>
             print "TODO: score"
         else
             print "invalid command"
+        increase index
 </code></pre>
 <h4 id="main"><a class="header" href="#main"><code>main</code></a></h4>
 <p>Your main function should do the following:</p>
