@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-dfd8f1e3.js";
+            window.path_to_searchindex_js = "searchindex-2529e5e6.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-0ef54851.js"></script>
+        <script src="toc-958e2c8d.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3438,6 +3438,12 @@ would call IO.println or Math.max)</li>
 <h1 id="week-10-0331-0402"><a class="header" href="#week-10-0331-0402">Week 10 (03/31, 04/02)</a></h1>
 <h3 id="tuesday-agenda-5"><a class="header" href="#tuesday-agenda-5">Tuesday Agenda</a></h3>
 <ul>
+<li>review
+<ul>
+<li>rock, paper, scissors</li>
+<li>array functions</li>
+</ul>
+</li>
 <li>primitive types</li>
 <li>characters</li>
 <li>simple cipher</li>
@@ -3448,6 +3454,103 @@ would call IO.println or Math.max)</li>
 <li>for loops</li>
 <li>boolean logic</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="review"><a class="header" href="#review">Review</a></h1>
+<ul>
+<li>share student code</li>
+<li>feedback/alternative solutions to array functions</li>
+<li>combine rock, paper, scissors functions into program</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="primitive-types"><a class="header" href="#primitive-types">Primitive Types</a></h1>
+<ul>
+<li>primitive/value types: basic types built into the language</li>
+<li>further reading:
+<a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html</a></li>
+<li>all primitive types:
+<ul>
+<li><code>byte</code>: signed 8-bit integer</li>
+<li><code>short</code>: signed 16-bit integer</li>
+<li><code>char</code>: unsigned 16-bit integer representing a unicode character</li>
+<li><code>int</code>: signed 32-bit integer</li>
+<li><code>long</code>: signed 64-bit integer</li>
+<li><code>float</code>: single-precision (32-bit) floating-point number</li>
+<li><code>double</code>: double-precision (64-bit) floating-point number</li>
+<li><code>boolean</code>: true/false value (8-bit)</li>
+</ul>
+</li>
+<li>primitive type names are reserved words (can’t be used as identifiers) and
+start with lowercase letters</li>
+<li>non-primitive type names start with uppercase letters and are defined by
+classes (next week’s topic)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="characters"><a class="header" href="#characters">Characters</a></h1>
+<ul>
+<li>a <code>String</code> is made up of zero or more <code>char</code> values</li>
+<li>relevant methods:
+<ul>
+<li><code>s.indexOf(x)</code>: returns the index (distance from the start of the string) of
+the character <code>x</code>
+<ul>
+<li>example: <code>"abcde".indexOf('c')</code> returns <code>2</code> because the letter ‘c’ is 2
+letters after the beginning of “abcde”</li>
+</ul>
+</li>
+<li><code>s.charAt(i)</code>: returns the character at index <code>i</code>
+<ul>
+<li>example: <code>"abcde".charAt(4)</code> returns <code>'e'</code> because the letter ‘e’ is 4
+letters after the beginning of “abcde”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>useful trivia:
+<ul>
+<li>characters are encoded as integers, and we can do math with them:
+<ul>
+<li>what is <code>'c' - 'a'</code>?</li>
+<li>what is <code>'a' * 3</code>?</li>
+</ul>
+</li>
+<li>you can also cast integers to characters: <code>char x = (char)70;</code></li>
+<li>letters and digits are encoded sequentially
+<ul>
+<li>for example, <code>'b'</code> is one more than <code>'a'</code>, which you can prove with
+<code>'b' == 'a' + 1</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>demo: cipher
+<ul>
+<li>a rot13 cipher encodes and decodes messages by “rotating” them 13 spaces
+through the alphabet</li>
+<li>we can take advantage of the aforementioned trivia to code a rot13 cipher:
+<ul>
+<li>subtract <code>'a'</code> from a lowercase letter to find its index in the alphabet</li>
+<li>add 13 to shift it 13 spaces forward in the alphabet</li>
+<li>modulo by 26 to wrap any values that would go past the end of the alphabet</li>
+<li>cast back to a <code>char</code> to get the encoded letter</li>
+</ul>
+</li>
+<li>program
+<ul>
+<li>prompt user for a message</li>
+<li>convert to lowercase to simplify encoding/decoding</li>
+<li>write a counting loop that encodes and prints each letter in the message</li>
+</ul>
+</li>
+<li>you can make the cipher slightly more sophisticated by taking a rotation
+value (1 to 25) and adding that instead of 13, but decoding the message will
+require a rotation of 26 minus the encoding rotation</li>
+<li>if you find ciphers interesting and are curious about cryptography, then you
+may want to try <a href="https://www.cryptopals.com/">https://www.cryptopals.com/</a></li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="cipher"><a class="header" href="#cipher">Cipher</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-11-0407-0409"><a class="header" href="#week-11-0407-0409">Week 11 (04/07, 04/09)</a></h1>
 <h3 id="tuesday-agenda-6"><a class="header" href="#tuesday-agenda-6">Tuesday Agenda</a></h3>
