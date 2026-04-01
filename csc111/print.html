@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-61502489.js";
+            window.path_to_searchindex_js = "searchindex-9b411205.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-362b4452.js"></script>
+        <script src="toc-66d136da.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -4135,6 +4135,57 @@ list</li>
 <li>implement some operations for our ADT</li>
 <li>no <code>capacity</code> or <code>ensureCapacity</code> in this version</li>
 </ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="stack-adt"><a class="header" href="#stack-adt">Stack ADT</a></h1>
+<ul>
+<li>operations:
+<ul>
+<li>push: add an element to the top of the stack</li>
+<li>pop: remove and return the top element of the stack</li>
+<li>size: return the number of elements stored in the stack</li>
+<li>extra (convenient but unnecessary) operations:
+<ul>
+<li>peek: return the top element of the stack without removing it
+<ul>
+<li>can pop an element then push it back if there’s no peek</li>
+</ul>
+</li>
+<li>clear: remove everything from the stack
+<ul>
+<li>can pop until empty if there’s no clear</li>
+</ul>
+</li>
+<li>isEmpty: return whether the stack is empty
+<ul>
+<li>can check whether size is 0 if there’s no isEmpty</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>implementation:
+<ul>
+<li>push/pop are always O(1); best case for list’s insert and remove methods</li>
+<li>you could get most of a stack by just deleting code from our list classes</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="stack-uses"><a class="header" href="#stack-uses">Stack Uses</a></h1>
+<p>some problems we might want to solve with a stack:</p>
+<ul>
+<li>implementing the depth-first search algorithm from the maze solver assignment</li>
+<li>implementing a calculator to evaluate
+<a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation">postfix expressions</a></li>
+<li>implementing any recursive algorithm without recursive functions: you only
+need a stack and one or more loops</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="reading-homework"><a class="header" href="#reading-homework">Reading Homework</a></h1>
+<p>I remembered to include this in the schedule for once! Please read 9.1 and 9.2
+before our next class:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/Queue.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/Queue.html</a></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-11-0407-0409"><a class="header" href="#week-11-0407-0409">Week 11 (04/07, 04/09)</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>

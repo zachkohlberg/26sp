@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-2529e5e6.js";
+            window.path_to_searchindex_js = "searchindex-99427942.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-958e2c8d.js"></script>
+        <script src="toc-513ca10d.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3550,7 +3550,171 @@ may want to try <a href="https://www.cryptopals.com/">https://www.cryptopals.com
 </li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="cipher"><a class="header" href="#cipher">Cipher</a></h1>
+<h1 id="boolean-logic-1"><a class="header" href="#boolean-logic-1">Boolean Logic</a></h1>
+<ul>
+<li>short-circuiting
+<ul>
+<li><strong>or</strong> doesn’t evaluate right-hand side if left-hand side is <code>true</code></li>
+<li><strong>and</strong> doesn’t evaluate the right-hand side if left-hand side is <code>false</code></li>
+<li>allows for more concise code
+<ul>
+<li>example: check for zero before division</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>exclusive or</strong> (xor) operation
+<ul>
+<li><code>true</code> when <em>only</em> one operand is <code>true</code></li>
+</ul>
+</li>
+</ul>
+<p>updated truth table to include xor:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th><code>a</code></th><th><code>b</code></th><th><code>!a</code></th><th><code>!b</code></th><th><code>a &amp;&amp; b</code></th><th><code>a || b</code></th><th><code>a ^ b</code></th></tr>
+</thead>
+<tbody>
+<tr><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td></tr>
+<tr><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+<tr><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td></tr>
+<tr><td><code>false</code></td><td><code>false</code></td><td><code>true</code></td><td><code>true</code></td><td><code>false</code></td><td><code>false</code></td><td><code>false</code></td></tr>
+</tbody>
+</table>
+</div>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="for"><a class="header" href="#for">For</a></h1>
+<p>for loops provide a more concise syntax for counting loops:</p>
+<pre><code class="language-java">// counting while loop
+
+// initialization
+int i = 0;
+// while (condition)
+while (i &lt; 10) {
+    // instruction(s)
+    IO.println(i);
+
+    // update
+    i = i + 1;
+}
+
+// equivalent for loop
+
+// for (initialization; condition; update)
+for (int i = 0; i &lt; 10; i = i + 1) {
+    IO.println(i);
+}
+</code></pre>
+<ul>
+<li>not necessary: any while loop can be written as a for loop and vice versa</li>
+<li>expresses counting loop more concisely with all counting logic (init,
+condition, update) in one place</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="switch"><a class="header" href="#switch">Switch</a></h1>
+<p>alternative to chains of else-ifs with simple conditions:</p>
+<pre><code class="language-java">String month = IO.readln("What month is it? ");
+int m = switch (month.toLowerCase()) {
+    case "january", "jan" -&gt; 1;
+    case "february", "feb" -&gt; 2;
+    case "march", "mar" -&gt; 3;
+    case "april", "apr" -&gt; 4;
+    case "may" -&gt; 5;
+    case "june", "jun" -&gt; 6;
+    case "july", "jul" -&gt; 7;
+    case "august", "aug" -&gt; 8;
+    case "september", "sep" -&gt; 9;
+    case "october", "oct" -&gt; 10;
+    case "november", "nov" -&gt; 11;
+    case "december", "dec" -&gt; 12;
+    default -&gt; -1;
+};
+</code></pre>
+<ul>
+<li>this shows the more concise “switch expression” syntax
+<ul>
+<li><a href="https://docs.oracle.com/en/java/javase/17/language/switch-expressions-and-statements.html">https://docs.oracle.com/en/java/javase/17/language/switch-expressions-and-statements.html</a></li>
+<li><a href="https://openjdk.org/jeps/361">https://openjdk.org/jeps/361</a></li>
+</ul>
+</li>
+<li>the older switch statement is more verbose and requires a <code>break</code> to end each
+<code>case</code>:</li>
+</ul>
+<pre><code class="language-java">String month = IO.readln("What month is it? ");
+int m;
+switch (month.toLowerCase()) {
+    case "january": case "jan":
+        m = 1;
+        break;
+    case "february": case "feb":
+        m = 2;
+        break;
+    case "march": case "mar":
+        m = 3;
+        break;
+    case "april": case "apr":
+        m = 4;
+        break;
+    case "may":
+        m = 5;
+        break;
+    case "june": case "jun":
+        m = 6;
+        break;
+    case "july": case "jul":
+        m = 7;
+        break;
+    case "august": case "aug":
+        m = 8;
+        break;
+    case "september": case "sep":
+        m = 9;
+        break;
+    case "october": case "oct":
+        m = 10;
+        break;
+    case "november": case "nov":
+        m = 11;
+        break;
+    case "december": case "dec":
+        m = 12;
+        break;
+    default:
+        m = -1;
+}
+</code></pre>
+<p>equivalent else-if chain:</p>
+<pre><code class="language-java">String month = IO.readln("What month is it? ");
+int m;
+if (month.equalsIgnoreCase( "january") || month.equalsIgnoreCase( "jan")) {
+    m = 1;
+} else if (month.equalsIgnoreCase( "february") || month.equalsIgnoreCase( "feb")) {
+    m = 2;
+} else if (month.equalsIgnoreCase( "march") || month.equalsIgnoreCase( "mar")) {
+    m = 3;
+} else if (month.equalsIgnoreCase( "april") || month.equalsIgnoreCase( "apr")) {
+    m = 4;
+} else if (month.equalsIgnoreCase( "may")) {
+    m = 5;
+} else if (month.equalsIgnoreCase( "june") || month.equalsIgnoreCase( "jun")) {
+    m = 6;
+} else if (month.equalsIgnoreCase( "july") || month.equalsIgnoreCase( "jul")) {
+    m = 7;
+} else if (month.equalsIgnoreCase( "august") || month.equalsIgnoreCase( "aug")) {
+    m = 8;
+} else if (month.equalsIgnoreCase( "september") || month.equalsIgnoreCase( "sep")) {
+    m = 9;
+} else if (month.equalsIgnoreCase( "october") || month.equalsIgnoreCase( "oct")) {
+    m = 10;
+} else if (month.equalsIgnoreCase( "november") || month.equalsIgnoreCase( "nov")) {
+    m = 11;
+} else if (month.equalsIgnoreCase( "december") || month.equalsIgnoreCase( "dec")) {
+    m = 12;
+} else {
+    m = -1;
+}
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-11-0407-0409"><a class="header" href="#week-11-0407-0409">Week 11 (04/07, 04/09)</a></h1>
 <h3 id="tuesday-agenda-6"><a class="header" href="#tuesday-agenda-6">Tuesday Agenda</a></h3>
