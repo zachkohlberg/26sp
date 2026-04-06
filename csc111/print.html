@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-f3589eb0.js";
+            window.path_to_searchindex_js = "searchindex-5c169f7d.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-66d136da.js"></script>
@@ -1726,12 +1726,12 @@ public class SortTests {
         sort.sort(array, 500, 750);
         // confirm the 500-750 section of the array is sorted
         assertSorted(array, 500, 750);
-        // confirm the 500-750 section of the array contains the same elements
-        // (ignores order)
-        assertSameContents(array, original, 500, 750);
         // confirm the 0-500 and 750-1000 sections of the array were not changed
         assertUnchanged(array, original, 0, 500);
         assertUnchanged(array, original, 750, 1000);
+        // confirm the 500-750 section of the array contains the same elements
+        // (ignores order)
+        assertSameContents(array, original, 500, 750);
 
         System.out.printf("%s passed.\n", name);
     }
@@ -1782,7 +1782,7 @@ public class SortTests {
 }
 </code></pre>
 <h2 id="tasks-2"><a class="header" href="#tasks-2">Tasks</a></h2>
-<h3 id="task-1-bubble-selection-and-insertion-sort"><a class="header" href="#task-1-bubble-selection-and-insertion-sort">Task 1: Bubble, Selection, and Insertion Sort</a></h3>
+<h3 id="task-1-bubble-selection-and-insertion-sort-5-points"><a class="header" href="#task-1-bubble-selection-and-insertion-sort-5-points">Task 1: Bubble, Selection, and Insertion Sort (5 points)</a></h3>
 <p>Write a <code>BubbleSort</code>, <code>SelectionSort</code>, and <code>InsertionSort</code> class. Each class
 must have the variables, and methods described below. You should not have any
 other instance variables or static variables.</p>

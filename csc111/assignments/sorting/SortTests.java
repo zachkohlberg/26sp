@@ -40,12 +40,12 @@ public class SortTests {
         sort.sort(array, 500, 750);
         // confirm the 500-750 section of the array is sorted
         assertSorted(array, 500, 750);
-        // confirm the 500-750 section of the array contains the same elements
-        // (ignores order)
-        assertSameContents(array, original, 500, 750);
         // confirm the 0-500 and 750-1000 sections of the array were not changed
         assertUnchanged(array, original, 0, 500);
         assertUnchanged(array, original, 750, 1000);
+        // confirm the 500-750 section of the array contains the same elements
+        // (ignores order)
+        assertSameContents(array, original, 500, 750);
 
         System.out.printf("%s passed.\n", name);
     }
