@@ -26,7 +26,7 @@ public class SortTests {
     // exception if your sorting algorithm doesn't pass the test.
     public static void test(String name, Sort sort) {
         // sort an entire array
-        int[] array = SortHelper.randomArray(1000, 1, 100);
+        int[] array = SortHelper.randomArray(1000);
         int[] original = SortHelper.copy(array);
         sort.sort(array, 0, 1000);
         // confirm the array is sorted
@@ -35,7 +35,7 @@ public class SortTests {
         assertSameContents(array, original, 0, 1000);
 
         // sort part of an array
-        array = SortHelper.randomArray(1000, 1, 100);
+        array = SortHelper.randomArray(1000);
         original = SortHelper.copy(array);
         sort.sort(array, 500, 750);
         // confirm the 500-750 section of the array is sorted
@@ -54,7 +54,10 @@ public class SortTests {
     public static void assertSorted(int[] array, int start, int end) {
         for (int i = start + 1; i < end; i++) {
             if (array[i - 1] > array[i]) {
-                throw new RuntimeException(String.format("array[%d] (%d) is greater than array[%d] (%d)", i - 1, array[i - 1], i, array[i]));
+                throw new RuntimeException(
+                        String.format(
+                                "array[%d] (%d) is greater than array[%d] (%d)",
+                                i - 1, array[i - 1], i, array[i]));
             }
         }
     }
@@ -64,7 +67,10 @@ public class SortTests {
     public static void assertUnchanged(int[] array, int[] original, int start, int end) {
         for (int i = start; i < end; i++) {
             if (array[i] != original[i]) {
-                throw new RuntimeException(String.format("array[%d] (%d) is not equal to original[%d] (%d)", i, array[i], i, original[i]));
+                throw new RuntimeException(
+                        String.format(
+                                "array[%d] (%d) is not equal to original[%d] (%d)",
+                                i, array[i], i, original[i]));
             }
         }
     }

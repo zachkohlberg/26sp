@@ -34,7 +34,7 @@
             const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-9b411205.js";
+            window.path_to_searchindex_js = "../searchindex-f3589eb0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-66d136da.js"></script>
@@ -278,7 +278,7 @@ public class SortTests {
     // exception if your sorting algorithm doesn't pass the test.
     public static void test(String name, Sort sort) {
         // sort an entire array
-        int[] array = SortHelper.randomArray(1000, 1, 100);
+        int[] array = SortHelper.randomArray(1000);
         int[] original = SortHelper.copy(array);
         sort.sort(array, 0, 1000);
         // confirm the array is sorted
@@ -287,7 +287,7 @@ public class SortTests {
         assertSameContents(array, original, 0, 1000);
 
         // sort part of an array
-        array = SortHelper.randomArray(1000, 1, 100);
+        array = SortHelper.randomArray(1000);
         original = SortHelper.copy(array);
         sort.sort(array, 500, 750);
         // confirm the 500-750 section of the array is sorted
@@ -306,7 +306,10 @@ public class SortTests {
     public static void assertSorted(int[] array, int start, int end) {
         for (int i = start + 1; i &lt; end; i++) {
             if (array[i - 1] &gt; array[i]) {
-                throw new RuntimeException(String.format("array[%d] (%d) is greater than array[%d] (%d)", i - 1, array[i - 1], i, array[i]));
+                throw new RuntimeException(
+                        String.format(
+                                "array[%d] (%d) is greater than array[%d] (%d)",
+                                i - 1, array[i - 1], i, array[i]));
             }
         }
     }
@@ -316,7 +319,10 @@ public class SortTests {
     public static void assertUnchanged(int[] array, int[] original, int start, int end) {
         for (int i = start; i &lt; end; i++) {
             if (array[i] != original[i]) {
-                throw new RuntimeException(String.format("array[%d] (%d) is not equal to original[%d] (%d)", i, array[i], i, original[i]));
+                throw new RuntimeException(
+                        String.format(
+                                "array[%d] (%d) is not equal to original[%d] (%d)",
+                                i, array[i], i, original[i]));
             }
         }
     }
@@ -366,11 +372,37 @@ using the appropriate algorithm</li>
 </ul>
 </li>
 </ul>
-<blockquote class="blockquote-tag blockquote-tag-tip">
-<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M8 1.5c-2.363 0-4 1.69-4 3.75 0 .984.424 1.625.984 2.304l.214.253c.223.264.47.556.673.848.284.411.537.896.621 1.49a.75.75 0 0 1-1.484.211c-.04-.282-.163-.547-.37-.847a8.456 8.456 0 0 0-.542-.68c-.084-.1-.173-.205-.268-.32C3.201 7.75 2.5 6.766 2.5 5.25 2.5 2.31 4.863 0 8 0s5.5 2.31 5.5 5.25c0 1.516-.701 2.5-1.328 3.259-.095.115-.184.22-.268.319-.207.245-.383.453-.541.681-.208.3-.33.565-.37.847a.751.751 0 0 1-1.485-.212c.084-.593.337-1.078.621-1.489.203-.292.45-.584.673-.848.075-.088.147-.173.213-.253.561-.679.985-1.32.985-2.304 0-2.06-1.637-3.75-4-3.75ZM5.75 12h4.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5ZM6 15.25a.75.75 0 0 1 .75-.75h2.5a.75.75 0 0 1 0 1.5h-2.5a.75.75 0 0 1-.75-.75Z"></path></svg>Tip</p>
-<p>Refer to the <a href="../schedule/w8/pseudo.html">pseudocode given in week 8</a>.</p>
+<h4 id="pseudocode"><a class="header" href="#pseudocode">Pseudocode</a></h4>
+<blockquote class="blockquote-tag blockquote-tag-note">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
+<p>In my pseudocode’s for loops, I use “to” to imply a value is included in a
+range and “until” to imply a value is excluded from the range. Functions that
+take a start and end parameter to specify a range will consider the start to
+be inclusive and the end to be exclusive.</p>
 </blockquote>
-<p>Requirements</p>
+<pre><code>bubbleSort(array, start, end):
+    for each lastSwapIndex from end - 2 until start
+        for each i from start to lastSwapIndex
+            if array[i] &gt; array[i + 1]
+                swap array, i, i+1
+
+selectionSort(array, start, end):
+    for each swapIndex from end - 1 to start
+        greatestElementIndex = start
+        for each i from start + 1 to swapIndex
+            if array[i] &gt; array[greatestElementIndex]
+                greatestElementIndex = i
+        swap array, greatestElementIndex, swapIndex
+
+insertionSort(array, start, end):
+    for each sortedEnd from start + 1 until end
+        for each i from sortedEnd until start
+            if array[i] &lt; array[i - 1]
+                swap array, i, i-1
+            else
+                break
+</code></pre>
+<h4 id="requirements"><a class="header" href="#requirements">Requirements</a></h4>
 <ul>
 <li>Each sorting algorithm must pass the <code>SortTests</code> test. I will not give
 feedback on algorithms that don’t compile with and pass these tests.</li>
@@ -381,14 +413,70 @@ differences in your comments and explain why you made the changes.</li>
 any full swaps, then I still want you to count shifting an element as a swap
 for the sake of simplicity.</li>
 </ul>
-<h2 id="task-2-mergesort-5-points"><a class="header" href="#task-2-mergesort-5-points">Task 2: Mergesort (5 points)</a></h2>
+<h3 id="task-2-mergesort-5-points"><a class="header" href="#task-2-mergesort-5-points">Task 2: Mergesort (5 points)</a></h3>
 <p>Implement a mergesort algorithm (<code>Mergesort.java</code>). Same requirements as Task 1,
 but I want you to count copying an element from one array to another as a swap.
 This is less work than a swap (1 assignment rather than 3), but it’s a similar
 operation and I don’t want to complicate our data by tracking a third operation.</p>
-<h2 id="task-3-quicksort-5-points"><a class="header" href="#task-3-quicksort-5-points">Task 3: Quicksort (5 points)</a></h2>
+<h4 id="pseudocode-1"><a class="header" href="#pseudocode-1">Pseudocode</a></h4>
+<pre><code>mergesort(array, start, end):
+    if end - start &lt; 2
+        return
+    sort(array, start, (end + start) / 2)
+    sort(array, (end + start) / 2, end)
+    merge(array, start, end)
+
+merge(array, start, end):
+    mergeArray = new array with length of (end - start)
+    mid = (start + end) / 2
+    index1 = start
+    end1 = mid
+    index2 = mid
+    end2 = end
+
+    for each i from 0 until mergeArray.length
+        if index1 &lt; end1 and index2 &lt; end2
+            if array[index2] &lt; array[index1]
+                copy array[index2] to mergeArray[i] (counts as a swap)
+                increment index2
+            else
+                copy array[index1] to mergeArray[i] (counts as a swap)
+                increment index1
+        else if index1 &lt; end1
+            copy array[index1] to mergeArray[i] (counts as a swap)
+            increment index1
+        else
+            copy array[index2] to mergeArray[i] (counts as a swap)
+            increment index2
+
+    for each i from 0 until mergeArray.length
+        copy mergeArray[i] to array[start + i] (counts as a swap)
+</code></pre>
+<h3 id="task-3-quicksort-5-points"><a class="header" href="#task-3-quicksort-5-points">Task 3: Quicksort (5 points)</a></h3>
 <p>Implement a quicksort algorithm (<code>Quicksort.java</code>). Same requirements as Task 1.</p>
-<h2 id="task-4-experiment-5-points"><a class="header" href="#task-4-experiment-5-points">Task 4: Experiment (5 points)</a></h2>
+<h4 id="pseudocode-2"><a class="header" href="#pseudocode-2">Pseudocode</a></h4>
+<pre><code>quicksort(array, start, end):
+    if end - start &lt; 2
+        return
+    pivot = partition(array, start, end)
+    quicksort(array, start, pivot)
+    quicksort(array, pivot + 1, end)
+
+partition(array, start, end):
+    pivot = random number from start (inclusive) to end (exclusive)
+    swap array, start, pivot
+
+    secondPartitionStart = start + 1
+    for each i from start + 1 until end
+        if array[i] &lt; array[start]
+            swap array, i, secondPartitionStart
+            increment secondPartitionStart
+
+    pivot = secondPartitionStart - 1
+    swap array, start, pivot
+    return pivot
+</code></pre>
+<h3 id="task-4-experiment-5-points"><a class="header" href="#task-4-experiment-5-points">Task 4: Experiment (5 points)</a></h3>
 <p>Write a program named <code>SortingExperiment.java</code> that does the following:</p>
 <ul>
 <li>Choose an arbitrary number as a seed and set the seed in <code>SortHelper</code>. This
