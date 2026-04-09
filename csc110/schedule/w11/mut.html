@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Compact Source Files - CSC 110 Programming and Problem Solving</title>
+        <title>Mutability - CSC 110 Programming and Problem Solving</title>
 
 
         <!-- Custom HTML head -->
@@ -12,32 +12,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="theme-color" content="#ffffff">
 
-        <link rel="shortcut icon" href="../favicon-fbc660e6.png">
-        <link rel="stylesheet" href="../css/variables-8adf115d.css">
-        <link rel="stylesheet" href="../css/general-d1f80d55.css">
-        <link rel="stylesheet" href="../css/chrome-ae938929.css">
-        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+        <link rel="shortcut icon" href="../../favicon-fbc660e6.png">
+        <link rel="stylesheet" href="../../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../../css/general-d1f80d55.css">
+        <link rel="stylesheet" href="../../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../../css/print-9e4910d8.css" media="print">
 
         <!-- Fonts -->
-        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+        <link rel="stylesheet" href="../../fonts/fonts-9644e21d.css">
 
         <!-- Highlight.js Stylesheets -->
-        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
-        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
-        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../../ayu-highlight-3fdfc3ac.css">
 
         <!-- Custom theme stylesheets -->
 
 
         <!-- Provide site root and default themes to javascript -->
         <script>
-            const path_to_root = "../";
+            const path_to_root = "../../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-f657784f.js";
+            window.path_to_searchindex_js = "../../searchindex-f657784f.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-956f9d98.js"></script>
+        <script src="../../toc-956f9d98.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -104,7 +104,7 @@
             <!-- populated by js -->
             <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
             <noscript>
-                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
             </noscript>
             <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
                 <div class="sidebar-resize-indicator"></div>
@@ -139,7 +139,7 @@
                     <h1 class="menu-title">CSC 110 Programming and Problem Solving</h1>
 
                     <div class="right-buttons">
-                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
                             <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
                         </a>
 
@@ -173,91 +173,30 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="compact-source-files"><a class="header" href="#compact-source-files">Compact Source Files</a></h1>
-<p>This is for students with previous Java experience who want an explanation of
-how our programs differ from what they’re used to writing. It may also be useful
-if you want to convert examples you find elsewhere to the format we’re using.</p>
-<p>In this class, most of our programs will be written as <strong>Compact Source Files</strong>.
-You can read this <a href="https://openjdk.org/jeps/512">JDK Enhancement Proposal</a> if
-you want the details. For now, I’ll summarize the main points:</p>
+                        <h1 id="mutability"><a class="header" href="#mutability">Mutability</a></h1>
 <ul>
-<li>Java normally requires a lot of
-<a href="https://en.wikipedia.org/wiki/Boilerplate_code">boilerplate</a> to write even
-the simplest program. That boilerplate code involves Java features that a new
-programmer won’t be equipped to understand.</li>
-<li>Basic input and output (I/O) operations, which most of our programs will need,
-also require features that are difficult for new programmers to understand.</li>
-<li>A compact source file is a more concise way of writing a Java program. It
-removes most of the boilerplate from small programs and provides a few simple
-I/O functions. This lets us focus on the actual program we’re trying to write
-and introduce new concepts when we’re ready for them.</li>
+<li>mutable: changeable</li>
+<li>immutable: unchangeable</li>
+<li>some reference types are immutable (String)</li>
+<li>some reference types are mutable (arrays)</li>
+<li>shared references to mutable objects are useful but dangerous
+<ul>
+<li>each variable refers to <em>the same object</em></li>
+<li>changing the object through either variable will affect both because <em>there’s only one object</em></li>
+<li>if you do this by accident, then you will introduce bugs</li>
 </ul>
-<p>The rest of this guide will cover how to convert standard Java programs into
-compact Java programs.</p>
-<h2 id="1-remove-the-class"><a class="header" href="#1-remove-the-class">1. Remove the Class</a></h2>
-<p>Standard Java programs will have most of their code inside of a class:</p>
-<pre><code class="language-java">public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello World");
-    }
-}
-</code></pre>
-<p>We don’t need the class:</p>
-<pre><code class="language-java">public static void main(String[] args) {
-    System.out.println("Hello World");
-}
-</code></pre>
-<h2 id="2-simplify-main"><a class="header" href="#2-simplify-main">2. Simplify Main</a></h2>
-<p>The <code>main</code> function is more complex in a standard Java program:</p>
-<pre><code class="language-java">public static void main(String[] args) {
-    System.out.println("Hello World");
-}
-</code></pre>
-<p>All we need is <code>void main()</code>:</p>
-<pre><code class="language-java">void main() {
-    System.out.println("Hello World");
-}
-</code></pre>
-<h2 id="3-output"><a class="header" href="#3-output">3. Output</a></h2>
-<p>Standard Java programs use <code>System.out.</code> or <code>System.err.</code> followed by <code>println</code>,
-<code>print</code>, or <code>printf</code> for output:</p>
-<pre><code class="language-java">System.out.println("Regular output.");
-System.err.println("Error message.");
-</code></pre>
-<p>We use <code>IO.println</code> and <code>IO.print</code> for output:</p>
-<pre><code class="language-java">IO.println("Regular output.");
-IO.println("Error message.");
-</code></pre>
-<p>To finish converting the earlier Hello World example:</p>
-<pre><code class="language-java">void main() {
-    IO.println("Hello World");
-}
-</code></pre>
-<h2 id="4-input"><a class="header" href="#4-input">4. Input</a></h2>
-<p>Standard Java programs need to create a special object (such as a scanner or
-buffered reader) to read user input:</p>
-<pre><code class="language-java">java.util.Scanner stdin = new java.util.Scanner(System.in);
-
-System.out.print("Please enter some input: ");
-var input = stdin.nextLine();
-
-System.out.println("Please enter more input: ");
-var input2 = stdin.nextLine();
-</code></pre>
-<p>We use <code>IO.readln</code> with an optional prompt message:</p>
-<pre><code class="language-java">var input = IO.readln("Please enter some input: ");
-var input2 = IO.readln("Please enter more input: ");
-</code></pre>
+</li>
+</ul>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../resources/terminal.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../../schedule/w11/ref.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../assignments.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../../schedule/w12.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -267,11 +206,11 @@ var input2 = IO.readln("Please enter more input: ");
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../resources/terminal.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../../schedule/w11/ref.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../assignments.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../../schedule/w12.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
@@ -291,13 +230,13 @@ var input2 = IO.readln("Please enter more input: ");
         </script>
 
 
-        <script src="../elasticlunr-ef4e11c1.min.js"></script>
-        <script src="../mark-09e88c2c.min.js"></script>
-        <script src="../searcher-c2a407aa.js"></script>
+        <script src="../../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../../mark-09e88c2c.min.js"></script>
+        <script src="../../searcher-c2a407aa.js"></script>
 
-        <script src="../clipboard-1626706a.min.js"></script>
-        <script src="../highlight-abc7f01d.js"></script>
-        <script src="../book-a0b12cfe.js"></script>
+        <script src="../../clipboard-1626706a.min.js"></script>
+        <script src="../../highlight-abc7f01d.js"></script>
+        <script src="../../book-a0b12cfe.js"></script>
 
         <!-- Custom JS scripts -->
 

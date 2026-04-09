@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-66d27c53.js";
+            window.path_to_searchindex_js = "searchindex-f657784f.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-513ca10d.js"></script>
+        <script src="toc-956f9d98.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3721,14 +3721,102 @@ if (month.equalsIgnoreCase( "january") || month.equalsIgnoreCase( "jan")) {
 <ul>
 <li>for, switch, and boolean logic (from last week)</li>
 <li>for loops and arrays</li>
-<li>program args</li>
 </ul>
 <h3 id="thursday-agenda-6"><a class="header" href="#thursday-agenda-6">Thursday Agenda</a></h3>
 <ul>
+<li>standard Java intro</li>
+<li>program args</li>
 <li>objects</li>
 <li>value vs reference</li>
 <li>mutability</li>
-<li>standard Java</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="standard-java"><a class="header" href="#standard-java">Standard Java</a></h1>
+<p>We’ve been using the new compact source feature and a few
+related features introduced in Java 25:</p>
+<ul>
+<li>allows for shorter programs without a lot of Java’s normal “boilerplate” code</li>
+<li>includes the <code>IO</code> functions to simplify standard I/O</li>
+</ul>
+<p>Now we’ll cover the older (still most widely used) format for Java
+programs. You have enough programming knowledge to learn the programming concepts
+involved in this code, and it’s a good way to introduce this material.</p>
+<p>Example:</p>
+<pre><code class="language-java">// Compact source hello world
+void main() {
+    IO.println("Hello World");
+}
+</code></pre>
+<pre><code class="language-java">// Pre-Java 25 hello world
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+</code></pre>
+<p>We’ll cover:</p>
+<ul>
+<li>program arguments</li>
+<li>defining classes</li>
+<li>the <code>static</code> keyword</li>
+<li>the <code>System</code> class</li>
+<li>performing I/O with <code>System.out</code> and <code>System.in</code></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="program-args"><a class="header" href="#program-args">Program Args</a></h1>
+<p>Programs and terminal commands can accept arguments:</p>
+<pre><code class="language-bash"># cd with no arguments takes us to ~
+cd
+# cd with an argument takes us to the specified location
+cd csc110
+# java with no arguments prints a help message
+java
+# java with a filename runs the file
+java HelloWorld.java
+</code></pre>
+<p>“HelloWorld.java” and “csc110” in the above examples are arguments passed to these terminal commands.</p>
+<p>Your <code>main</code> function can include a <code>String[] args</code> parameter to accept these kinds of arguments. Anything written after your program name
+will be in this <code>args</code> array. In the following example, our program would receive “hello” and “world” as arguments.</p>
+<pre><code class="language-bash">java MyProgram.java hello world
+</code></pre>
+<p>Example: we’ll write a program that prints these command line arguments to demonstrate this.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="reference-types"><a class="header" href="#reference-types">Reference Types</a></h1>
+<ul>
+<li>review primitive/value types
+<ul>
+<li>lowercase names</li>
+<li>value stored in variable</li>
+<li>simple, small, and fast</li>
+</ul>
+</li>
+<li>reference types
+<ul>
+<li>names start with uppercase letters (String)</li>
+<li>all arrays are also reference types</li>
+<li>we can define new types with classes</li>
+<li>value stored on “the heap”, variable stores its location</li>
+<li>can be much larger and slower to work with than primitive types</li>
+</ul>
+</li>
+<li>what is a reference?</li>
+<li>why should you not use <code>==</code> and <code>!=</code> to compare references?</li>
+<li>spreadsheet analogy</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="mutability"><a class="header" href="#mutability">Mutability</a></h1>
+<ul>
+<li>mutable: changeable</li>
+<li>immutable: unchangeable</li>
+<li>some reference types are immutable (String)</li>
+<li>some reference types are mutable (arrays)</li>
+<li>shared references to mutable objects are useful but dangerous
+<ul>
+<li>each variable refers to <em>the same object</em></li>
+<li>changing the object through either variable will affect both because <em>there’s only one object</em></li>
+<li>if you do this by accident, then you will introduce bugs</li>
+</ul>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-12-0414-0416"><a class="header" href="#week-12-0414-0416">Week 12 (04/14, 04/16)</a></h1>
