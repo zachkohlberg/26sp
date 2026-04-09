@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-cb602340.js";
+            window.path_to_searchindex_js = "searchindex-9cc08353.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-66d136da.js"></script>
+        <script src="toc-9ab54743.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -1809,26 +1809,29 @@ using the appropriate algorithm</li>
 <h4 id="pseudocode"><a class="header" href="#pseudocode">Pseudocode</a></h4>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>In my pseudocode’s for loops, I use “to” to imply a value is included in a
-range and “until” to imply a value is excluded from the range. Functions that
-take a start and end parameter to specify a range will consider the start to
-be inclusive and the end to be exclusive.</p>
+<p>In my pseudocode, I use “from a to b” to imply b is included in the range and
+“from a until b” to imply b is excluded from the range. Variables and
+parameters named “start” and “end” imply a range that includes “start” and
+excludes “end”.</p>
 </blockquote>
-<pre><code>bubbleSort(array, start, end):
+<h5 id="bubble-sort"><a class="header" href="#bubble-sort">Bubble Sort</a></h5>
+<pre><code>sort(array, start, end):
     for each lastSwapIndex from end - 2 until start
         for each i from start to lastSwapIndex
             if array[i] &gt; array[i + 1]
                 swap array, i, i+1
-
-selectionSort(array, start, end):
+</code></pre>
+<h5 id="selection-sort"><a class="header" href="#selection-sort">Selection Sort</a></h5>
+<pre><code>sort(array, start, end):
     for each swapIndex from end - 1 to start
         greatestElementIndex = start
         for each i from start + 1 to swapIndex
             if array[i] &gt; array[greatestElementIndex]
                 greatestElementIndex = i
         swap array, greatestElementIndex, swapIndex
-
-insertionSort(array, start, end):
+</code></pre>
+<h5 id="insertion-sort"><a class="header" href="#insertion-sort">Insertion Sort</a></h5>
+<pre><code>sort(array, start, end):
     for each sortedEnd from start + 1 until end
         for each i from sortedEnd until start
             if array[i] &lt; array[i - 1]
@@ -1853,7 +1856,7 @@ but I want you to count copying an element from one array to another as a swap.
 This is less work than a swap (1 assignment rather than 3), but it’s a similar
 operation and I don’t want to complicate our data by tracking a third operation.</p>
 <h4 id="pseudocode-1"><a class="header" href="#pseudocode-1">Pseudocode</a></h4>
-<pre><code>mergesort(array, start, end):
+<pre><code>sort(array, start, end):
     if end - start &lt; 2
         return
     sort(array, start, (end + start) / 2)
@@ -1889,7 +1892,7 @@ merge(array, start, end):
 <h3 id="task-3-quicksort-5-points"><a class="header" href="#task-3-quicksort-5-points">Task 3: Quicksort (5 points)</a></h3>
 <p>Implement a quicksort algorithm (<code>Quicksort.java</code>). Same requirements as Task 1.</p>
 <h4 id="pseudocode-2"><a class="header" href="#pseudocode-2">Pseudocode</a></h4>
-<pre><code>quicksort(array, start, end):
+<pre><code>sort(array, start, end):
     if end - start &lt; 2
         return
     pivot = partition(array, start, end)
@@ -3938,14 +3941,14 @@ results:</p>
 <li>a positive number means <code>a</code> is “greater than” <code>b</code></li>
 <li>a zero means <code>a</code> and <code>b</code> are equal</li>
 </ul>
-<h2 id="bubble-sort"><a class="header" href="#bubble-sort">Bubble Sort</a></h2>
+<h2 id="bubble-sort-1"><a class="header" href="#bubble-sort-1">Bubble Sort</a></h2>
 <pre><code>sort(arr):
     for each lastSwap from arr.length - 2 to 0
         for each i from 0 to lastSwap
             if arr[i] &gt; arr[i + 1]
                 swap arr, i, i+1
 </code></pre>
-<h2 id="selection-sort"><a class="header" href="#selection-sort">Selection Sort</a></h2>
+<h2 id="selection-sort-1"><a class="header" href="#selection-sort-1">Selection Sort</a></h2>
 <pre><code>sort(arr):
     for each swapIndex from arr.length - 1 to 0
         greatest = 0
@@ -3954,7 +3957,7 @@ results:</p>
                 greatest = i
         swap arr, greatest, swapIndex
 </code></pre>
-<h2 id="insertion-sort"><a class="header" href="#insertion-sort">Insertion Sort</a></h2>
+<h2 id="insertion-sort-1"><a class="header" href="#insertion-sort-1">Insertion Sort</a></h2>
 <pre><code>sort(arr):
     for each int index from 1 until arr.length
         for each i from index to 1
@@ -4290,9 +4293,77 @@ before our next class:
 </ul>
 <h3 id="thursday-agenda-7"><a class="header" href="#thursday-agenda-7">Thursday Agenda</a></h3>
 <ul>
+<li>(section 1) correction to sierpinski solution</li>
 <li>circular array</li>
 <li>queue implementations</li>
 <li>deque</li>
+<li>read chapter 11:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/BinaryTreeIntro.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/BinaryTreeIntro.html</a></li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="queue-adt"><a class="header" href="#queue-adt">Queue ADT</a></h1>
+<p>A queue is defined by the enqueue and dequeue operations. Like the stack, we’ll
+include peek, size, isEmpty, and clear for added convenience.</p>
+<ul>
+<li>operations:
+<ul>
+<li>enqueue: add an element to the back of the queue</li>
+<li>dequeue: remove and return the front element of the queue</li>
+<li>peek: return the front element of the queue without removing it</li>
+<li>size, isEmpty, and clear</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="circular-array-queue"><a class="header" href="#circular-array-queue">Circular Array Queue</a></h1>
+<p>recall stack implementation:</p>
+<ul>
+<li>adding/removing to end of array is easy, only requires updating size and
+setting one element of the array</li>
+<li>no shifting is required because we don’t touch the beginning/middle of the
+array</li>
+</ul>
+<p>array-based queues pose a problem:</p>
+<ul>
+<li>if we modify front and back of array, then we have to shift elements when
+modifying the front, which is O(n) instead of O(1)</li>
+<li>the benefit of more restrictive data structures like stack and queue is that
+an implementation can better optimize their limited set of operations, so can
+we do better?</li>
+</ul>
+<p>“circular” array:</p>
+<ul>
+<li>what if the queue data didn’t have to start at index 0?</li>
+<li>adding to back shifts the back index forward, growing towards the end of the
+array</li>
+<li>removing from front shifts the front index forward, shrinking towards the end
+of the array</li>
+<li>as we enqueue/dequeue, the queue data appears to crawl towards the end of the
+array</li>
+<li>if we reach the end and have room at the beginning of the array, then we wrap
+around to the beginning of the array (we treat it as though it were circular,
+with no start/end)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="linked-queue"><a class="header" href="#linked-queue">Linked Queue</a></h1>
+<p>similar problem: adding to the end of a linked list is O(n) because we have to
+traverse to the last node</p>
+<p>solution: keep a head pointer to the beginning of the chain (head) and the end
+of the chain (tail)</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="deque-adt"><a class="header" href="#deque-adt">Deque ADT</a></h1>
+<p>A deque (pronounced “deck”, not “dequeue”, and short for “double-ended queue”)
+is a combination of a queue and a stack: you can add/remove from either end, but
+you still have no access to the middle of the deque. A deque can function as
+either a stack or a queue.</p>
+<ul>
+<li>operations:
+<ul>
+<li>addFirst, removeFirst, peekFirst: operate on the front/start of the deque</li>
+<li>addLast, removeLast, peekLast: operate on the back/end of the deque</li>
+<li>size, isEmpty, and clear</li>
+</ul>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-12-0414-0416"><a class="header" href="#week-12-0414-0416">Week 12 (04/14, 04/16)</a></h1>

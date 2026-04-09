@@ -34,10 +34,10 @@
             const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-cb602340.js";
+            window.path_to_searchindex_js = "../searchindex-9cc08353.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-66d136da.js"></script>
+        <script src="../toc-9ab54743.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -375,26 +375,29 @@ using the appropriate algorithm</li>
 <h4 id="pseudocode"><a class="header" href="#pseudocode">Pseudocode</a></h4>
 <blockquote class="blockquote-tag blockquote-tag-note">
 <p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8Zm8-6.5a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13ZM6.5 7.75A.75.75 0 0 1 7.25 7h1a.75.75 0 0 1 .75.75v2.75h.25a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5h.25v-2h-.25a.75.75 0 0 1-.75-.75ZM8 6a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg>Note</p>
-<p>In my pseudocode’s for loops, I use “to” to imply a value is included in a
-range and “until” to imply a value is excluded from the range. Functions that
-take a start and end parameter to specify a range will consider the start to
-be inclusive and the end to be exclusive.</p>
+<p>In my pseudocode, I use “from a to b” to imply b is included in the range and
+“from a until b” to imply b is excluded from the range. Variables and
+parameters named “start” and “end” imply a range that includes “start” and
+excludes “end”.</p>
 </blockquote>
-<pre><code>bubbleSort(array, start, end):
+<h5 id="bubble-sort"><a class="header" href="#bubble-sort">Bubble Sort</a></h5>
+<pre><code>sort(array, start, end):
     for each lastSwapIndex from end - 2 until start
         for each i from start to lastSwapIndex
             if array[i] &gt; array[i + 1]
                 swap array, i, i+1
-
-selectionSort(array, start, end):
+</code></pre>
+<h5 id="selection-sort"><a class="header" href="#selection-sort">Selection Sort</a></h5>
+<pre><code>sort(array, start, end):
     for each swapIndex from end - 1 to start
         greatestElementIndex = start
         for each i from start + 1 to swapIndex
             if array[i] &gt; array[greatestElementIndex]
                 greatestElementIndex = i
         swap array, greatestElementIndex, swapIndex
-
-insertionSort(array, start, end):
+</code></pre>
+<h5 id="insertion-sort"><a class="header" href="#insertion-sort">Insertion Sort</a></h5>
+<pre><code>sort(array, start, end):
     for each sortedEnd from start + 1 until end
         for each i from sortedEnd until start
             if array[i] &lt; array[i - 1]
@@ -419,7 +422,7 @@ but I want you to count copying an element from one array to another as a swap.
 This is less work than a swap (1 assignment rather than 3), but it’s a similar
 operation and I don’t want to complicate our data by tracking a third operation.</p>
 <h4 id="pseudocode-1"><a class="header" href="#pseudocode-1">Pseudocode</a></h4>
-<pre><code>mergesort(array, start, end):
+<pre><code>sort(array, start, end):
     if end - start &lt; 2
         return
     sort(array, start, (end + start) / 2)
@@ -455,7 +458,7 @@ merge(array, start, end):
 <h3 id="task-3-quicksort-5-points"><a class="header" href="#task-3-quicksort-5-points">Task 3: Quicksort (5 points)</a></h3>
 <p>Implement a quicksort algorithm (<code>Quicksort.java</code>). Same requirements as Task 1.</p>
 <h4 id="pseudocode-2"><a class="header" href="#pseudocode-2">Pseudocode</a></h4>
-<pre><code>quicksort(array, start, end):
+<pre><code>sort(array, start, end):
     if end - start &lt; 2
         return
     pivot = partition(array, start, end)
