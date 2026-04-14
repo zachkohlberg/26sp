@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-9cc08353.js";
+            window.path_to_searchindex_js = "searchindex-599e0fe5.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-9ab54743.js"></script>
+        <script src="toc-c391172f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -4367,6 +4367,156 @@ either a stack or a queue.</p>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-12-0414-0416"><a class="header" href="#week-12-0414-0416">Week 12 (04/14, 04/16)</a></h1>
+<h3 id="tuesday-agenda-8"><a class="header" href="#tuesday-agenda-8">Tuesday Agenda</a></h3>
+<ul>
+<li>finish queue implementations</li>
+<li>binary tree introduction</li>
+<li>binary tree properties</li>
+<li>binary tree nodes</li>
+<li>homework: read the rest of chapter 11:
+<a href="https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/BinaryTreeIntro.html">https://opendsa-server.cs.vt.edu/OpenDSA/Books/CS2/html/BinaryTreeIntro.html</a></li>
+</ul>
+<h3 id="thursday-agenda-8"><a class="header" href="#thursday-agenda-8">Thursday Agenda</a></h3>
+<ul>
+<li>binary search tree</li>
+<li>bst insertion</li>
+<li>traversals</li>
+<li>non-generic implementation (string tree)</li>
+<li>requirements for generic implementation</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="queue-implementations"><a class="header" href="#queue-implementations">Queue Implementations</a></h1>
+<ul>
+<li>finish array queue (review practice exercises)</li>
+<li>linked queue</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="binary-trees"><a class="header" href="#binary-trees">Binary Trees</a></h1>
+<ul>
+<li>textbook review
+<ul>
+<li>what is a tree?</li>
+<li>what is a binary tree?</li>
+<li>leaf/internal nodes</li>
+<li>full/complete trees</li>
+</ul>
+</li>
+<li>applications
+<ul>
+<li>abstract syntax tree</li>
+<li>file systems</li>
+<li>sorting (tree sort)</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="binary-tree-node"><a class="header" href="#binary-tree-node">Binary Tree Node</a></h1>
+<ul>
+<li>a binary tree node is a node with two pointers instead of one: left child and
+right child instead of next</li>
+<li>exercise: write a generic binary tree node class
+<ul>
+<li>no getters/setters and no access modifiers</li>
+</ul>
+</li>
+<li>exercise: write a main method that creates the tree structure below
+<ul>
+<li>you’re only allowed to use one variable, <code>root</code></li>
+<li>when finished, <code>root</code> must point to the node containing <code>D</code></li>
+<li>print each node’s item after constructing the tree</li>
+</ul>
+</li>
+</ul>
+<pre><code>     D
+    / \
+   /   \
+  A     C
+ / \     \
+B   F     G
+   /
+  E
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="binary-search-trees"><a class="header" href="#binary-search-trees">Binary Search Trees</a></h1>
+<ul>
+<li>to qualify as a BST, for each internal node:
+<ul>
+<li>data stored in left child and all descendants is &lt;= this node’s data</li>
+<li>data stored in right child and all descendants is &gt; this node’s data</li>
+</ul>
+</li>
+<li>to insert while maintaining BST:
+<ul>
+<li>if root is empty, create root node with new item</li>
+<li>if root is not empty, attempt to insert as a child of root</li>
+<li>to insert as a child of node N:
+<ul>
+<li>if new item is &lt;= N’s element
+<ul>
+<li>if N has a left child, then attempt to insert as a child of N’s left
+child</li>
+<li>if N has no left child, then create a left child with new item</li>
+</ul>
+</li>
+<li>if new item is &gt; N’s element
+<ul>
+<li>if N has a right child, then attempt to insert as a child of N’s right
+child</li>
+<li>if N has no right child, then create a right child with new item</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>traversals
+<ul>
+<li>preorder: visit node before children</li>
+<li>inorder: visit node between visiting children</li>
+<li>postorder: visit node after visiting children</li>
+<li>pre = before, in = between, post = after (just like prefix, infix, and
+postfix)</li>
+<li>“visit” could mean print, modify, add to a sum, or whatever operation we
+want to perform on the tree’s elements</li>
+</ul>
+</li>
+<li>exercise: write a recursive inorder traversal and use it to print the nodes
+from our earlier exercise</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="tree-implementations"><a class="header" href="#tree-implementations">Tree Implementations</a></h1>
+<ul>
+<li>code a non-generic <strong>binary search tree</strong> that holds integers</li>
+<li>include the following operations:
+<ul>
+<li>insert: add an integer to the tree while maintaining BST property</li>
+<li>inorder, preorder, and postorder traversals:
+<ul>
+<li>take another data structure as a parameter (use any of our previous
+examples, such as <code>LinkedList&lt;Integer&gt;</code>)</li>
+<li>add the tree’s elements to the other data structure in the appropriate
+order</li>
+<li>if this is difficult, then try just printing the tree’s elements first and
+then modify that code to add them to the other collection instead of
+printing them</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>making a generic BST:
+<ul>
+<li>can’t compare a generic type <code>E</code> without knowing more about it, so we can’t
+use our insert algorithm</li>
+<li>we can use a generic type constraint (see textbook’s implementation) to
+require that E implements the <code>Comparable</code> interface, which guarantees it
+has a <code>compareTo</code> method (like the one in <code>String</code>)</li>
+<li>we can require a <code>Comparator&lt;E&gt;</code> in our constructor, which is an object that
+can compare two instances of <code>E</code></li>
+<li>we’re skipping this and going with a non-generic BST because we haven’t
+really covered interfaces</li>
+</ul>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-13-0421-0423"><a class="header" href="#week-13-0421-0423">Week 13 (04/21, 04/23)</a></h1>
 <div style="break-before: page; page-break-before: always;"></div>

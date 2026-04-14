@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-f657784f.js";
+            window.path_to_searchindex_js = "searchindex-9fd0ae53.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-956f9d98.js"></script>
+        <script src="toc-ede7567c.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -3822,6 +3822,7 @@ will be in this <code>args</code> array. In the following example, our program w
 <h1 id="week-12-0414-0416"><a class="header" href="#week-12-0414-0416">Week 12 (04/14, 04/16)</a></h1>
 <h3 id="tuesday-agenda-7"><a class="header" href="#tuesday-agenda-7">Tuesday Agenda</a></h3>
 <ul>
+<li>mutability</li>
 <li>classes as containers</li>
 <li>classes as types</li>
 <li>defining a type: Circle</li>
@@ -3832,6 +3833,136 @@ will be in this <code>args</code> array. In the following example, our program w
 <ul>
 <li>encapsulation</li>
 <li>Scanner for user input</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="mutability-1"><a class="header" href="#mutability-1">Mutability</a></h1>
+<ul>
+<li>see previous week’s notes</li>
+<li>review string example from last week</li>
+<li>demo: arrays
+<ul>
+<li>creating new array vs referencing existing array</li>
+<li>consequences of modifying an array</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="classes"><a class="header" href="#classes">Classes</a></h1>
+<ul>
+<li>compact source programs are “classes”</li>
+<li>Java is built around classes
+<ul>
+<li>most code exists in classes</li>
+<li>compact source files have an implicit class</li>
+<li>most other files have explicit classes</li>
+</ul>
+</li>
+<li>classes can act as containers for functions
+<ul>
+<li>this is how our compact source files have been used</li>
+</ul>
+</li>
+<li>classes can define new types
+<ul>
+<li>we haven’t done this yet</li>
+<li>we can create new reference types, like <code>String</code>, and use them in our
+programs</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="circle-demo"><a class="header" href="#circle-demo">Circle Demo</a></h1>
+<ul>
+<li>part 1: class
+<ul>
+<li>create a circle class in a compact source file</li>
+<li>make circle variables</li>
+<li>print them</li>
+<li>compare this to using strings and arrays</li>
+</ul>
+</li>
+<li>part 2: instance variables
+<ul>
+<li>what properties should a circle have?</li>
+<li>give circle appropriate instance variables</li>
+<li>use the instance variables to modify and print the circles</li>
+<li>do these circles act more like arrays (mutable) or strings (immutable)?</li>
+</ul>
+</li>
+<li>part 3: functions
+<ul>
+<li>write functions to calculate the area and circumference of a circle</li>
+<li>write a function to check whether two circles overlap</li>
+<li>these should take one or two circle parameters</li>
+</ul>
+</li>
+<li>part 4: separate files, static methods
+<ul>
+<li>move circle to its own file</li>
+<li>move circle functions to the circle file and make them <code>static</code></li>
+</ul>
+</li>
+<li>part 5: instance methods
+<ul>
+<li>make nonstatic versions of the circle functions</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="encapsulation"><a class="header" href="#encapsulation">Encapsulation</a></h1>
+<ul>
+<li>encapsulation = data hiding, controlling which code can interact with other
+code</li>
+<li>several purposes:
+<ul>
+<li>able to make guarantees about data, keep objects in a valid state</li>
+<li>prevents accidental changes that would cause bugs</li>
+<li>makes code simpler to reason about</li>
+<li>separate public API from private implementation details, making it easier
+for other programmers to use your code correctly</li>
+</ul>
+</li>
+<li>access modifiers: <code>public</code>, <code>protected</code>, <code>private</code>, and “package private” (no
+modifier given)</li>
+<li>reason to mention it now is to explain the <code>public</code> keyword</li>
+<li>more relevant in larger code bases</li>
+<li>for us:
+<ul>
+<li>we’re not trying to learn OOP and won’t benefit much from the strict
+encapsulation you’d practice in an OOP course</li>
+<li>we’ll avoid using access modifiers most of the time except where strictly
+needed</li>
+<li>this isn’t necessarily considered good practice in Java, and if you take
+other Java courses you’ll do things differently</li>
+</ul>
+</li>
+<li>example: show how we would encapsulate the properties of our <code>Circle</code> class</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="scanner"><a class="header" href="#scanner">Scanner</a></h1>
+<ul>
+<li>the <code>System</code> class provides three objects for I/O:
+<ul>
+<li><code>System.out</code> prints to standard out, just like <code>IO.println</code> and <code>IO.print</code></li>
+<li><code>System.err</code> prints to standard err (intended for error messages and can be
+filtered out by terminal commands that process output)</li>
+<li><code>System.in</code> reads from standard in, just like <code>IO.readln</code>, but it produces
+raw bytes rather than strings and is harder to use</li>
+</ul>
+</li>
+<li>using a <code>Scanner</code> to process input:
+<ul>
+<li><code>Scanner stdin = new Scanner(System.in);</code> creates a scanner to read from
+<code>System.in</code></li>
+<li><code>stdin.nextLine();</code> reads a string from standard in, just like
+<code>IO.readln()</code>, but it doesn’t accept a prompt message</li>
+<li>you only need the <code>.nextLine()</code> method to read input, and you can convert to
+other types with the parse functions we’ve been using</li>
+<li>the scanner has other methods (<code>.nextInt()</code>, <code>.nextDouble()</code>, etc.) to read
+and parse input into specific types, but these can cause surprising behavior
+if used before calling <code>.nextLine()</code></li>
+</ul>
+</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-13-0421-0423"><a class="header" href="#week-13-0421-0423">Week 13 (04/21, 04/23)</a></h1>
