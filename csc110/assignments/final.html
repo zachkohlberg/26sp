@@ -34,10 +34,10 @@
             const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-526c70d2.js";
+            window.path_to_searchindex_js = "../searchindex-75f3fd8c.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-88398c01.js"></script>
+        <script src="../toc-5f1f590a.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -177,15 +177,7 @@
 <p>This project is meant to be completed during class. Our last four classes will
 cover each part of the assignment and allow time to work on it. You should be
 able to complete most of it during these class meetings.</p>
-<h2 id="project-options"><a class="header" href="#project-options">Project Options</a></h2>
-<p>Everyone is welcome to propose project ideas. I’ve outlined one option below,
-but if a different option receives support from at least half of the class then
-we’ll go with that instead. I plan to review all options and ask students to
-vote during class on April 16th.</p>
-<p>This project is meant to be completed during class. Our last four classes will
-cover each part of the assignment and allow time to work on it. You should be
-able to complete most of it during these class meetings.</p>
-<h3 id="default-option-drawing-program"><a class="header" href="#default-option-drawing-program">Default Option: Drawing Program</a></h3>
+<h2 id="description"><a class="header" href="#description">Description</a></h2>
 <p>This program will read a text file containing a series of drawing commands,
 process those commands, and output the resulting image.</p>
 <p>This involves several topics that we haven’t covered yet:</p>
@@ -196,27 +188,92 @@ performing file I/O</li>
 <li>reading and writing text files, but we can omit this and use I/O redirection
 instead if there’s not enough time</li>
 </ul>
-<h3 id="self-directed-option"><a class="header" href="#self-directed-option">Self-Directed Option</a></h3>
-<p>Anyone who wishes to pursue their own idea instead of the project covered in
-class is welcome to do so. If you would like to do this, then please email a
-project proposal to me by April 19th. The proposal should cover the following:</p>
-<ol>
-<li>A brief summary of your project.</li>
-<li>A brief explanation of what you expect to learn from this project and how it
-pertains to the class.</li>
-<li>A list of five specific tasks you plan to accomplish while working on the
-project. Each task must specify what material you will include when
-submitting the project to demonstrate completion of the task (usually this
-would be code). Each of these tasks will be worth five points if completed.</li>
-</ol>
-<p>I reserve the right to reject proposals that are not relevant to the class,
-proposals that are too large or too small in scope, and proposals that don’t
-involve you learning anything new. I will try to work with you to revise your
-proposal if I believe the core idea is suitable for this assignment and that the
-proposal itself can be fixed with only minor changes.</p>
+<h2 id="setup"><a class="header" href="#setup">Setup</a></h2>
+<p>Your program will be generating images in the
+<a href="https://en.wikipedia.org/wiki/Netpbm">PPM file format</a>. We’re using this format
+because it’s simple to output and it is human readable, but not all programs
+support it. Make sure you have a program on your computer that can display ppm
+images: <a href="https://www.gimp.org/">GIMP</a> is a good option if you’re not sure what
+other choices are available for your operating system. GIMP can also convert
+your ppm files to more common formats such as PNG or JPEG.</p>
 <h2 id="tasks"><a class="header" href="#tasks">Tasks</a></h2>
-<p>This section and the remainder of the project will be written after we take a
-vote.</p>
+<p>These tasks will not go into as much detail as other assignments. I’m just going
+to specify the requirements for each task, and we’ll cover the details during
+our class meetings. Refer to your notes from class and the example code in the
+class repo for additional guidance. If you miss a class, then you should meet
+with a classmate to review their notes and review the material in the class
+repo.</p>
+<h3 id="task-1-5-points-canvas"><a class="header" href="#task-1-5-points-canvas">Task 1 (5 points): Canvas</a></h3>
+<p>Write a <code>Canvas</code> class in its own file <code>Canvas.java</code>. It must include the
+following:</p>
+<ul>
+<li>instance variables
+<ul>
+<li>pixels: a 2d array of integers</li>
+<li>width and height: integers</li>
+</ul>
+</li>
+<li>constructor
+<ul>
+<li>a parameterized constructor taking a width and height
+<ul>
+<li>initialize the width and height instance variables with the width and
+height parameters</li>
+<li>initialize the pixels array by creating a new array of integers with
+<code>height</code> as the first dimension and <code>width</code> as the second dimension</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>instance methods
+<ul>
+<li><code>getPixel(x, y)</code> return the pixel color (int) at the given x and y
+coordinates (also ints)</li>
+<li><code>setPixel(color, x, y)</code> set the pixel at the given x and y coordinates
+(ints) to the given color (int)</li>
+</ul>
+</li>
+</ul>
+<h3 id="task-2-5-points-ppm-output"><a class="header" href="#task-2-5-points-ppm-output">Task 2 (5 points): PPM Output</a></h3>
+<p>Add a <code>printPPM</code> method to your <code>Canvas</code> class. This method must</p>
+<ul>
+<li>print the canvas to standard output in plaintext PPM format</li>
+<li>print each pixel on a separate line to avoid issues with software that
+enforces a maximum line length</li>
+</ul>
+<p>Notes:</p>
+<ul>
+<li>we’ll cover how the canvas works (coordinates, colors) in more detail during
+class</li>
+<li>we’ll cover the exact ppm format and how to generate it during class</li>
+</ul>
+<h3 id="task-3-5-points-drawing-methods"><a class="header" href="#task-3-5-points-drawing-methods">Task 3 (5 points): Drawing Methods</a></h3>
+<p>Add the following instance methods to your <code>Canvas</code> class (all parameters are
+integers, no return value):</p>
+<ul>
+<li><code>fillRectangle(color, x, y, width, height)</code>: draw a filled rectangle</li>
+<li><code>drawRectangle(color, x, y, width, height)</code>: draw the outline of a rectangle</li>
+<li><code>drawLine(color, x1, y1, x2, y2)</code>: draw a line</li>
+</ul>
+<h3 id="task-4-5-points-parse-drawing-commands"><a class="header" href="#task-4-5-points-parse-drawing-commands">Task 4 (5 points): Parse Drawing Commands</a></h3>
+<p>Write a program that takes the following input (do <strong>not</strong> print any prompt
+messages), then prints the resulting PPM file to standard output:</p>
+<ul>
+<li>the width and height of a canvas</li>
+<li>a series of drawing commands</li>
+<li>the word “quit” to indicate there are no more commands</li>
+</ul>
+<p>Drawing commands should be in the following format:</p>
+<pre><code>draw_rect color x y width height
+fill_rect color x y width height
+draw_line color x1 y1 x2 y2
+</code></pre>
+<p>The color will always be a 6-digit hexadecimal integer. The coordinates and
+dimensions will always be regular nonnegative decimal integers. All shapes can
+be assumed to fit inside of the canvas.</p>
+<h3 id="task-5-5-points-demo"><a class="header" href="#task-5-5-points-demo">Task 5 (5 points): Demo</a></h3>
+<p>Design an image, then write a text file with the input to draw that image.
+Include this text file and the resulting ppm file with your submission.</p>
 
                     </main>
 
@@ -226,7 +283,7 @@ vote.</p>
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../schedule.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../assignments/final/options.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -240,7 +297,7 @@ vote.</p>
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../schedule.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../assignments/final/options.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
