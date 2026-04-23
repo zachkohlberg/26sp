@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 /**
  * @author YOUR NAME HERE
  */
-
 public class SortingExperiment {
     public static void main(String[] args) {
         // TODO: SortHelper.setSeed(?);
@@ -25,7 +24,7 @@ public class SortingExperiment {
             BubbleSort bubble = new BubbleSort();
 
             // sort
-            bubble.sort(bubbleArray);
+            bubble.sort(bubbleArray, 0, bubbleArray.length);
 
             // record results
             bubbleComps[i] = bubble.getComparisons();

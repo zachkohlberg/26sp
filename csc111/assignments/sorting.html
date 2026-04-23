@@ -34,7 +34,7 @@
             const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-8d4fe33e.js";
+            window.path_to_searchindex_js = "../searchindex-c991ff2b.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-1c6ca60e.js"></script>
@@ -499,7 +499,6 @@ import java.io.PrintWriter;
 /**
  * @author YOUR NAME HERE
  */
-
 public class SortingExperiment {
     public static void main(String[] args) {
         // TODO: SortHelper.setSeed(?);
@@ -519,7 +518,7 @@ public class SortingExperiment {
             BubbleSort bubble = new BubbleSort();
 
             // sort
-            bubble.sort(bubbleArray);
+            bubble.sort(bubbleArray, 0, bubbleArray.length);
 
             // record results
             bubbleComps[i] = bubble.getComparisons();

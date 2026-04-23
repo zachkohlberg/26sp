@@ -34,7 +34,7 @@
             const path_to_root = "../";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-8d4fe33e.js";
+            window.path_to_searchindex_js = "../searchindex-c991ff2b.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-1c6ca60e.js"></script>
@@ -192,9 +192,121 @@ our class meetings. Refer to your notes from class and the example code in the
 class repo for additional guidance. If you miss a class, then you should meet
 with a classmate to review their notes and review the material in the class
 repo.</p>
-<h3 id="task-1-10-points-hash-table"><a class="header" href="#task-1-10-points-hash-table">Task 1 (10 points): Hash Table</a></h3>
+<h3 id="task-1-10-points-hash-table-and-hash-function"><a class="header" href="#task-1-10-points-hash-table-and-hash-function">Task 1 (10 points): Hash Table and Hash Function</a></h3>
+<p>Implement a hash table class as described below:</p>
+<ul>
+<li>generic: <code>HashTable&lt;K, V&gt;</code>, where <code>K</code> represents the key type and <code>V</code>
+represents the value type</li>
+<li>constructor: <code>HashTable(Hash&lt;K&gt;, size)</code>
+<ul>
+<li>accept a hash function through the <code>Hash&lt;K&gt;</code> functional interface created
+during class</li>
+<li>accept a size for the hash table’s internal array, which will affect its
+overall efficiency and the amount of memory it requires</li>
+</ul>
+</li>
+<li>instance variables for the hash function <code>Hash&lt;K&gt;</code> and data array
+<code>KeyValueNode&lt;K, V&gt;[]</code></li>
+<li>a <code>get(K): V</code> to retrieve values from the table</li>
+<li>a <code>set(K, V)</code> method to add/update values in the table</li>
+</ul>
+<p>Also implement at least one hash function for strings. You may want to try
+several different hash functions and compare them to see which produces the
+fastest hash table, but this is optional.</p>
 <h3 id="task-2-5-points-read-corpus"><a class="header" href="#task-2-5-points-read-corpus">Task 2 (5 points): Read Corpus</a></h3>
+<p>Write a program named <code>Markov.java</code> that accepts one or more filenames through
+its command line args, reads each file (assume all are plaintext), and processes
+them as described below. This should result in two data structures:</p>
+<ul>
+<li>a list of all the tokens that appear at the beginning of a “section” (see
+below)</li>
+<li>a hash table mapping every token found in the input files to a list containing
+<ul>
+<li>every token that immediately followed it in any of the input files (if the
+same token followed it more than once, then you should include duplicates in
+the list)</li>
+<li><code>null</code> for every time this token appeared at the end of a “section”</li>
+</ul>
+</li>
+</ul>
+<p>The definition of a section is flexible. You can choose a different definition,
+but in my examples I will treat a paragraph (or anything similar to a paragraph)
+as a section of text.</p>
+<p>Processing a text file:</p>
+<ul>
+<li>use the <code>.split</code> method and an appropriate regular expression to split the
+file’s contents into sections</li>
+<li>for each section
+<ul>
+<li>use the <code>.split</code> method and a regular expression to split the section into
+tokens</li>
+<li>add the first token to the list of starting tokens</li>
+<li>for each token except the last token
+<ul>
+<li>if it doesn’t already appear as a key in the table, add a new entry with
+the token as a key and a new empty list as its value</li>
+<li>retrieve the token’s list from the table</li>
+<li>add the next token in the section to the list</li>
+</ul>
+</li>
+<li>for the last token in the section
+<ul>
+<li>if it doesn’t already appear as a key in the table, add a new entry with
+the token as a key and a new empty list as its value</li>
+<li>retrieve the token’s list from the table</li>
+<li>add <code>null</code> to the list</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>For example, the following text (each line counting as its own section) should
+produce the mapping shown after it.</p>
+<pre><code>#################
+# Text Sections #
+#################
+
+Hello, my name is Bob.
+
+Hello Bob, my favorite color is blue.
+
+Hello, my favorite color is also blue.
+
+##################
+# Starter tokens #
+##################
+
+- "Hello,"
+- "Hello"
+- "Hello,"
+
+#######
+# Map #
+#######
+
+- "Hello,"   -&gt; "my", "my"
+- "my"       -&gt; "name", "favorite", "favorite"
+- "name"     -&gt; "is"
+- "is"       -&gt; "Bob.", "blue.", "also"
+- "Bob."     -&gt; null
+- "Hello"    -&gt; "Bob,"
+- "Bob,"     -&gt; "my"
+- "favorite" -&gt; "color", "color"
+- "color"    -&gt; "is", "is"
+- "blue."    -&gt; null, null
+- "also"     -&gt; "blue."
+</code></pre>
 <h3 id="task-3-5-points-generate-text"><a class="header" href="#task-3-5-points-generate-text">Task 3 (5 points): Generate Text</a></h3>
+<p>Implement the text generation algorithm outlined during class. Add the ability
+for your <code>Markov</code> program to generate one or more sections of text after it
+processes all of its input files. The details are up to you: generate a set
+number of sections, allow the user to interactively generate sections until they
+quit the program, or something else.</p>
+<p>Optional: if you want to improve the quality of the generated text, then you
+could modify your hash table to map sequences of 2 or 3 tokens to a list of next
+tokens. This will require some changes to the previous part of your program
+where you construct the table, but it can result in significantly more
+interesting and coherent output.</p>
 <h3 id="task-4-5-points-demo"><a class="header" href="#task-4-5-points-demo">Task 4 (5 points): Demo</a></h3>
 <p>Gather some input (either public domain material or something you made yourself)
 to serve as a corpus and use it to generate some text. Try different material
