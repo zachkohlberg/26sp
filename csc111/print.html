@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-c991ff2b.js";
+            window.path_to_searchindex_js = "searchindex-92e08bd3.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-1c6ca60e.js"></script>
@@ -1027,7 +1027,7 @@ below shows a summary of past, current, and planned assignments:</p>
 <tr><td><a href="#a1-monster-battle">A1: Monster Battle</a></td><td>20</td></tr>
 <tr><td><a href="#a2-maze-solver">A2: Maze</a></td><td>20</td></tr>
 <tr><td><a href="#a3-sorting-experiment">A3: Sorting Experiment</a></td><td>20</td></tr>
-<tr><td><a href="assignments/ds.html">A4: Data Structure TBD</a></td><td>25</td></tr>
+<tr><td><a href="#a4-final-project">A4: Markov Text Generator</a></td><td>25</td></tr>
 </tbody>
 </table>
 </div>
@@ -1606,6 +1606,57 @@ visited positions</li>
 <li><code>main</code> calls your solver method, marks the start position, prints the maze,
 and prints whether it was solved</li>
 </ul>
+<h3 id="example-mazes"><a class="header" href="#example-mazes">Example Mazes</a></h3>
+<p>Your program should be able to solve the following maze from a starting position
+of (1, 1):</p>
+<pre><code>21 21
+#####################
+# #     #       #   #
+# # ### # ### # # # #
+# #   #   # # # # # #
+# ### ##### # # ### #
+#   # #   # # #   # #
+### # # # # # ### # #
+#   #   # # # # #   #
+# ####### # # # ### #
+#     #   # # # #   #
+# ### # ### # # # ###
+# # # #     # # # # #
+# # # # ##### # # # #
+# # # # #   # # # # #
+# # # # # # # # # # #
+#   #   # #   # #   #
+# ####### ##### ### #
+# #   #   #       # #
+### # # ### ### ### #
+#   #   #     #      
+#####################
+</code></pre>
+<p>Your program should report that the following maze is unsolvable from a starting
+position of (1, 1):</p>
+<pre><code>21 21
+#####################
+#                   #
+####### ########### #
+#       #     # #   #
+# ### ### ### # #####
+# #   #     # # # # #
+# # ### ##### # # # #
+# #   # #     # # # #
+####### # ##### # # #
+#       # #   #   # #
+# ####### ### # ### #
+#       #   # # #   #
+### ##### # # # # # #
+#   #   # # # # # # #
+# ### # ### # # # # #
+# # # #     # #   # #
+# # # ####### ##### #
+#   #     #   #   # #
+######### # # # # # #
+#         # #   #    
+#####################
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="a3-sorting-experiment"><a class="header" href="#a3-sorting-experiment">A3: Sorting Experiment</a></h1>
 <p>This program implements several sorting algorithms and runs an experiment to
