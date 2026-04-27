@@ -23,15 +23,15 @@ void main() {
     // roll all dice
     // should print next five values: 5 2 6 2 5
     rollAll(dice);
-    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]);
+    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]));
 
     // roll first, third, and fifth dice
     // should print: 6 2 4 2 4
     rollSome(dice, "ace");
-    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]);
+    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]));
 
     // roll first and fourth dice
     // should print: 2 2 4 5 4
     rollSome(dice, "ad");
-    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]);
+    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]));
 }

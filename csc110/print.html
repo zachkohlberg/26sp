@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-6801df3b.js";
+            window.path_to_searchindex_js = "searchindex-1b8d69b0.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-5f1f590a.js"></script>
@@ -1339,7 +1339,15 @@ features that have been covered in class during weeks 1-11.</p>
 <h3 id="1-dice-rolling-functions-5-points"><a class="header" href="#1-dice-rolling-functions-5-points">1. Dice-Rolling Functions (5 points)</a></h3>
 <p>Create a new program called <code>DiceGame.java</code>. To start, we’re going to write some
 functions that will allow you to simulate rolling dice.</p>
-<p>Add an <code>int</code> variable named <code>seed</code> to your program. This is a “global” variable,
+<blockquote class="blockquote-tag blockquote-tag-warning">
+<p class="blockquote-tag-title"><svg viewbox="0 0 16 16" width="18" height="18"><path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg>Warning</p>
+<p>My original directions contained a mistake here. Using an <code>int</code> for the seed
+value allows it to overflow (the upper end of the range just barely makes it
+above the max value for a 32-bit signed integer), so it’s important to use a
+<code>long</code> for the seed. I’ve added full code for the rollDie method that you’re
+free to use in the assignment.</p>
+</blockquote>
+<p>Add a <code>long</code> variable named <code>seed</code> to your program. This is a “global” variable,
 and it must be placed <em>outside</em> of any functions. Only two of your functions
 will use it directly, and it lets us keep track of the state of our random
 number generator. You are not allowed to have any other global variables in your
@@ -1359,8 +1367,18 @@ class, but with a few changes:</p>
 <li>to scale this integer to be a random number from 0 to 5, multiply by 6 and
 divide by 233280: <code>seed * 6 / 233280</code></li>
 <li>add 1 to make the range 1 to 6 instead of 0 to 5: <code>(seed * 6 / 233280) + 1</code></li>
-<li>remember to <code>return</code> the number from 1 to 6</li>
+<li>remember to cast the number from 1 to 6 to <code>int</code> before you <code>return</code> it</li>
 </ul>
+<p>Full code for <code>rollDie</code>:</p>
+<pre><code class="language-java">// seed value
+long seed = 0;
+
+// rollDie function
+int rollDie() {
+    seed = (seed * 9301 + 47297) % 233280;
+    return (int)(seed * 6 / 233280) + 1;
+}
+</code></pre>
 <h4 id="rollall"><a class="header" href="#rollall"><code>rollAll</code></a></h4>
 <ul>
 <li>lets us roll all of the dice in an array, which we’ll do at the start of each
@@ -1430,17 +1448,17 @@ the seed <code>123456</code>:</p>
     // roll all dice
     // should print next five values: 5 2 6 2 5
     rollAll(dice);
-    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]);
+    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]));
 
     // roll first, third, and fifth dice
     // should print: 6 2 4 2 4
     rollSome(dice, "ace");
-    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]);
+    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]));
 
     // roll first and fourth dice
     // should print: 2 2 4 5 4
     rollSome(dice, "ad");
-    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]);
+    IO.println(String.format("%d %d %d %d %d", dice[0], dice[1], dice[2], dice[3], dice[4]));
 }
 </code></pre>
 <h3 id="2-scoring-functions-5-points"><a class="header" href="#2-scoring-functions-5-points">2. Scoring Functions (5 points)</a></h3>
