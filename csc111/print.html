@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-bdd3b8d8.js";
+            window.path_to_searchindex_js = "searchindex-9f70248a.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-1c6ca60e.js"></script>
+        <script src="toc-2cbb1237.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -4779,6 +4779,69 @@ really covered interfaces</li>
 <ul>
 <li>review material on request</li>
 <li>work on project</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="reading-corpus"><a class="header" href="#reading-corpus">Reading Corpus</a></h1>
+<ul>
+<li>corpus: all of our training data</li>
+<li>token: a single piece of text, usually a word</li>
+<li>recommended source: <a href="https://www.gutenberg.org/">https://www.gutenberg.org/</a></li>
+<li>goal
+<ul>
+<li>a list of all starting tokens</li>
+<li>a hash table mapping each token to a list of possible next tokens</li>
+</ul>
+</li>
+<li>how to process text
+<ul>
+<li>split into “sections”
+<ul>
+<li>could be sentences, paragraphs, or whatever we want to generate</li>
+<li>we care about sections because we need to know
+<ul>
+<li>which tokens can start a generated piece of text</li>
+<li>which tokens can end a generated piece of text</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>split sections into tokens</li>
+<li>record start tokens in a separate list</li>
+<li>add hash table entry for new tokens</li>
+<li>add next token to list</li>
+<li>add null to final token’s list</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="generating-text"><a class="header" href="#generating-text">Generating Text</a></h1>
+<ul>
+<li>choose a random token from the starting list</li>
+<li>get list of next tokens from the hash table</li>
+<li>choose a random token from the list</li>
+<li>repeat previous two steps until reaching null or some max section length</li>
+<li>concatenate tokens and print resulting section</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="improvement"><a class="header" href="#improvement">Improvement</a></h1>
+<ul>
+<li>this is all optional</li>
+<li>better version of markov generator: look at sequences of two or three tokens
+when determining next token</li>
+<li>hash table would have to map token sequences to lists of next tokens
+<ul>
+<li>requires a class for pairs/trios of tokens</li>
+<li>requires a hash function for your pair/trio class</li>
+<li>requires adjustments to how we build the hash table
+<ul>
+<li>you could make separate hash tables for starting tokens and starting pairs</li>
+<li>you could use one hash table and use null values at the start of a
+pair/trio</li>
+</ul>
+</li>
+<li>requires adjustments to how we generate text</li>
+</ul>
+</li>
 </ul>
 
                     </main>

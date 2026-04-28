@@ -35,10 +35,10 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1b8d69b0.js";
+            window.path_to_searchindex_js = "searchindex-d718c4a6.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-5f1f590a.js"></script>
+        <script src="toc-48e4f223.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -4141,21 +4141,86 @@ if used before calling <code>.nextLine()</code></li>
 </ul>
 <h3 id="thursday-agenda-8"><a class="header" href="#thursday-agenda-8">Thursday Agenda</a></h3>
 <ul>
-<li>encapsulation</li>
+<li>bitwise operations</li>
 <li>ppm output</li>
-<li>drawing lines and rectangles</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="week-14-0428-0430"><a class="header" href="#week-14-0428-0430">Week 14 (04/28, 04/30)</a></h1>
 <h3 id="tuesday-agenda-9"><a class="header" href="#tuesday-agenda-9">Tuesday Agenda</a></h3>
 <ul>
-<li>parsing draw commands</li>
-<li>optional: exceptions</li>
+<li>encapsulation</li>
+<li>I/O redirection</li>
+<li>drawing lines and rectangles</li>
 </ul>
 <h3 id="thursday-agenda-9"><a class="header" href="#thursday-agenda-9">Thursday Agenda</a></h3>
 <ul>
-<li>optional: file I/O</li>
-<li>work on project</li>
+<li>parsing draw commands</li>
+<li>optional: exceptions and file I/O</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="encapsulation-1"><a class="header" href="#encapsulation-1">Encapsulation</a></h1>
+<ul>
+<li>see week 12 notes</li>
+<li>also: review namespaces and cover packages and import
+<ul>
+<li>classes as namespaces for static functions</li>
+<li>packages as namespaces for classes</li>
+<li>standard library’s organization into packages;
+<a href="https://docs.oracle.com/en/java/javase/25/docs/api/index.html">Java API</a></li>
+<li><code>import</code> keyword
+<ul>
+<li>compact source’s import on demand</li>
+<li><code>java.lang</code> import on demand</li>
+<li>importing from other packages</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="io-redirection"><a class="header" href="#io-redirection">I/O Redirection</a></h1>
+<ul>
+<li><code>&gt;</code> and <code>&lt;</code> can redirect a terminal command’s standard input/output</li>
+<li><code>2&gt;</code> redirects standard error</li>
+<li>dangerous if misused: redirecting output to a file will overwrite that file</li>
+<li><code>&gt;&gt;</code> to append to file instead of overwriting it</li>
+<li>demonstrate:
+<ul>
+<li>read from stdin and print to stdout/stderr in java program</li>
+<li>effect of normal redirection</li>
+<li>difference made by append vs normal redirect</li>
+</ul>
+</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="drawing-functions"><a class="header" href="#drawing-functions">Drawing Functions</a></h1>
+<ul>
+<li>three required functions:
+<ul>
+<li>outline a rectangle</li>
+<li>fill a rectangle</li>
+<li>draw a line</li>
+</ul>
+</li>
+<li>rectangles are easy: nested for loops!</li>
+<li>line is harder
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Line_drawing_algorithm">https://en.wikipedia.org/wiki/Line_drawing_algorithm</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm">https://en.wikipedia.org/wiki/Bresenham%27s_line_algorithm</a></li>
+</ul>
+</li>
+<li>optional: circle (<a href="https://en.wikipedia.org/wiki/Midpoint_circle_algorithm">https://en.wikipedia.org/wiki/Midpoint_circle_algorithm</a>)</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="parsing-commands"><a class="header" href="#parsing-commands">Parsing Commands</a></h1>
+<ul>
+<li>no file I/O needed if we use I/O redirection and standard input/output</li>
+<li>read commands with scanner</li>
+<li>exit if we read “quit”</li>
+<li>split commands with <code>.split(" ")</code></li>
+<li>first element is command type (draw_rect, fill_rect, draw_line)</li>
+<li>second element is color (parse base-16)</li>
+<li>third-sixth elements are coordinates/dimensions</li>
 </ul>
 
                     </main>
