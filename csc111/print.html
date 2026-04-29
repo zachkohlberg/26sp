@@ -35,7 +35,7 @@
             const path_to_root = "";
             const default_light_theme = "navy";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-9f70248a.js";
+            window.path_to_searchindex_js = "searchindex-500944cb.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-2cbb1237.js"></script>
@@ -1334,7 +1334,8 @@ it does not</li>
 <li>assume (x, y) is in bounds</li>
 </ul>
 </li>
-<li><code>set(x: int, y: int, c: char): void</code>
+<li><code>set(c: char, x: int, y: int): void</code> (<em>parameter fixed to match test code
+and other references to the set method</em>)
 <ul>
 <li>sets the character at (x, y) to <code>c</code></li>
 <li>assume (x, y) is in bounds</li>
@@ -1493,6 +1494,142 @@ file correctly and that its toString method works correctly.
 <li>Does not include extra instance variables</li>
 <li>Provided test code compiles and runs with your <code>Maze</code> class</li>
 </ul>
+<h3 id="maze-coordinates-advice"><a class="header" href="#maze-coordinates-advice">Maze Coordinates Advice</a></h3>
+<p>I’m adding a section to help anyone who’s trying to revise or debug their maze
+class due to issues with the coordinate order. I had intended for this to pose a
+bit of a challenge to make you think about how your code affects the
+“orientation” of a 2d array, but this ended up being more challenging than
+intended. I also should have dedicated some class time to covering this specific
+topic after including it in the assignment. Hopefully this helps if you’re
+having trouble with this part.</p>
+<h4 id="orienting-a-2d-array"><a class="header" href="#orienting-a-2d-array">Orienting a 2D Array</a></h4>
+<p>An array has no inherent orientation. The code that interacts with an array is
+what determines its orientation. Let’s say we have the following array:</p>
+<pre><code class="language-java">char[][] a = {
+    { 'A', 'B', 'C', 'D' },
+    { 'E', 'F', 'G', 'H' },
+    { 'I', 'J', 'K', 'L' }
+};
+</code></pre>
+<p>Each of the following for loops print the array in a different orientation:</p>
+<pre><code class="language-java">for (int i = 0; i &lt; a.length; i++) {
+    for (int j = 0; j &lt; a[i].length; j++) {
+        System.out.print(a[i][j]);
+    }
+    System.out.println();
+}
+
+System.out.println();
+
+for (int i = a.length - 1; i &gt;= 0; i--) {
+    for (int j = 0; j &lt; a[i].length; j++) {
+        System.out.print(a[i][j]);
+    }
+    System.out.println();
+}
+
+System.out.println();
+
+for (int i = 0; i &lt; a[0].length; i++) {
+    for (int j = 0; j &lt; a.length; j++) {
+        System.out.print(a[j][i]);
+    }
+    System.out.println();
+}
+
+System.out.println();
+
+for (int i = a[0].length - 1; i &gt;= 0; i--) {
+    for (int j = 0; j &lt; a.length; j++) {
+        System.out.print(a[j][i]);
+    }
+    System.out.println();
+}
+</code></pre>
+<p>None of those loops are correct or incorrect. They’re just different. The first
+two loops treat the 1d arrays (<code>a[0]</code>, <code>a[1]</code>, etc.) as rows, with 0 either
+being the top row (first loop) or bottom row (second loop). The other two loops
+treat the 1d arrays as columns.</p>
+<p>What matters most is <strong>consistency</strong>. If your code is not consistent, then the
+meaning of any coordinates you use will not be consistent, leading to logic
+errors and crashes.</p>
+<h4 id="maze-api-versus-maze-implementation"><a class="header" href="#maze-api-versus-maze-implementation">Maze API Versus Maze Implementation</a></h4>
+<p>It’s possible to orient the data in the maze’s internal array several different
+ways while still conforming to what’s expected in the test program. However, the
+easiest way (in my opinion) is for the coordinates used internally to match the
+coordinates used externally: x followed by y, with the y increasing from the top
+of the maze to the bottom:</p>
+<pre><code class="language-java">// outside the maze class:
+m.set('#', x, y);
+
+// inside the maze class:
+data[x][y] = '#';
+</code></pre>
+<p>This matches the third loop in our earlier example, and it’s likely not how
+you’re used to viewing an array. The pseudocode below will outline how to code
+the maze so that it’s consistent with this orientation both internally and
+externally. You’re free to use a different internal orientation as long as your
+maze works as expected by the <code>TestMaze</code> program you were given.</p>
+<p>Some general tips for avoiding mistakes:</p>
+<ul>
+<li>Use meaningful names for your loop variables. Avoid calling them <code>i</code>, <code>j</code>,
+etc. We’re working with (x, y) coordinates, so call them <code>x</code> and <code>y</code>.</li>
+<li>The outer loop should iterate over y values and the inner loop should iterate
+over x values. When the order matters, this will be correct. When the order
+doesn’t matter, this will still be correct, and it’s consistent with your
+other code.</li>
+<li>Use <code>width</code> and <code>height</code> as upper bounds in your for loops, not the length of
+an array. These will be the same as the array’s length, but mistakes are more
+obvious and easier to fix when they look like <code>x &lt; height</code> as opposed to
+<code>x &lt; data[0].length</code>.</li>
+<li>Always index arrays with x, then y: <code>array[x][y]</code>.</li>
+</ul>
+<pre><code>properties:
+  data: char[][]
+  width: int
+  height: int
+
+Maze(w, h):
+  width = w
+  height = h
+  data = char[width][height]
+
+Maze(array):
+  width = array.length
+  height = array[0].length
+  data = char[width][height]
+
+  for y...
+    for x...
+      data[x][y] = array[x][y]
+
+Maze(file):
+  width = read int
+  height = read int
+  data = char[width][height]
+
+  for y...
+    line = read line
+    for x...
+      data[x][y] = line[x]
+
+inBounds(x, y):
+  return 0 &lt;= x &lt; width and 0 &lt;= y &lt; height
+
+get(x, y):
+  return data[x][y]
+
+set(c, x, y):
+  data[x][y] = c
+
+toString():
+  s = ""
+  for y...
+    for x...
+      s += data[x][y]
+    s += \n
+  return s
+</code></pre>
 <h2 id="task-2-solver-program-5-points"><a class="header" href="#task-2-solver-program-5-points">Task 2: Solver Program (5 points)</a></h2>
 <p>Write a <code>MazeSolver.java</code> program that takes three command line args: the name
 of a file, an x-coordinate (int), and a y-coordinate (int). The file should be a
